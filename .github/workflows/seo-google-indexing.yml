@@ -1,0 +1,234 @@
+# ============================================================================
+# Google Search Console Indexing API
+# ============================================================================
+#
+# ONE-TIME SETUP (required before this workflow can run):
+#
+# 1. Create a Google Cloud project:
+#    https://console.cloud.google.com/projectcreate
+#
+# 2. Enable the "Web Search Indexing API" in the project:
+#    https://console.cloud.google.com/apis/library/indexing.googleapis.com
+#
+# 3. Create a Service Account:
+#    - Go to: IAM & Admin > Service Accounts
+#    - Click "Create Service Account"
+#    - Name: seo-indexing-agent
+#    - Role: (none needed)
+#    - Click "Done"
+#
+# 4. Create a JSON key for the service account:
+#    - Click on the service account you just created
+#    - Go to "Keys" tab
+#    - Click "Add Key" > "Create new key"
+#    - Choose JSON format
+#    - Download the key file
+#
+# 5. Add the service account as Owner in Google Search Console:
+#    - Go to: https://search.google.com/search-console
+#    - Select your property: www.geromball.com
+#    - Go to Settings > Users and permissions
+#    - Click "Add user"
+#    - Enter the service account email (from the JSON file, looks like: name@project.iam.gserviceaccount.com)
+#    - Set permission to "Owner"
+#    - Click "Add"
+#
+# 6. Store the JSON key in GitHub Secrets:
+#    - Go to: https://github.com/Alfanofadil11/geromball/settings/secrets/actions
+#    - Click "New repository secret"
+#    - Name: GOOGLE_SA_KEY
+#    - Value: Paste the entire JSON file contents
+#
+# IMPORTANT NOTES:
+# - Google Indexing API daily quota: 200 URL submissions per day
+# - Google Indexing API ONLY works for pages with JobPosting or BroadcastEvent
+#   embedded in VideoObject schema
+# - For regular pages, use GSC URL Inspection (manual) or IndexNow (for Bing)
+# - This workflow will still submit URLs, but Google may ignore them if they
+#   don't have the required schema types
+#
+# ============================================================================
+
+name: SEO Google Indexing API
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 10 * * *'  # Daily at 10:00 UTC
+  workflow_dispatch:
+    inputs:
+      max_urls:
+        description: 'Max URLs to submit (Google daily limit is 200)'
+        required: false
+        default: '50'
+        type: number
+
+jobs:
+  google-indexing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Install googleapis
+        run: npm install googleapis
+
+      - name: Submit URLs to Google Indexing API
+        env:
+          GOOGLE_SA_KEY: ${{ secrets.GOOGLE_SA_KEY }}
+          MAX_URLS: ${{ inputs.max_urls || '50' }}
+        run: |
+          node --input-type=module << 'SCRIPT'
+          import { google } from 'googleapis';
+          import { readFileSync } from 'fs';
+
+          const MAX_URLS = Math.min(
+            parseInt(process.env.MAX_URLS || '50', 10),
+            200
+          );
+
+          // --- Authenticate ---
+          const keyJson = process.env.GOOGLE_SA_KEY;
+          if (!keyJson) {
+            console.error('::error::GOOGLE_SA_KEY secret is not set');
+            console.log('Skipping Google Indexing - service account key not configured');
+            process.exit(0);
+          }
+
+          let key;
+          try {
+            key = JSON.parse(keyJson);
+          } catch (e) {
+            console.error('::error::GOOGLE_SA_KEY is not valid JSON');
+            process.exit(1);
+          }
+
+          // Fix private_key newlines (GitHub secrets may escape them)
+          if (key.private_key) {
+            key.private_key = key.private_key.replace(/\\n/g, '\n');
+          }
+
+          console.log(`Service account: ${key.client_email}`);
+
+          const auth = new google.auth.GoogleAuth({
+            credentials: key,
+            scopes: ['https://www.googleapis.com/auth/indexing'],
+          });
+
+          const client = await auth.getClient();
+          console.log('Authenticated successfully');
+
+          // --- Read sitemap ---
+          let sitemapXml;
+          try {
+            sitemapXml = readFileSync('public/sitemap.xml', 'utf8');
+          } catch (e) {
+            // Try alternate location
+            try {
+              sitemapXml = readFileSync('dist/client/sitemap.xml', 'utf8');
+            } catch (e2) {
+              console.error('::error::Sitemap not found');
+              process.exit(1);
+            }
+          }
+
+          const locRegex = /<loc>([^<]+)<\/loc>/g;
+          const allUrls = [];
+          let match;
+          while ((match = locRegex.exec(sitemapXml)) !== null) {
+            allUrls.push(match[1]);
+          }
+
+          console.log(`Found ${allUrls.length} URLs in sitemap`);
+
+          // --- Prioritize URLs ---
+          const priority = [];
+          const rest = [];
+
+          for (const url of allUrls) {
+            const path = new URL(url).pathname;
+            if (path === '/' || path.startsWith('/blog')) {
+              priority.push(url);
+            } else {
+              rest.push(url);
+            }
+          }
+
+          const sorted = [...priority, ...rest];
+          const toSubmit = sorted.slice(0, MAX_URLS);
+
+          console.log(`Prioritized: ${priority.length} homepage/blog URLs, ${rest.length} other`);
+          console.log(`Submitting ${toSubmit.length} of ${allUrls.length} URLs (limit: ${MAX_URLS})`);
+
+          // --- Submit to Indexing API ---
+          const indexing = google.indexing({ version: 'v3', auth: client });
+
+          let success = 0;
+          let failed = 0;
+          let skipped = 0;
+
+          for (const url of toSubmit) {
+            try {
+              const res = await indexing.urlNotifications.publish({
+                requestBody: {
+                  url,
+                  type: 'URL_UPDATED',
+                },
+              });
+              success++;
+              console.log(`OK ${res.status} ${url}`);
+            } catch (err) {
+              const status = err?.response?.status || 'unknown';
+              const message = err?.response?.data?.error?.message || err.message;
+              
+              // Quota exceeded - stop submitting
+              if (status === 429 || message.includes('quota')) {
+                console.log(`Quota exceeded after ${success} submissions. Stopping.`);
+                break;
+              }
+              
+              failed++;
+              console.error(`FAIL ${status} ${url} - ${message}`);
+            }
+            
+            // Small delay to avoid rate limiting
+            await new Promise(r => setTimeout(r, 100));
+          }
+
+          console.log('');
+          console.log('=== Summary ===');
+          console.log(`Total submitted: ${success + failed}`);
+          console.log(`Successful: ${success}`);
+          console.log(`Failed: ${failed}`);
+
+          if (failed > 0) {
+            console.log('::warning::Some URL submissions failed. Check logs above.');
+          }
+          SCRIPT
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "=== Google Indexing Summary ==="
+          echo "Note: Google Indexing API only works for pages with JobPosting or BroadcastEvent schema."
+          echo "For regular pages, use GSC URL Inspection tool manually."
+          echo ""
+          echo "Manual GSC URL Submission:"
+          echo "1. Go to https://search.google.com/search-console"
+          echo "2. Select property: www.geromball.com"
+          echo "3. Use URL Inspection for each URL"
+          echo "4. Click 'Request Indexing'"

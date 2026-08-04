@@ -1,0 +1,83 @@
+# ============================================================================
+# IndexNow API Submission (Bing, Yandex, Naver, Seznam, DuckDuckGo)
+# ============================================================================
+#
+# ONE-TIME SETUP:
+#
+# 1. Generate an IndexNow API key:
+#    - You can use any random string as your key
+#    - Example: openssl rand -hex 32
+#
+# 2. Place the key file in your website root:
+#    - Create a file at: https://geromball.com/{your-key}.txt
+#    - The file should contain ONLY the key string
+#    - This verifies you own the domain
+#
+# 3. Add the key to GitHub Secrets:
+#    - Go to: https://github.com/Alfanofadil11/geromball/settings/secrets/actions
+#    - Click "New repository secret"
+#    - Name: INDEXNOW_KEY
+#    - Value: your generated key
+#
+# 4. (Optional) Add the key to Vercel environment:
+#    - Go to: https://vercel.com/geromball/geromball/settings/environment-variables
+#    - Add: INDEXNOW_KEY = your-key
+#
+# How it works:
+# - On every push to main, submits changed URLs to IndexNow
+# - IndexNow notifies Bing, Yandex, Naver, Seznam, DuckDuckGo
+# - Also runs weekly to resubmit all URLs
+# - Google does NOT support IndexNow (use seo-google-indexing.yml instead)
+#
+# ============================================================================
+
+name: SEO IndexNow Submission
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 8 * * 1'  # Weekly on Monday at 8:00 UTC
+  workflow_dispatch:
+    inputs:
+      submit_all:
+        description: 'Submit all URLs (not just changed ones)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Submit URLs to IndexNow
+        uses: bojieyang/indexnow-action@v3
+        with:
+          # Your sitemap URL
+          sitemap-location: 'https://geromball.com/sitemap.xml'
+          
+          # IndexNow API key from GitHub Secrets
+          key: ${{ secrets.INDEXNOW_KEY }}
+          
+          # Key file location (where you placed the .txt file)
+          key-location: 'https://geromball.com/${{ secrets.INDEXNOW_KEY }}.txt'
+          
+          # Submit to Bing ( IndexNow shares with Yandex, Naver, Seznam, DuckDuckGo)
+          endpoint: 'www.bing.com'
+          
+          # Maximum URLs to submit per run
+          limit: 100
+          
+          # Timeout in milliseconds
+          timeout: 15000
+          
+          # Include URLs even if lastmod is missing
+          lastmod-required: false
