@@ -111,6 +111,7 @@ export default function BlogPage() {
           <SectionTitle
             title="Blog"
             subtitle="Artikel, panduan, dan analisis tentang football"
+            as="h1"
           />
 
           <div className="mb-12 rounded-2xl border border-foreground/20 bg-card p-8">
@@ -146,9 +147,9 @@ export default function BlogPage() {
 
           {/* CTA */}
           <div className="mt-12 rounded-2xl border border-foreground/20 bg-card p-8 text-center">
-            <h3 className="heading-display mb-4 text-2xl font-bold uppercase tracking-wider">
+            <h2 className="heading-display mb-4 text-2xl font-bold uppercase tracking-wider">
               Ingin Kolaborasi?
-            </h3>
+            </h2>
             <p className="mx-auto mb-6 max-w-xl text-muted">
               GEROMBALL terbuka untuk kolaborasi brand, sponsorship, dan kerja sama bisnis.
             </p>

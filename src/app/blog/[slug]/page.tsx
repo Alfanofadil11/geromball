@@ -363,9 +363,9 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* CTA */}
           <div className="rounded-2xl border border-foreground/20 bg-card p-12 text-center">
-            <h3 className="heading-display mb-4 text-3xl font-bold uppercase tracking-wider">
+            <h2 className="heading-display mb-4 text-3xl font-bold uppercase tracking-wider">
               Ingin Kolaborasi?
-            </h3>
+            </h2>
             <p className="mx-auto mb-8 max-w-xl text-lg text-muted">
               GEROMBALL terbuka untuk kolaborasi brand, sponsorship, dan kerja sama bisnis.
             </p>

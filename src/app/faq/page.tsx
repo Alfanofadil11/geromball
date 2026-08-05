@@ -83,6 +83,7 @@ export default function FAQPage() {
         <SectionTitle
           title="FAQ"
           subtitle="Pertanyaan yang sering ditanyakan"
+          as="h1"
         />
 
         <div className="space-y-6">
@@ -91,9 +92,9 @@ export default function FAQPage() {
               key={index}
               className="rounded-xl border border-card-border bg-card p-6"
             >
-              <h3 className="heading-display mb-3 text-lg font-semibold uppercase tracking-wider text-foreground">
+              <h2 className="heading-display mb-3 text-lg font-semibold uppercase tracking-wider text-foreground">
                 {faq.question}
-              </h3>
+              </h2>
               <p className="text-muted leading-relaxed">
                 {faq.answer}
               </p>
