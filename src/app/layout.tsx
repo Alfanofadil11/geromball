@@ -6,15 +6,20 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 export const metadata: Metadata = {
   title: {
-    default: "GEROMBALL | Media Football Indonesia",
+    default: "GEROMBALL | KOL Bola Indonesia & Football KOL",
     template: "%s | GEROMBALL",
   },
   description:
-    "Fanatik tapi fun. Media football — Pojok Debat, Menjadi Manager, Live Reaction, dan lainnya. 235K+ subscriber YouTube.",
+    "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia — Pojok Debat, Menjadi Manager, Live Reaction. 235K+ subscriber YouTube, 455K+ TikTok, 95K+ Instagram.",
   keywords: [
+    "KOL Bola Indonesia",
+    "Football KOL",
+    "Football KOL Indonesia",
+    "Pundit Indonesia",
+    "media football Indonesia",
+    "KOL sepakbola",
     "football",
     "sepak bola",
-    "media",
     "konten",
     "podcast",
     "YouTube",
@@ -28,9 +33,9 @@ export const metadata: Metadata = {
     "podcast sepak bola",
   ],
   openGraph: {
-    title: "GEROMBALL | Media Football Indonesia",
+    title: "GEROMBALL | KOL Bola Indonesia & Football KOL",
     description:
-      "Fanatik tapi fun. Media football — Pojok Debat, Menjadi Manager, Live Reaction.",
+      "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia — Pojok Debat, Menjadi Manager, Live Reaction.",
     url: "https://geromball.com",
     siteName: "GEROMBALL",
     locale: "id_ID",
@@ -46,9 +51,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GEROMBALL | Media Football Indonesia",
+    title: "GEROMBALL | KOL Bola Indonesia & Football KOL",
     description:
-      "Fanatik tapi fun. Media football — Pojok Debat, Menjadi Manager, Live Reaction.",
+      "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia — Pojok Debat, Menjadi Manager, Live Reaction.",
     images: ["/logo.jpg"],
   },
   icons: {

@@ -128,6 +128,18 @@ const programs = [
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "GEROMBALL",
+            url: "https://geromball.com",
+            description: "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia.",
+          }),
+        }}
+      />
       {/* SEO Schema */}
       <script
         type="application/ld+json"
