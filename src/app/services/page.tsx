@@ -87,7 +87,7 @@ export default function ServicesPage() {
           Program Kami
         </h1>
         <p className="text-center text-lg text-muted mb-12 max-w-3xl mx-auto">
-          GEROMBALL adalah <strong className="text-foreground">media football Indonesia</strong> yang menciptakan konten football berkualitas. Dari <strong className="text-foreground">Pojok Debat</strong> hingga <strong className="text-foreground">Live Reaction</strong>, program kami mendefinisikan budaya football di Indonesia.
+          GEROMBALL adalah <strong className="text-foreground">KOL Bola Indonesia</strong> dan <strong className="text-foreground">Football KOL</strong> yang menciptakan konten football berkualitas — Podcast, Live Reaction, Short-Form (Instagram, TikTok, YouTube Shorts). Program kami mendefinisikan budaya football di Indonesia.
         </p>
 
         {/* Major Programs */}

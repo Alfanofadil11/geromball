@@ -43,7 +43,7 @@ export default function AboutPage() {
           Tentang GEROMBALL
         </h1>
         <p className="text-center text-lg text-muted mb-12 max-w-3xl mx-auto">
-          <strong className="text-foreground">GEROMBALL</strong> adalah <strong className="text-foreground">media football Indonesia</strong> yang lahir dari passion autentik terhadap sepak bola. Fanatik tapi fun — kami adalah <strong className="text-foreground">Football KOL</strong> yang menjangkau 780K+ audiens di semua platform.
+          <strong className="text-foreground">GEROMBALL</strong> adalah <strong className="text-foreground">KOL Bola Indonesia</strong>, <strong className="text-foreground">Football KOL</strong>, dan <strong className="text-foreground">Pundit Indonesia</strong> terdepan. Kami lahir dari passion autentik terhadap sepak bola. Fanatik tapi fun — menjangkau 780K+ audiens di semua platform.
         </p>
 
         {/* Brand Story */}

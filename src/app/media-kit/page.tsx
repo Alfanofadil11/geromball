@@ -141,8 +141,8 @@ export default function MediaKitPage() {
               Tentang GEROMBALL
             </h2>
             <p className="mb-4 text-lg leading-relaxed text-muted">
-              GEROMBALL adalah media football Indonesia yang menggabungkan passion autentik dengan produksi profesional. 
-              Dengan konten yang menghibur, mengedukasi, dan menyatukan komunitas football, kami menjangkau ratusan ribu 
+              GEROMBALL adalah <strong className="text-foreground">KOL Bola Indonesia</strong>, <strong className="text-foreground">Football KOL</strong>, dan <strong className="text-foreground">Pundit Indonesia</strong> yang menggabungkan passion autentik dengan produksi profesional. 
+              Dengan konten Podcast, Live Reaction, dan Short-Form (Instagram, TikTok, YouTube Shorts), kami menjangkau ratusan ribu 
               fans di semua platform besar.
             </p>
             <p className="text-lg leading-relaxed text-muted">
