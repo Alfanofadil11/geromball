@@ -5,10 +5,10 @@ import SocialProof from '@/components/SocialProof'
 
 export const metadata: Metadata = {
   title: 'Tentang GEROMBALL - KOL Bola Indonesia & Football KOL',
-  description: 'GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Media football Indonesia dengan total reach 780K+. Kenali tim, misi, dan program konten kami.',
+  description: 'GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Media football Indonesia — Podcast, Live Reaction, Short-Form (Instagram, TikTok, YouTube Shorts). Total reach 780K+.',
   openGraph: {
     title: 'Tentang GEROMBALL - KOL Bola Indonesia & Football KOL',
-    description: 'GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Media football Indonesia dengan total reach 780K+.',
+    description: 'GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Media football Indonesia — Podcast, Live Reaction, Short-Form.',
     url: 'https://geromball.com/about',
   },
   alternates: {
