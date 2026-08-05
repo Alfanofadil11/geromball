@@ -76,7 +76,14 @@ export default function RootLayout({
     name: "GEROMBALL",
     url: "https://geromball.com",
     description:
-      "Media football Indonesia. Fanatik tapi fun.",
+      "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia — Podcast, Live Reaction, Short-Form.",
+    keywords: [
+      "KOL Bola Indonesia",
+      "Football KOL Indonesia",
+      "Pundit Indonesia",
+      "media football Indonesia",
+      "KOL sepakbola",
+    ],
     sameAs: [
       "https://www.youtube.com/@geromball",
       "https://www.tiktok.com/@geromball",
