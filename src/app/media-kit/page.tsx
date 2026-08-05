@@ -111,6 +111,7 @@ export default function MediaKitPage() {
         <SectionTitle
           title="Media Kit"
           subtitle="Statistik, audiens, dan opsi kolaborasi"
+          as="h1"
         />
 
         {/* Quick Stats */}
@@ -136,9 +137,9 @@ export default function MediaKitPage() {
         {/* Brand Overview */}
         <div className="mb-20">
           <div className="rounded-2xl border border-card-border bg-card p-8 md:p-12">
-            <h3 className="heading-display mb-4 text-3xl font-bold uppercase tracking-wider">
+            <h2 className="heading-display mb-4 text-3xl font-bold uppercase tracking-wider">
               Tentang GEROMBALL
-            </h3>
+            </h2>
             <p className="mb-4 text-lg leading-relaxed text-muted">
               GEROMBALL adalah media football Indonesia yang menggabungkan passion autentik dengan produksi profesional. 
               Dengan konten yang menghibur, mengedukasi, dan menyatukan komunitas football, kami menjangkau ratusan ribu 
@@ -165,9 +166,9 @@ export default function MediaKitPage() {
                 rel="noopener noreferrer"
                 className="glass-card rounded-xl p-6 transition-all hover:border-foreground/30"
               >
-                <h4 className="heading-display mb-1 text-2xl uppercase tracking-wider">
+                <h3 className="heading-display mb-1 text-2xl uppercase tracking-wider">
                   {platform.name}
-                </h4>
+                </h3>
                 <p className="mb-4 text-sm text-muted">{platform.handle}</p>
                 <div className="mb-4 space-y-2">
                   <div className="flex items-center justify-between">
@@ -213,9 +214,9 @@ export default function MediaKitPage() {
                 className="glass-card rounded-xl p-6"
               >
                 <div className="mb-3 flex items-start justify-between">
-                  <h4 className="heading-display text-xl uppercase tracking-wider">
+                  <h3 className="heading-display text-xl uppercase tracking-wider">
                     {program.name}
-                  </h4>
+                  </h3>
                   <span className="rounded-full border border-card-border bg-card px-3 py-1 text-xs text-muted">
                     {program.frequency}
                   </span>
@@ -293,9 +294,9 @@ export default function MediaKitPage() {
                 key={collab.type}
                 className="glass-card rounded-xl p-6"
               >
-                <h4 className="heading-display mb-2 text-xl uppercase tracking-wider">
+                <h3 className="heading-display mb-2 text-xl uppercase tracking-wider">
                   {collab.type}
-                </h4>
+                </h3>
                 <p className="mb-4 text-sm text-muted">{collab.description}</p>
                 <ul className="space-y-2">
                   {collab.deliverables.map((item) => (
@@ -314,9 +315,9 @@ export default function MediaKitPage() {
 
         {/* CTA */}
         <div className="rounded-2xl border border-foreground/20 bg-card p-12 text-center">
-          <h3 className="heading-display mb-4 text-3xl font-bold uppercase tracking-wider md:text-4xl">
+          <h2 className="heading-display mb-4 text-3xl font-bold uppercase tracking-wider md:text-4xl">
             Siap Berkolaborasi?
-          </h3>
+          </h2>
           <p className="mx-auto mb-8 max-w-xl text-lg text-muted">
             Hubungi kami untuk diskusi lebih lanjut tentang peluang kolaborasi.
           </p>

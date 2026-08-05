@@ -109,13 +109,14 @@ export default function ContactPage() {
         <SectionTitle
           title="Hubungi Kami"
           subtitle="Mari bekerja sama"
+          as="h1"
         />
 
         {/* Quick WhatsApp CTA */}
         <div className="mb-12 rounded-2xl border border-green-500/30 bg-green-500/10 p-8 text-center">
-          <h3 className="heading-display mb-2 text-2xl font-bold uppercase tracking-wider">
+          <h2 className="heading-display mb-2 text-2xl font-bold uppercase tracking-wider">
             Chat Langsung via WhatsApp
-          </h3>
+          </h2>
           <p className="mb-6 text-muted">
             Respon cepat untuk sponsorship dan kolaborasi
           </p>
@@ -134,7 +135,7 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
           <div className="lg:col-span-3">
-            <h3 className="heading-display mb-2 text-3xl font-bold uppercase tracking-wider">Kirim Pesan</h3>
+            <h2 className="heading-display mb-2 text-3xl font-bold uppercase tracking-wider">Kirim Pesan</h2>
             <p className="mb-8 text-muted">
               Sponsorship, proposal kolaborasi, atau sekadar pesan dari fans.
             </p>
@@ -248,7 +249,7 @@ export default function ContactPage() {
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="heading-display mb-6 text-2xl font-bold uppercase tracking-wider">Kontak</h3>
+            <h2 className="heading-display mb-6 text-2xl font-bold uppercase tracking-wider">Kontak</h2>
 
             <div className="space-y-4">
               <a
@@ -301,7 +302,7 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-8">
-              <h4 className="heading-display mb-4 text-lg font-semibold uppercase tracking-wider">Ikuti Kami</h4>
+              <h3 className="heading-display mb-4 text-lg font-semibold uppercase tracking-wider">Ikuti Kami</h3>
               <div className="flex gap-3">
                 {socialLinks.map(link => (
                   <a
