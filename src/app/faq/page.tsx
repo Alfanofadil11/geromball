@@ -3,7 +3,7 @@ import SectionTitle from '@/components/SectionTitle'
 
 export const metadata: Metadata = {
   title: 'FAQ | GEROMBALL - KOL Bola Indonesia',
-  description: 'FAQ GEROMBALL — KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Pertanyaan tentang Pojok Debat, Menjadi Manager, dan program kami.',
+  description: 'FAQ GEROMBALL — KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Pertanyaan tentang Podcast, Live Reaction, Short-Form, dan program kami.',
   openGraph: {
     title: 'FAQ | GEROMBALL - KOL Bola Indonesia',
     description: 'FAQ GEROMBALL — KOL Bola Indonesia, Football KOL, dan Pundit Indonesia.',

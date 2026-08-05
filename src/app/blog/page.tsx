@@ -3,10 +3,10 @@ import SectionTitle from '@/components/SectionTitle'
 
 export const metadata: Metadata = {
   title: 'Blog | GEROMBALL - KOL Bola Indonesia',
-  description: 'Blog GEROMBALL — KOL Bola Indonesia dan Football KOL. Artikel dan panduan tentang football KOL, konten football, dan industri media olahraga Indonesia.',
+  description: 'Blog GEROMBALL — KOL Bola Indonesia dan Football KOL. Artikel tentang Podcast, Live Reaction, Short-Form (Instagram, TikTok, YouTube Shorts), dan industri media olahraga.',
   openGraph: {
     title: 'Blog | GEROMBALL - KOL Bola Indonesia',
-    description: 'Blog GEROMBALL — KOL Bola Indonesia dan Football KOL. Artikel dan panduan tentang football KOL dan industri media olahraga.',
+    description: 'Blog GEROMBALL — KOL Bola Indonesia dan Football KOL. Artikel tentang Podcast, Live Reaction, Short-Form.',
     url: 'https://geromball.com/blog',
   },
   alternates: {
