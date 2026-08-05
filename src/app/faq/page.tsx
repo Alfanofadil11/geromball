@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import SectionTitle from '@/components/SectionTitle'
 
 export const metadata: Metadata = {
-  title: 'FAQ',
-  description: 'Frequently asked questions about GEROMBALL — football media, Pojok Debat, Menjadi Manager, and more.',
+  title: 'FAQ | GEROMBALL - KOL Bola Indonesia',
+  description: 'FAQ GEROMBALL — KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Pertanyaan tentang Pojok Debat, Menjadi Manager, dan program kami.',
   openGraph: {
-    title: 'FAQ | GEROMBALL',
-    description: 'Frequently asked questions about GEROMBALL football media.',
+    title: 'FAQ | GEROMBALL - KOL Bola Indonesia',
+    description: 'FAQ GEROMBALL — KOL Bola Indonesia, Football KOL, dan Pundit Indonesia.',
     url: 'https://geromball.com/faq',
   },
 }
