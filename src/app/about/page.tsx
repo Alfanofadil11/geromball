@@ -4,11 +4,11 @@ import Button from '@/components/Button'
 import SocialProof from '@/components/SocialProof'
 
 export const metadata: Metadata = {
-  title: 'Tentang | Geromball - Media Football',
-  description: 'Geromball - Di mana passion football bertemu kreativitas. Fanatik tapi fun. Kenali tim, misi, dan program konten kami.',
+  title: 'Tentang GEROMBALL - KOL Bola Indonesia & Football KOL',
+  description: 'GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Media football Indonesia dengan total reach 780K+. Kenali tim, misi, dan program konten kami.',
   openGraph: {
-    title: 'Tentang Geromball',
-    description: 'Di mana passion football bertemu kreativitas. Fanatik tapi fun.',
+    title: 'Tentang GEROMBALL - KOL Bola Indonesia & Football KOL',
+    description: 'GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Media football Indonesia dengan total reach 780K+.',
     url: 'https://geromball.com/about',
   },
   alternates: {

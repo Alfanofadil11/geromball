@@ -3,11 +3,11 @@ import SectionTitle from '@/components/SectionTitle'
 import Button from '@/components/Button'
 
 export const metadata: Metadata = {
-  title: 'Program | Geromball - Media Football',
-  description: 'Program konten Geromball — Pojok Debat, Menjadi Manager, Live Reaction, dan lainnya. Konten football yang mendefinisikan budaya.',
+  title: 'Program | GEROMBALL - KOL Bola Indonesia',
+  description: 'Program konten GEROMBALL — KOL Bola Indonesia dan Football KOL. Pojok Debat, Menjadi Manager, Live Reaction, dan lainnya. Konten football yang mendefinisikan budaya.',
   openGraph: {
-    title: 'Program | Geromball',
-    description: 'Program konten kami yang mendefinisikan budaya football.',
+    title: 'Program | GEROMBALL - KOL Bola Indonesia',
+    description: 'Program konten GEROMBALL — KOL Bola Indonesia dan Football KOL. Konten football yang mendefinisikan budaya.',
     url: 'https://geromball.com/services',
   },
   alternates: {

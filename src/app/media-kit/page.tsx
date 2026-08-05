@@ -3,11 +3,11 @@ import SectionTitle from '@/components/SectionTitle'
 import Button from '@/components/Button'
 
 export const metadata: Metadata = {
-  title: 'Media Kit | GEROMBALL',
-  description: 'Media kit GEROMBALL — statistik audiens, format konten, dan opsi kolaborasi untuk brand dan sponsor.',
+  title: 'Media Kit | GEROMBALL - KOL Bola Indonesia & Football KOL',
+  description: 'Media kit GEROMBALL — KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Statistik audiens 780K+, format konten, dan opsi kolaborasi untuk brand dan sponsor.',
   openGraph: {
-    title: 'Media Kit GEROMBALL',
-    description: 'Statistik audiens, format konten, dan opsi kolaborasi untuk brand dan sponsor.',
+    title: 'Media Kit | GEROMBALL - KOL Bola Indonesia & Football KOL',
+    description: 'Media kit GEROMBALL — KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Statistik audiens 780K+, format konten, dan opsi kolaborasi.',
     url: 'https://geromball.com/media-kit',
   },
   alternates: {
