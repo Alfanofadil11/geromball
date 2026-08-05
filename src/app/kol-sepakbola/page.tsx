@@ -112,6 +112,7 @@ export default function KOLSepakbolaPage() {
           <SectionTitle
             title="KOL Sepakbola Indonesia"
             subtitle="Pengertian, jenis, dan daftar lengkap"
+            as="h1"
           />
 
           {/* Definition Block */}
@@ -260,9 +261,9 @@ export default function KOLSepakbolaPage() {
 
           {/* CTA */}
           <div className="rounded-2xl border border-foreground/20 bg-card p-12 text-center">
-            <h3 className="heading-display mb-4 text-3xl font-bold uppercase tracking-wider md:text-4xl">
+            <h2 className="heading-display mb-4 text-3xl font-bold uppercase tracking-wider md:text-4xl">
               Ingin Kolaborasi dengan KOL Sepakbola?
-            </h3>
+            </h2>
             <p className="mx-auto mb-8 max-w-xl text-lg text-muted">
               GEROMBALL siap membantu brand Anda menjangkau audiens sepak bola Indonesia.
             </p>

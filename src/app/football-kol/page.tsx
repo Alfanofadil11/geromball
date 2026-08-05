@@ -93,6 +93,7 @@ export default function FootballKOLPage() {
           <SectionTitle
             title="Apa itu Football KOL?"
             subtitle="Pengertian, peran, dan contoh di Indonesia"
+            as="h1"
           />
 
           {/* Definition Block - Answer First */}
@@ -276,9 +277,9 @@ export default function FootballKOLPage() {
 
           {/* CTA */}
           <div className="rounded-2xl border border-foreground/20 bg-card p-12 text-center">
-            <h3 className="heading-display mb-4 text-3xl font-bold uppercase tracking-wider md:text-4xl">
+            <h2 className="heading-display mb-4 text-3xl font-bold uppercase tracking-wider md:text-4xl">
               Ingin Berkolaborasi dengan Football KOL?
-            </h3>
+            </h2>
             <p className="mx-auto mb-8 max-w-xl text-lg text-muted">
               GEROMBALL siap membantu brand Anda menjangkau audiens football Indonesia.
             </p>
