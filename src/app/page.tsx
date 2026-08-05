@@ -152,9 +152,11 @@ const programs = [
             <br />
             <span className="gradient-text">TAPI FUN</span>
           </h1>
-          <p className="mx-auto mt-8 max-w-2xl text-lg text-muted md:text-xl">
-            Media football yang menggerakkan jutaan orang. Di mana passion bertemu kreativitas,
-            kebebasan bicara, dan komunitas.
+          <p className="mx-auto mt-6 max-w-3xl text-lg text-muted md:text-xl">
+            <strong className="text-foreground">GEROMBALL</strong> adalah <strong className="text-foreground">media football Indonesia</strong> dan <strong className="text-foreground">Football KOL</strong> terdepan. Kami menciptakan konten football — dari <strong className="text-foreground">Pojok Debat</strong> hingga <strong className="text-foreground">Live Reaction</strong> — yang menghibur, mengedukasi, dan menyatukan komunitas fanatik bola.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-muted/70">
+            235K+ YouTube Subscribers · 455K+ TikTok Followers · 95K+ Instagram Followers
           </p>
 
           <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
