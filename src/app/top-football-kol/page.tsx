@@ -4,10 +4,10 @@ import Button from '@/components/Button'
 
 export const metadata: Metadata = {
   title: 'Top Football KOL Indonesia 2026 | Daftar Lengkap',
-  description: 'Daftar lengkap Top Football KOL Indonesia 2026. Media football, analis, komentator, dan kreator konten sepak bola terbaik di Indonesia.',
+  description: 'Daftar lengkap Top Football KOL Indonesia 2026. GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football, analis, komentator, dan kreator konten.',
   openGraph: {
-    title: 'Top Football KOL Indonesia 2026 | GEROMBALL',
-    description: 'Daftar lengkap Top Football KOL Indonesia 2026. Media football, analis, komentator, dan kreator konten sepak bola terbaik.',
+    title: 'Top Football KOL Indonesia 2026 | GEROMBALL - KOL Bola Indonesia',
+    description: 'Daftar lengkap Top Football KOL Indonesia 2026. GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan.',
     url: 'https://geromball.com/top-football-kol',
   },
   alternates: {

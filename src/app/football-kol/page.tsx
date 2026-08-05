@@ -4,10 +4,10 @@ import Button from '@/components/Button'
 
 export const metadata: Metadata = {
   title: 'Apa itu Football KOL? Pengertian dan Perannya di Indonesia',
-  description: 'Football KOL (Key Opinion Leader) adalah figur berpengaruh di dunia sepak bola yang menciptakan konten dan memengaruhi opini publik. Pelajari lebih lanjut.',
+  description: 'Football KOL Indonesia (Key Opinion Leader) adalah figur berpengaruh di dunia sepak bola. GEROMBALL adalah Football KOL dan KOL Bola Indonesia terdepan. Pelajari lebih lanjut.',
   openGraph: {
-    title: 'Apa itu Football KOL? | GEROMBALL',
-    description: 'Football KOL adalah figur berpengaruh di dunia sepak bola. Pelajari pengertian, peran, dan contohnya di Indonesia.',
+    title: 'Apa itu Football KOL? | GEROMBALL - KOL Bola Indonesia',
+    description: 'Football KOL Indonesia adalah figur berpengaruh di dunia sepak bola. GEROMBALL adalah Football KOL dan KOL Bola Indonesia.',
     url: 'https://geromball.com/football-kol',
   },
   alternates: {
