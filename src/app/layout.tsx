@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | GEROMBALL",
   },
   description:
-    "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia — Pojok Debat, Menjadi Manager, Live Reaction. 235K+ subscriber YouTube, 455K+ TikTok, 95K+ Instagram.",
+    "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia — Podcast, Live Reaction, Short-Form (Instagram, TikTok, YouTube Shorts). 235K+ subscriber YouTube, 455K+ TikTok, 95K+ Instagram.",
   keywords: [
     "KOL Bola Indonesia",
     "Football KOL",
@@ -24,18 +24,17 @@ export const metadata: Metadata = {
     "podcast",
     "YouTube",
     "TikTok",
+    "Instagram",
     "Indonesia",
-    "debat",
-    "Pojok Debat",
-    "Menjadi Manager",
     "live reaction",
-    "debat football",
-    "podcast sepak bola",
+    "short-form",
+    "shorts",
+    "reels",
   ],
   openGraph: {
     title: "GEROMBALL | KOL Bola Indonesia & Football KOL",
     description:
-      "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia — Pojok Debat, Menjadi Manager, Live Reaction.",
+      "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia — Podcast, Live Reaction, Short-Form.",
     url: "https://geromball.com",
     siteName: "GEROMBALL",
     locale: "id_ID",
@@ -53,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GEROMBALL | KOL Bola Indonesia & Football KOL",
     description:
-      "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia — Pojok Debat, Menjadi Manager, Live Reaction.",
+      "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia — Podcast, Live Reaction, Short-Form.",
     images: ["/logo.jpg"],
   },
   icons: {
