@@ -53,6 +53,7 @@ export default function PortfolioPage() {
         <SectionTitle
           title="Konten Kami"
           subtitle="Konten football di semua platform"
+          as="h1"
         />
 
         <div className="mb-12 flex flex-wrap justify-center gap-2">
@@ -82,9 +83,9 @@ export default function PortfolioPage() {
               className="group rounded-xl border border-card-border bg-card p-8 transition-all duration-300 hover:border-foreground/30"
             >
               <div className="mb-4 flex items-center gap-4">
-                <h3 className="heading-display text-3xl uppercase tracking-wider">
+                <h2 className="heading-display text-3xl uppercase tracking-wider">
                   {platform.name}
-                </h3>
+                </h2>
                 <span className="rounded bg-foreground/10 px-3 py-1 text-xs uppercase tracking-wider text-muted">
                   {platform.contentTypes.length} jenis konten
                 </span>
@@ -116,20 +117,20 @@ export default function PortfolioPage() {
         </div>
 
         <div className="mt-16 rounded-xl border border-card-border bg-card p-12 text-center">
-          <h3 className="heading-display mb-4 text-2xl font-bold uppercase tracking-wider">
+          <h2 className="heading-display mb-4 text-2xl font-bold uppercase tracking-wider">
             Strategi Konten
-          </h3>
+          </h2>
           <div className="mx-auto grid max-w-3xl gap-6 text-left md:grid-cols-3">
             <div>
-              <h4 className="mb-2 font-semibold text-foreground">YouTube</h4>
+              <h3 className="mb-2 font-semibold text-foreground">YouTube</h3>
               <p className="text-sm text-muted">Podcast long-form, debat, challenge, live reaction. Hub konten utama.</p>
             </div>
             <div>
-              <h4 className="mb-2 font-semibold text-foreground">TikTok</h4>
+              <h3 className="mb-2 font-semibold text-foreground">TikTok</h3>
               <p className="text-sm text-muted">Klip short-form, highlight, momen viral. Konsumsi cepat.</p>
             </div>
             <div>
-              <h4 className="mb-2 font-semibold text-foreground">Instagram</h4>
+              <h3 className="mb-2 font-semibold text-foreground">Instagram</h3>
               <p className="text-sm text-muted">Reels, feeds, stories, carousels. Storytelling visual.</p>
             </div>
           </div>

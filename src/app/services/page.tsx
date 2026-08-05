@@ -83,10 +83,12 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-background pt-32 pb-20">
       <section className="mx-auto max-w-6xl px-6">
-        <SectionTitle
-          title="Program Kami"
-          subtitle="Konten yang mendefinisikan budaya football"
-        />
+        <h1 className="heading-display mb-4 text-4xl font-bold uppercase tracking-wider md:text-5xl gradient-text text-center">
+          Program Kami
+        </h1>
+        <p className="text-center text-lg text-muted mb-12 max-w-3xl mx-auto">
+          GEROMBALL adalah <strong className="text-foreground">media football Indonesia</strong> yang menciptakan konten football berkualitas. Dari <strong className="text-foreground">Pojok Debat</strong> hingga <strong className="text-foreground">Live Reaction</strong>, program kami mendefinisikan budaya football di Indonesia.
+        </p>
 
         {/* Major Programs */}
         <div className="mb-16 grid gap-6 md:grid-cols-2">
@@ -99,9 +101,9 @@ export default function ServicesPage() {
               className="group rounded-xl border border-foreground/20 bg-card p-8 transition-all duration-300 hover:border-foreground/40"
             >
               <div className="mb-4 flex items-center gap-3">
-                <h3 className="heading-display text-3xl uppercase tracking-wider">
+                <h2 className="heading-display text-3xl uppercase tracking-wider">
                   {program.title}
-                </h3>
+                </h2>
                 <span className="rounded bg-foreground/10 px-2 py-0.5 text-xs uppercase tracking-wider text-muted">
                   {program.platform}
                 </span>
@@ -120,10 +122,10 @@ export default function ServicesPage() {
         </div>
 
         {/* Other Programs */}
-        <SectionTitle
-          title="Program Lainnya"
-          subtitle="Konten long-form YouTube"
-        />
+        <h2 className="heading-display mb-4 text-2xl font-bold uppercase tracking-wider text-center">
+          Program Lainnya
+        </h2>
+        <p className="text-center text-muted mb-8">Konten long-form YouTube</p>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {otherPrograms.map((program) => (
             <a
@@ -150,9 +152,9 @@ export default function ServicesPage() {
         </div>
 
         <div className="mt-20 rounded-xl border border-card-border bg-card p-12 text-center">
-          <h3 className="heading-display mb-4 text-2xl font-bold uppercase tracking-wider">
+          <h2 className="heading-display mb-4 text-2xl font-bold uppercase tracking-wider">
             Tertarik berkolaborasi?
-          </h3>
+          </h2>
           <p className="mb-8 text-muted">
             Mari diskusi bagaimana kami bisa bekerja sama
           </p>

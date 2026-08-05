@@ -39,10 +39,12 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background pt-32 pb-20">
       <section className="mx-auto max-w-6xl px-6">
-        <SectionTitle
-          title="Kami Geromball"
-          subtitle="Fanatik tapi fun"
-        />
+        <h1 className="heading-display mb-4 text-4xl font-bold uppercase tracking-wider md:text-5xl gradient-text text-center">
+          Tentang GEROMBALL
+        </h1>
+        <p className="text-center text-lg text-muted mb-12 max-w-3xl mx-auto">
+          <strong className="text-foreground">GEROMBALL</strong> adalah <strong className="text-foreground">media football Indonesia</strong> yang lahir dari passion autentik terhadap sepak bola. Fanatik tapi fun — kami adalah <strong className="text-foreground">Football KOL</strong> yang menjangkau 780K+ audiens di semua platform.
+        </p>
 
         {/* Brand Story */}
         <div className="mb-20 grid gap-12 md:grid-cols-2">
@@ -75,7 +77,7 @@ export default function AboutPage() {
         {/* Mission */}
         <div className="mx-auto mb-20 max-w-3xl text-center">
           <div className="mx-auto mb-4 h-0.5 w-16 bg-foreground" />
-          <h3 className="heading-display mb-6 text-3xl font-bold uppercase tracking-wider">Misi Kami</h3>
+          <h2 className="heading-display mb-6 text-3xl font-bold uppercase tracking-wider">Misi Kami</h2>
           <p className="mb-12 text-lg leading-relaxed text-muted">
             Menciptakan konten football paling menarik di internet. Kami
             menggabungkan passion autentik dengan produksi profesional untuk
@@ -85,21 +87,21 @@ export default function AboutPage() {
 
           <div className="grid gap-8 md:grid-cols-3">
             <div>
-              <h4 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">
+              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">
                 Autentisitas
-              </h4>
+              </h3>
               <p className="text-sm text-muted">Reaksi nyata, opini nyata</p>
             </div>
             <div>
-              <h4 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">
+              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">
                 Kualitas
-              </h4>
+              </h3>
               <p className="text-sm text-muted">Standar produksi profesional</p>
             </div>
             <div>
-              <h4 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">
+              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">
                 Komunitas
-              </h4>
+              </h3>
               <p className="text-sm text-muted">Dibuat oleh fans, untuk fans</p>
             </div>
           </div>
@@ -112,7 +114,8 @@ export default function AboutPage() {
 
         {/* Programs */}
         <div className="mb-20">
-          <SectionTitle title="Program Kami" subtitle="Konten yang mendefinisikan budaya football" />
+          <h2 className="heading-display mb-4 text-3xl font-bold uppercase tracking-wider text-center">Program Kami</h2>
+          <p className="text-center text-muted mb-8">Konten yang mendefinisikan budaya football</p>
           <div className="flex flex-wrap justify-center gap-3">
             {programs.map((program) => (
               <span
@@ -139,9 +142,9 @@ export default function AboutPage() {
                     {talent.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
                   </div>
                   <div>
-                    <h4 className="heading-display text-lg uppercase tracking-wider">
+                    <h3 className="heading-display text-lg uppercase tracking-wider">
                       {talent.name}
-                    </h4>
+                    </h3>
                     <p className="text-xs text-muted">{talent.handle}</p>
                   </div>
                 </div>
