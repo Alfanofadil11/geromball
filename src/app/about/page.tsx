@@ -69,8 +69,8 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="flex items-center justify-center">
-            <div className="heading-display flex h-64 w-64 items-center justify-center rounded-2xl bg-card text-6xl tracking-wider border border-card-border">
-              GT
+            <div className="flex h-64 w-64 items-center justify-center rounded-2xl bg-card border border-card-border overflow-hidden">
+              <img src="/LogoStrokePutih.png" alt="GEROMBALL Logo" className="h-full w-full object-contain p-8" />
             </div>
           </div>
         </div>
