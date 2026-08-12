@@ -51,21 +51,10 @@ export default function AboutPage() {
         <div className="mb-20 grid gap-12 md:grid-cols-2">
           <div>
             <p className="mb-4 text-lg leading-relaxed text-muted">
-              Geromball lahir dari keyakinan sederhana: konten football harus
-              sepassion sport itu sendiri. Yang dimulai dari reaksi pertandingan
-              telah berkembang menjadi operasi media skala penuh yang menjangkau
-              ratusan ribu fans di semua platform besar.
-            </p>
-            <p className="mb-4 text-lg leading-relaxed text-muted">
-              Kami adalah media football yang berbasis kepribadian — gerakan
-              yang menyenangkan, bersemangat, dan pada akhirnya budaya. Kami
-              bertujuan menangkap bentuk-bentuk fanatisme dan ekspresi dalam
-              football dalam bentuk kreatif.
+              Geromball lahir dari passion autentik terhadap sepak bola. Dari reaksi pertandingan, berkembang menjadi operasi media skala penuh yang menjangkau ratusan ribu fans.
             </p>
             <p className="text-lg leading-relaxed text-muted">
-              Tim kami hidup dan bernafas football. Dari Champions League hingga
-              liga lokal, kami menutupi semuanya dengan autentisitas dan energi
-              yang diinginkan fans.
+              Media football berbasis kepribadian — menyenangkan, bersemangat, dan budaya.
             </p>
           </div>
           <div className="flex items-center justify-center">
@@ -80,29 +69,20 @@ export default function AboutPage() {
           <div className="mx-auto mb-4 h-0.5 w-16 bg-foreground" />
           <h2 className="heading-display mb-6 text-3xl font-bold uppercase tracking-wider">Misi Kami</h2>
           <p className="mb-12 text-lg leading-relaxed text-muted">
-            Menciptakan konten football paling menarik di internet. Kami
-            menggabungkan passion autentik dengan produksi profesional untuk
-            menghadirkan konten yang mengedukasi, menghibur, dan menyatukan
-            komunitas football global.
+            Konten football paling menarik di internet. Passion autentik + produksi profesional.
           </p>
 
           <div className="grid gap-8 md:grid-cols-3">
             <div>
-              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">
-                Autentisitas
-              </h3>
+              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">Autentisitas</h3>
               <p className="text-sm text-muted">Reaksi nyata, opini nyata</p>
             </div>
             <div>
-              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">
-                Kualitas
-              </h3>
+              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">Kualitas</h3>
               <p className="text-sm text-muted">Standar produksi profesional</p>
             </div>
             <div>
-              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">
-                Komunitas
-              </h3>
+              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">Komunitas</h3>
               <p className="text-sm text-muted">Dibuat oleh fans, untuk fans</p>
             </div>
           </div>

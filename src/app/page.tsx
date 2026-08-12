@@ -165,7 +165,7 @@ const programs = [
             <span className="gradient-text">TAPI FUN</span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-muted md:text-xl">
-            <strong className="text-foreground">GEROMBALL</strong> adalah <strong className="text-foreground">KOL Bola Indonesia</strong>, <strong className="text-foreground">Football KOL</strong>, dan <strong className="text-foreground">Pundit Indonesia</strong> terdepan. Kami menciptakan konten football — Podcast, Live Reaction, Short-Form (Instagram, TikTok, YouTube Shorts) — yang menghibur, mengedukasi, dan menyatukan komunitas fanatik bola.
+            <strong className="text-foreground">KOL Bola Indonesia</strong> — Podcast, Live Reaction, Short-Form. Fanatik tapi fun.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-sm text-muted/70">
             235K+ YouTube Subscribers · 455K+ TikTok Followers · 95K+ Instagram Followers
