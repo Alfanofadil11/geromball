@@ -192,27 +192,32 @@ const programs = [
             title="Program Kami"
             subtitle="Konten yang mendefinisikan budaya football"
           />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {programs.map((program) => (
-              <a
-                key={program.title}
-                href={program.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="glass-card group p-6"
-              >
-                <h3 className="heading-display mb-2 text-2xl uppercase tracking-wider">
-                  {program.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted">
-                  {program.description}
-                </p>
-                <span className="mt-3 inline-block text-xs uppercase tracking-wider text-foreground/50 group-hover:text-foreground transition-colors">
-                  Tonton di YouTube →
-                </span>
-              </a>
-            ))}
+          <div className="group relative">
+            <div className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              {programs.map((program) => (
+                <a
+                  key={program.title}
+                  href={program.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-card group flex-none w-80 snap-center p-6"
+                >
+                  <h3 className="heading-display mb-2 text-2xl uppercase tracking-wider">
+                    {program.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-muted">
+                    {program.description}
+                  </p>
+                  <span className="mt-3 inline-block text-xs uppercase tracking-wider text-foreground/50 group-hover:text-foreground transition-colors">
+                    Tonton di YouTube →
+                  </span>
+                </a>
+              ))}
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent" />
           </div>
+          <p className="mt-4 text-center text-xs text-muted">← Scroll untuk lihat semua →</p>
         </div>
       </section>
 
@@ -224,32 +229,37 @@ const programs = [
             title="Pojok Debat"
             subtitle="Program debat unggulan kami — opini tanpa filter"
           />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {videos.pojokDebat.map((video) => (
-              <a
-                key={video.id}
-                href={video.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="video-card relative flex aspect-video cursor-pointer items-center justify-center"
-              >
-                <img
-                  src={video.thumbnail}
-                  alt={video.title}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="video-overlay absolute inset-0" />
-                <div className="play-pulse relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-foreground/10 text-xl text-foreground backdrop-blur-sm">
-                  ▶
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 z-10 p-4">
-                  <p className="text-xs font-medium leading-tight line-clamp-2 text-white">
-                    {video.title}
-                  </p>
-                </div>
-              </a>
-            ))}
+          <div className="group relative">
+            <div className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              {videos.pojokDebat.map((video) => (
+                <a
+                  key={video.id}
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="video-card relative flex aspect-video w-80 flex-none cursor-pointer items-center justify-center snap-center"
+                >
+                  <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="video-overlay absolute inset-0" />
+                  <div className="play-pulse relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-foreground/10 text-xl text-foreground backdrop-blur-sm">
+                    ▶
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 z-10 p-4">
+                    <p className="text-xs font-medium leading-tight line-clamp-2 text-white">
+                      {video.title}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent" />
           </div>
+          <p className="mt-4 text-center text-xs text-muted">← Scroll untuk lihat semua →</p>
           <div className="mt-8 text-center">
             <Button
               href="https://www.youtube.com/@geromball/videos"
@@ -268,32 +278,37 @@ const programs = [
             title="Menjadi Manager"
             subtitle="Challenge series — bertransformasi menjadi manajer football"
           />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {videos.menjadiManager.map((video) => (
-              <a
-                key={video.id}
-                href={video.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="video-card relative flex aspect-video cursor-pointer items-center justify-center"
-              >
-                <img
-                  src={video.thumbnail}
-                  alt={video.title}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="video-overlay absolute inset-0" />
-                <div className="play-pulse relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-foreground/10 text-xl text-foreground backdrop-blur-sm">
-                  ▶
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 z-10 p-4">
-                  <p className="text-xs font-medium leading-tight line-clamp-2 text-white">
-                    {video.title}
-                  </p>
-                </div>
-              </a>
-            ))}
+          <div className="group relative">
+            <div className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              {videos.menjadiManager.map((video) => (
+                <a
+                  key={video.id}
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="video-card relative flex aspect-video w-96 flex-none cursor-pointer items-center justify-center snap-center"
+                >
+                  <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="video-overlay absolute inset-0" />
+                  <div className="play-pulse relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-foreground/10 text-xl text-foreground backdrop-blur-sm">
+                    ▶
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 z-10 p-4">
+                    <p className="text-xs font-medium leading-tight line-clamp-2 text-white">
+                      {video.title}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent" />
           </div>
+          <p className="mt-4 text-center text-xs text-muted">← Scroll untuk lihat semua →</p>
           <div className="mt-8 text-center">
             <Button
               href="https://www.youtube.com/@geromball/videos"
@@ -313,32 +328,37 @@ const programs = [
             title="Live Reaction"
             subtitle="Reaksi pertandingan real-time bersama komunitas"
           />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {videos.liveReaction.map((video) => (
-              <a
-                key={video.id}
-                href={video.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="video-card relative flex aspect-video cursor-pointer items-center justify-center"
-              >
-                <img
-                  src={video.thumbnail}
-                  alt={video.title}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="video-overlay absolute inset-0" />
-                <div className="play-pulse live-pulse relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-red-500/20 text-xl text-red-400 backdrop-blur-sm">
-                  ●
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 z-10 p-4">
-                  <p className="text-xs font-medium leading-tight line-clamp-2 text-white">
-                    {video.title}
-                  </p>
-                </div>
-              </a>
-            ))}
+          <div className="group relative">
+            <div className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              {videos.liveReaction.map((video) => (
+                <a
+                  key={video.id}
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="video-card relative flex aspect-video w-96 flex-none cursor-pointer items-center justify-center snap-center"
+                >
+                  <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="video-overlay absolute inset-0" />
+                  <div className="play-pulse live-pulse relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-red-500/20 text-xl text-red-400 backdrop-blur-sm">
+                    ●
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 z-10 p-4">
+                    <p className="text-xs font-medium leading-tight line-clamp-2 text-white">
+                      {video.title}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent" />
           </div>
+          <p className="mt-4 text-center text-xs text-muted">← Scroll untuk lihat semua →</p>
           <div className="mt-8 text-center">
             <Button
               href="https://www.youtube.com/@geromball/videos"

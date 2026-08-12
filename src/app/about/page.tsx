@@ -50,7 +50,7 @@ export default function AboutPage() {
               A creative football content company born from Indonesia&apos;s banter and fandom culture.
             </p>
             <p className="mb-4 text-lg leading-relaxed text-muted">
-              We&apos;re not media pundits. We&apos;re fans with cameras, ideas, and characters.
+              We&apos;re fans with cameras, ideas, and characters.
             </p>
             <p className="text-lg leading-relaxed text-muted">
               We blend short-form chaos, long-form debates, and IRL community.
