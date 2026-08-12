@@ -6,12 +6,8 @@ import Image from "next/image";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Programs" },
-  { href: "/portfolio", label: "Content" },
-  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/media-kit", label: "Media Kit" },
-  { href: "/faq", label: "FAQ" },
   { href: "https://www.youtube.com/@geromball", label: "YouTube", external: true },
 ];
 
