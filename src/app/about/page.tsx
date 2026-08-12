@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import SectionTitle from '@/components/SectionTitle'
 import Button from '@/components/Button'
 import SocialProof from '@/components/SocialProof'
+import TalentCard from '@/components/TalentCard'
 
 export const metadata: Metadata = {
   title: 'Tentang GEROMBALL - KOL Bola Indonesia & Football KOL',
@@ -17,13 +18,13 @@ export const metadata: Metadata = {
 }
 
 const talents = [
-  { name: 'Ole Alatas', handle: '@olealatas' },
-  { name: 'Karim Nasar', handle: '@karimnasar' },
-  { name: 'Basya', handle: '@basyaknowsball' },
-  { name: 'Ali Reds History', handle: '@aliredshistory' },
-  { name: 'Bang Gundo', handle: '@banggundo' },
-  { name: 'Hasan', handle: '@hasanhbsy' },
-  { name: 'Nuggy', handle: '@nuggyramadhan' },
+  { name: 'Ole Alatas', handle: '@olealatas', linkedin: 'https://www.linkedin.com/in/ole-alatas-981567428?utm_source=share_via&utm_content=profile&utm_medium=member_ios', photo: '/talent/Ole Alatas.JPG', followers: '91K', club: 'Chelsea FC' },
+  { name: 'Karim Nasar', handle: '@karimnasar', linkedin: 'https://www.linkedin.com/in/karim-nasar-725986223?utm_source=share_via&utm_content=profile&utm_medium=member_ios', photo: '/talent/Karim Nasar.JPG', followers: '65K', club: 'Manchester United FC' },
+  { name: 'Basya', handle: '@basyaknowsball', linkedin: 'https://www.linkedin.com/in/basya-knowsball-0522b6428?utm_source=share_via&utm_content=profile&utm_medium=member_ios', photo: '/talent/Basyaknowsball.JPG', followers: '17K', club: 'Arsenal FC' },
+  { name: 'Ali Reds History', handle: '@aliredshistory', linkedin: 'https://www.linkedin.com/in/ali-reds-history-b7b261428/', photo: '/talent/Ali Reds History.JPG', followers: '230K', club: 'Liverpool FC' },
+  { name: 'Bang Gundo', handle: '@banggundo', linkedin: 'https://www.linkedin.com/in/bang-gundo-73282b185?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', photo: '/talent/Bang Gundo.JPG', followers: '40K', club: 'Manchester City / Barcelona' },
+  { name: 'Hasan', handle: '@hasanhbsy', linkedin: 'https://www.linkedin.com/in/hasan-habsyi-084595427?utm_source=share_via&utm_content=profile&utm_medium=member_ios', photo: '/talent/Hasan.JPG', followers: '10K', club: 'Arsenal FC' },
+  { name: 'Nuggy Ramadhan', handle: '@nuggyramadhan', linkedin: 'https://www.linkedin.com/in/nuggy-ramadhan-a27586427?utm_source=share_via&utm_content=profile&utm_medium=member_ios', photo: '/talent/Nuggy Ramadhan.JPG', followers: '10K', club: 'Manchester City FC' },
 ]
 
 const programs = [
@@ -131,26 +132,16 @@ export default function AboutPage() {
         {/* Team */}
         <div className="mb-20">
           <SectionTitle title="Tim" subtitle="Talent di balik Geromball" />
-          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {talents.map((talent) => (
-              <article
-                key={talent.name}
-                className="rounded-xl border border-card-border bg-card p-5 transition-all duration-300 hover:border-foreground/30"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-foreground/10 text-sm font-bold uppercase tracking-wider">
-                    {talent.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                  </div>
-                  <div>
-                    <h3 className="heading-display text-lg uppercase tracking-wider">
-                      {talent.name}
-                    </h3>
-                    <p className="text-xs text-muted">{talent.handle}</p>
-                  </div>
-                </div>
-              </article>
-            ))}
+          <div className="group relative">
+            <div className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              {talents.map((talent) => (
+                <TalentCard key={talent.name} talent={talent} />
+              ))}
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent" />
           </div>
+          <p className="mt-4 text-center text-xs text-muted">← Scroll untuk lihat semua →</p>
         </div>
 
         {/* CTA */}
