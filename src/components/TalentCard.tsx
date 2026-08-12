@@ -19,7 +19,7 @@ export default function TalentCard({ talent }: { talent: Talent }) {
       <article className="flex-none w-48 snap-center rounded-xl border border-card-border bg-card p-6 text-center transition-all duration-300 hover:border-foreground/30">
         <button
           onClick={() => setShowModal(true)}
-          className="mx-auto mb-4 block h-20 w-20 overflow-hidden rounded-full cursor-pointer"
+          className="mx-auto mb-4 block aspect-square w-full max-w-[160px] overflow-hidden rounded-xl cursor-pointer"
         >
           <img
             src={talent.photo}

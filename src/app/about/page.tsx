@@ -29,62 +29,40 @@ const talents = [
 
 const programs = [
   'Pojok Debat',
-  'Liga Logika',
-  'GL News',
-  'Double Pivot',
-  'Backlash',
-  'Interogasi',
+  'Menjadi Manager',
+  'Combine Line Up',
+  'Pramusim',
+  'Maen-maen',
 ]
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background pt-32 pb-20">
       <section className="mx-auto max-w-6xl px-6">
-        <h1 className="heading-display mb-4 text-4xl font-bold uppercase tracking-wider md:text-5xl gradient-text text-center">
+        <h1 className="heading-display mb-8 text-4xl font-bold uppercase tracking-wider md:text-5xl gradient-text text-center">
           Tentang GEROMBALL
         </h1>
-        <p className="text-center text-lg text-muted mb-12 max-w-3xl mx-auto">
-          <strong className="text-foreground">GEROMBALL</strong> adalah <strong className="text-foreground">KOL Bola Indonesia</strong>, <strong className="text-foreground">Football KOL</strong>, dan <strong className="text-foreground">Pundit Indonesia</strong> terdepan. Kami lahir dari passion autentik terhadap sepak bola. Fanatik tapi fun — menjangkau 780K+ audiens di semua platform.
-        </p>
 
         {/* Brand Story */}
         <div className="mb-20 grid gap-12 md:grid-cols-2">
           <div>
             <p className="mb-4 text-lg leading-relaxed text-muted">
-              Geromball lahir dari passion autentik terhadap sepak bola. Dari reaksi pertandingan, berkembang menjadi operasi media skala penuh yang menjangkau ratusan ribu fans.
+              A creative football content company born from Indonesia&apos;s banter and fandom culture.
+            </p>
+            <p className="mb-4 text-lg leading-relaxed text-muted">
+              We&apos;re not media pundits. We&apos;re fans with cameras, ideas, and characters.
             </p>
             <p className="text-lg leading-relaxed text-muted">
-              Media football berbasis kepribadian — menyenangkan, bersemangat, dan budaya.
+              We blend short-form chaos, long-form debates, and IRL community.
             </p>
           </div>
-          <div className="flex items-center justify-center">
-            <div className="flex h-64 w-64 items-center justify-center rounded-2xl bg-card border border-card-border overflow-hidden">
-              <img src="/LogoStrokePutih.png" alt="GEROMBALL Logo" className="h-full w-full object-contain p-8" />
+          <div className="flex flex-col items-center justify-center gap-6">
+            <div className="flex h-48 w-48 items-center justify-center rounded-2xl bg-card border border-card-border overflow-hidden">
+              <img src="/LogoStrokePutih.png" alt="GEROMBALL Logo" className="h-full w-full object-contain p-4" />
             </div>
-          </div>
-        </div>
-
-        {/* Mission */}
-        <div className="mx-auto mb-20 max-w-3xl text-center">
-          <div className="mx-auto mb-4 h-0.5 w-16 bg-foreground" />
-          <h2 className="heading-display mb-6 text-3xl font-bold uppercase tracking-wider">Misi Kami</h2>
-          <p className="mb-12 text-lg leading-relaxed text-muted">
-            Konten football paling menarik di internet. Passion autentik + produksi profesional.
-          </p>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            <div>
-              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">Autentisitas</h3>
-              <p className="text-sm text-muted">Reaksi nyata, opini nyata</p>
-            </div>
-            <div>
-              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">Kualitas</h3>
-              <p className="text-sm text-muted">Standar produksi profesional</p>
-            </div>
-            <div>
-              <h3 className="heading-display mb-2 text-lg font-bold uppercase tracking-wider">Komunitas</h3>
-              <p className="text-sm text-muted">Dibuat oleh fans, untuk fans</p>
-            </div>
+            <p className="text-center text-sm text-muted max-w-xs">
+              GEROMBALL adalah <strong className="text-foreground">KOL Bola Indonesia</strong>, <strong className="text-foreground">Football KOL Indonesia</strong>, dan <strong className="text-foreground">Pundit Indonesia</strong> terdepan. Kami lahir dari passion autentik terhadap sepak bola.
+            </p>
           </div>
         </div>
 
@@ -111,7 +89,7 @@ export default function AboutPage() {
 
         {/* Team */}
         <div className="mb-20">
-          <SectionTitle title="Tim" subtitle="Talent di balik Geromball" />
+          <SectionTitle title="Geromball Talent" subtitle="" />
           <div className="group relative">
             <div className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {talents.map((talent) => (
