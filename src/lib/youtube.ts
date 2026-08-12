@@ -73,8 +73,8 @@ export async function getYouTubeVideos(): Promise<CategorizedVideos> {
   ])
 
   return {
-    pojokDebat: pojokDebat.filter(v => !isExcludedIP(v.title)).slice(0, 5),
-    menjadiManager: menjadiManager.filter(v => !isExcludedIP(v.title)).slice(0, 2),
-    liveReaction: liveReaction.filter(v => !isExcludedIP(v.title)).slice(0, 3),
+    pojokDebat: pojokDebat.filter(v => !isExcludedIP(v.title)).slice(0, 8),
+    menjadiManager: menjadiManager.filter(v => !isExcludedIP(v.title)).slice(0, 6),
+    liveReaction: liveReaction.filter(v => !isExcludedIP(v.title)).slice(0, 6),
   }
 }
