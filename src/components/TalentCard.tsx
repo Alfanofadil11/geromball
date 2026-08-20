@@ -10,6 +10,7 @@ interface Talent {
   photo: string
   followers: string
   club: string
+  slug?: string
 }
 
 export default function TalentCard({ talent }: { talent: Talent }) {
@@ -28,9 +29,17 @@ export default function TalentCard({ talent }: { talent: Talent }) {
             className="h-full w-full object-cover object-top"
           />
         </button>
-        <h4 className="heading-display mb-1 text-base uppercase tracking-wider">
-          {talent.name}
-        </h4>
+        {talent.slug ? (
+          <a href={`/talent/${talent.slug}`} className="block">
+            <h4 className="heading-display mb-1 text-base uppercase tracking-wider hover:text-foreground/80 transition-colors">
+              {talent.name}
+            </h4>
+          </a>
+        ) : (
+          <h4 className="heading-display mb-1 text-base uppercase tracking-wider">
+            {talent.name}
+          </h4>
+        )}
         <p className="mb-1 text-xs text-muted">{talent.handle}</p>
         <p className="mb-2 text-xs font-medium text-foreground/70">
           {talent.followers} followers · {talent.club}
