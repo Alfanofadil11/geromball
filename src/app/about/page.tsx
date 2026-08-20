@@ -18,13 +18,13 @@ export const metadata: Metadata = {
 }
 
 const talents = [
-  { name: 'Ole Alatas', handle: '@olealatas', linkedin: 'https://www.linkedin.com/in/ole-alatas-981567428?utm_source=share_via&utm_content=profile&utm_medium=member_ios', photo: '/talent/Ole Alatas.JPG', followers: '91K', club: 'Chelsea FC' },
-  { name: 'Karim Nasar', handle: '@karimnasar', linkedin: 'https://www.linkedin.com/in/karim-nasar-725986223?utm_source=share_via&utm_content=profile&utm_medium=member_ios', photo: '/talent/Karim Nasar.JPG', followers: '65K', club: 'Manchester United FC' },
-  { name: 'Basya', handle: '@basyaknowsball', linkedin: 'https://www.linkedin.com/in/basya-knowsball-0522b6428?utm_source=share_via&utm_content=profile&utm_medium=member_ios', photo: '/talent/Basyaknowsball.JPG', followers: '17K', club: 'Arsenal FC' },
-  { name: 'Ali Reds History', handle: '@aliredshistory', linkedin: 'https://www.linkedin.com/in/ali-reds-history-b7b261428/', photo: '/talent/Ali Reds History.JPG', followers: '230K', club: 'Liverpool FC' },
-  { name: 'Bang Gundo', handle: '@banggundo', linkedin: 'https://www.linkedin.com/in/bang-gundo-73282b185?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', photo: '/talent/Bang Gundo.JPG', followers: '40K', club: 'Manchester City / Barcelona' },
-  { name: 'Hasan', handle: '@hasanhbsy', linkedin: 'https://www.linkedin.com/in/hasan-habsyi-084595427?utm_source=share_via&utm_content=profile&utm_medium=member_ios', photo: '/talent/Hasan.JPG', followers: '10K', club: 'Arsenal FC' },
-  { name: 'Nuggy Ramadhan', handle: '@nuggyramadhan', linkedin: 'https://www.linkedin.com/in/nuggy-ramadhan-a27586427?utm_source=share_via&utm_content=profile&utm_medium=member_ios', photo: '/talent/Nuggy Ramadhan.JPG', followers: '10K', club: 'Manchester City FC' },
+  { name: 'Ole Alatas', handle: '@olealatas', linkedin: 'https://www.linkedin.com/in/ole-alatas-981567428?utm_source=share_via&utm_content=profile&utm_medium=member_ios', instagram: 'https://instagram.com/olealatas', photo: '/talent/Ole Alatas.JPG', followers: '90K', club: 'Chelsea FC' },
+  { name: 'Karim Nasar', handle: '@karimnasar', linkedin: 'https://www.linkedin.com/in/karim-nasar-725986223?utm_source=share_via&utm_content=profile&utm_medium=member_ios', instagram: 'https://instagram.com/karimnasar', photo: '/talent/Karim Nasar.JPG', followers: '65K', club: 'Manchester United FC' },
+  { name: 'Basya', handle: '@basyaknowsball', linkedin: 'https://www.linkedin.com/in/basya-knowsball-0522b6428?utm_source=share_via&utm_content=profile&utm_medium=member_ios', instagram: 'https://instagram.com/basyaknowsball', photo: '/talent/Basyaknowsball.JPG', followers: '17K', club: 'Arsenal FC' },
+  { name: 'Ali Reds History', handle: '@aliredshistory', linkedin: 'https://www.linkedin.com/in/ali-reds-history-b7b261428/', instagram: 'https://instagram.com/aliredshistory', photo: '/talent/Ali Reds History.JPG', followers: '230K', club: 'Liverpool FC' },
+  { name: 'Bang Gundo', handle: '@banggundo', linkedin: 'https://www.linkedin.com/in/bang-gundo-73282b185?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', instagram: 'https://instagram.com/banggundo', photo: '/talent/Bang Gundo.JPG', followers: '40K', club: 'Manchester City / Barcelona' },
+  { name: 'Hasan', handle: '@hasanhbsy', linkedin: 'https://www.linkedin.com/in/hasan-habsyi-084595427?utm_source=share_via&utm_content=profile&utm_medium=member_ios', instagram: 'https://instagram.com/hasanhbsy', photo: '/talent/Hasan.JPG', followers: '8K', club: 'Arsenal FC' },
+  { name: 'Nuggy Ramadhan', handle: '@nuggyramadhan', linkedin: 'https://www.linkedin.com/in/nuggy-ramadhan-a27586427?utm_source=share_via&utm_content=profile&utm_medium=member_ios', instagram: 'https://instagram.com/nuggyramadhan', photo: '/talent/Nuggy Ramadhan.JPG', followers: '9K', club: 'Manchester City FC' },
 ]
 
 const programs = [
