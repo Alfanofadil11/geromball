@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 }
 
 const socialLinks = [
-  { platform: 'Instagram', url: 'https://instagram.com/aliredshistory', handle: '@aliredshistory', followers: '230K+' },
+  { platform: 'Instagram', url: 'https://instagram.com/aliredshistory', handle: '@aliredshistory', followers: '33K+' },
+  { platform: 'TikTok', url: 'https://tiktok.com/@aliredshistory', handle: '@aliredshistory', followers: '' },
   { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/ali-reds-history-b7b261428/', handle: 'Ali Reds History', followers: '' },
   { platform: 'YouTube', url: 'https://www.youtube.com/@geromball', handle: '@geromball', followers: '235K+' },
 ]
@@ -47,7 +48,7 @@ export default function AliRedsHistoryPage() {
                 <strong className="text-foreground">Liverpool</strong> KOL Indonesia
               </p>
               <div className="flex flex-wrap justify-center gap-3 md:justify-start">
-                <span className="rounded-full bg-red-600/10 px-4 py-1 text-xs font-medium text-red-500">230K+ Followers</span>
+                <span className="rounded-full bg-red-600/10 px-4 py-1 text-xs font-medium text-red-500">33K+ Followers</span>
                 <span className="rounded-full bg-foreground/10 px-4 py-1 text-xs font-medium text-foreground">GEROMBALL Talent</span>
               </div>
             </div>

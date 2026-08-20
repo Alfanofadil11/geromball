@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 const socialLinks = [
-  { platform: 'Instagram', url: 'https://instagram.com/nuggyramadhan', handle: '@nuggyramadhan', followers: '9K+' },
+  { platform: 'Instagram', url: 'https://instagram.com/nuggyramadhan', handle: '@nuggyramadhan', followers: '5K+' },
   { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/nuggy-ramadhan-a27586427?utm_source=share_via&utm_content=profile&utm_medium=member_ios', handle: 'Nuggy Ramadhan', followers: '' },
   { platform: 'YouTube', url: 'https://www.youtube.com/@geromball', handle: '@geromball', followers: '235K+' },
 ]
@@ -47,7 +47,7 @@ export default function NuggyRamadhanPage() {
                 <strong className="text-foreground">Manchester City</strong> KOL Indonesia
               </p>
               <div className="flex flex-wrap justify-center gap-3 md:justify-start">
-                <span className="rounded-full bg-blue-400/10 px-4 py-1 text-xs font-medium text-blue-400">9K+ Followers</span>
+                <span className="rounded-full bg-blue-400/10 px-4 py-1 text-xs font-medium text-blue-400">5K+ Followers</span>
                 <span className="rounded-full bg-foreground/10 px-4 py-1 text-xs font-medium text-foreground">GEROMBALL Talent</span>
               </div>
             </div>

@@ -15,8 +15,9 @@ export const metadata: Metadata = {
 }
 
 const socialLinks = [
-  { platform: 'Instagram', url: 'https://instagram.com/olealatas', handle: '@olealatas', followers: '90K+' },
-  { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/ole-alatas-981567428', handle: 'Ole Alatas', followers: '' },
+  { platform: 'Instagram', url: 'https://instagram.com/olealatas', handle: '@olealatas', followers: '70K+' },
+  { platform: 'TikTok', url: 'https://tiktok.com/@olealatas', handle: '@olealatas', followers: '2.5K+' },
+  { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/ole-alatas-981567428?utm_source=share_via&utm_content=profile&utm_medium=member_ios', handle: 'Ole Alatas', followers: '' },
   { platform: 'YouTube', url: 'https://www.youtube.com/@geromball', handle: '@geromball', followers: '235K+' },
 ]
 
@@ -67,7 +68,10 @@ export default function OleAlatasPage() {
               </p>
               <div className="flex flex-wrap justify-center gap-3 md:justify-start">
                 <span className="rounded-full bg-blue-500/10 px-4 py-1 text-xs font-medium text-blue-400">
-                  90K+ Followers
+                  70K+ Instagram
+                </span>
+                <span className="rounded-full bg-foreground/10 px-4 py-1 text-xs font-medium text-foreground">
+                  2.5K+ TikTok
                 </span>
                 <span className="rounded-full bg-[#034694]/10 px-4 py-1 text-xs font-medium text-[#034694]">
                   Chelsea FC
@@ -98,8 +102,8 @@ export default function OleAlatasPage() {
           {/* Stats */}
           <div className="mb-12 grid gap-4 grid-cols-3">
             <div className="rounded-xl border border-card-border bg-card p-6 text-center">
-              <div className="heading-display text-3xl font-bold gradient-text">90K+</div>
-              <div className="text-xs uppercase tracking-widest text-muted">Combined Followers</div>
+              <div className="heading-display text-3xl font-bold gradient-text">70K+</div>
+              <div className="text-xs uppercase tracking-widest text-muted">Instagram</div>
             </div>
             <div className="rounded-xl border border-card-border bg-card p-6 text-center">
               <div className="heading-display text-3xl font-bold gradient-text">Chelsea</div>

@@ -1,12 +1,9 @@
-'use client'
-
-import { useState } from 'react'
-
 interface Talent {
   name: string
   handle: string
   linkedin: string | null
   instagram: string | null
+  tiktok: string | null
   photo: string
   followers: string
   club: string
@@ -14,21 +11,26 @@ interface Talent {
 }
 
 export default function TalentCard({ talent }: { talent: Talent }) {
-  const [showModal, setShowModal] = useState(false)
+  const photoContent = (
+    <img
+      src={talent.photo}
+      alt={talent.name}
+      className="h-full w-full object-cover object-top"
+    />
+  )
 
   return (
     <>
       <article className="flex-none w-48 snap-center rounded-xl border border-card-border bg-card p-6 text-center transition-all duration-300 hover:border-foreground/30">
-        <button
-          onClick={() => setShowModal(true)}
-          className="mx-auto mb-4 block aspect-square w-full max-w-[160px] overflow-hidden rounded-xl cursor-pointer"
-        >
-          <img
-            src={talent.photo}
-            alt={talent.name}
-            className="h-full w-full object-cover object-top"
-          />
-        </button>
+        {talent.slug ? (
+          <a href={`/talent/${talent.slug}`} className="mx-auto mb-4 block aspect-square w-full max-w-[160px] overflow-hidden rounded-xl">
+            {photoContent}
+          </a>
+        ) : (
+          <div className="mx-auto mb-4 block aspect-square w-full max-w-[160px] overflow-hidden rounded-xl">
+            {photoContent}
+          </div>
+        )}
         {talent.slug ? (
           <a href={`/talent/${talent.slug}`} className="block">
             <h4 className="heading-display mb-1 text-base uppercase tracking-wider hover:text-foreground/80 transition-colors">
@@ -71,42 +73,21 @@ export default function TalentCard({ talent }: { talent: Talent }) {
               Instagram
             </a>
           )}
+          {talent.tiktok && (
+            <a
+              href={talent.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs text-foreground/60 hover:text-foreground/80 transition-colors"
+            >
+              <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.98a8.18 8.18 0 004.76 1.51V7.04a4.84 4.84 0 01-1-.35z" />
+              </svg>
+              TikTok
+            </a>
+          )}
         </div>
       </article>
-
-      {/* Lightbox Modal */}
-      {showModal && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-          onClick={() => setShowModal(false)}
-        >
-          <div
-            className="relative max-w-lg"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute -top-2 -right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-background text-sm font-bold"
-            >
-              ✕
-            </button>
-            <img
-              src={talent.photo}
-              alt={talent.name}
-              className="w-full rounded-xl object-contain"
-            />
-            <div className="mt-4 text-center">
-              <h3 className="heading-display text-xl font-bold uppercase tracking-wider">
-                {talent.name}
-              </h3>
-              <p className="text-sm text-muted">{talent.handle}</p>
-              <p className="text-sm font-medium text-foreground/70">
-                {talent.followers} followers · {talent.club}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   )
 }

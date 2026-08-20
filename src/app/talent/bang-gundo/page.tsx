@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 }
 
 const socialLinks = [
-  { platform: 'Instagram', url: 'https://instagram.com/banggundo', handle: '@banggundo', followers: '40K+' },
+  { platform: 'Instagram', url: 'https://instagram.com/banggundo', handle: '@banggundo', followers: '' },
+  { platform: 'TikTok', url: 'https://tiktok.com/@panditdiaspora', handle: '@panditdiaspora', followers: '32.5K+' },
   { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/bang-gundo-73282b185?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', handle: 'Bang Gundo', followers: '' },
   { platform: 'YouTube', url: 'https://www.youtube.com/@geromball', handle: '@geromball', followers: '235K+' },
 ]
@@ -47,7 +48,7 @@ export default function BangGundoPage() {
                 <strong className="text-foreground">Manchester City & Barcelona</strong> KOL Indonesia
               </p>
               <div className="flex flex-wrap justify-center gap-3 md:justify-start">
-                <span className="rounded-full bg-blue-400/10 px-4 py-1 text-xs font-medium text-blue-400">40K+ Followers</span>
+                <span className="rounded-full bg-blue-400/10 px-4 py-1 text-xs font-medium text-blue-400">32.5K+ TikTok</span>
                 <span className="rounded-full bg-foreground/10 px-4 py-1 text-xs font-medium text-foreground">GEROMBALL Talent</span>
               </div>
             </div>

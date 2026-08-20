@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 const socialLinks = [
-  { platform: 'Instagram', url: 'https://instagram.com/basyaknowsball', handle: '@basyaknowsball', followers: '17K+' },
+  { platform: 'Instagram', url: 'https://instagram.com/basyaknowsball', handle: '@basyaknowsball', followers: '2.5K+' },
   { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/basya-knowsball-0522b6428?utm_source=share_via&utm_content=profile&utm_medium=member_ios', handle: 'Basya', followers: '' },
   { platform: 'YouTube', url: 'https://www.youtube.com/@geromball', handle: '@geromball', followers: '235K+' },
 ]
@@ -47,7 +47,7 @@ export default function BasyaPage() {
                 <strong className="text-foreground">Arsenal</strong> KOL Indonesia
               </p>
               <div className="flex flex-wrap justify-center gap-3 md:justify-start">
-                <span className="rounded-full bg-red-600/10 px-4 py-1 text-xs font-medium text-red-500">17K+ Followers</span>
+                <span className="rounded-full bg-red-600/10 px-4 py-1 text-xs font-medium text-red-500">2.5K+ Followers</span>
                 <span className="rounded-full bg-foreground/10 px-4 py-1 text-xs font-medium text-foreground">GEROMBALL Talent</span>
               </div>
             </div>

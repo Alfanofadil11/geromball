@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 }
 
 const socialLinks = [
-  { platform: 'Instagram', url: 'https://instagram.com/hasanhbsy', handle: '@hasanhbsy', followers: '8K+' },
+  { platform: 'Instagram', url: 'https://instagram.com/hasanhbsy', handle: '@hasanhbsy', followers: '6.8K+' },
+  { platform: 'TikTok', url: 'https://tiktok.com/@hasan.habsyi1', handle: '@hasan.habsyi1', followers: '2.6K+' },
   { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/hasan-habsyi-084595427?utm_source=share_via&utm_content=profile&utm_medium=member_ios', handle: 'Hasan', followers: '' },
   { platform: 'YouTube', url: 'https://www.youtube.com/@geromball', handle: '@geromball', followers: '235K+' },
 ]
@@ -47,7 +48,7 @@ export default function HasanPage() {
                 <strong className="text-foreground">Arsenal</strong> KOL Indonesia
               </p>
               <div className="flex flex-wrap justify-center gap-3 md:justify-start">
-                <span className="rounded-full bg-red-600/10 px-4 py-1 text-xs font-medium text-red-500">8K+ Followers</span>
+                <span className="rounded-full bg-red-600/10 px-4 py-1 text-xs font-medium text-red-500">6.8K+ Followers</span>
                 <span className="rounded-full bg-foreground/10 px-4 py-1 text-xs font-medium text-foreground">GEROMBALL Talent</span>
               </div>
             </div>

@@ -15,7 +15,8 @@ export const metadata: Metadata = {
 }
 
 const socialLinks = [
-  { platform: 'Instagram', url: 'https://instagram.com/karimnasar', handle: '@karimnasar', followers: '65K+' },
+  { platform: 'Instagram', url: 'https://instagram.com/karimnasar', handle: '@karimnasar', followers: '25K+' },
+  { platform: 'TikTok', url: 'https://tiktok.com/@kdogg_arabian', handle: '@kdogg_arabian', followers: '' },
   { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/karim-nasar-725986223?utm_source=share_via&utm_content=profile&utm_medium=member_ios', handle: 'Karim Nasar', followers: '' },
   { platform: 'YouTube', url: 'https://www.youtube.com/@geromball', handle: '@geromball', followers: '235K+' },
 ]
@@ -52,7 +53,7 @@ export default function KarimNasarPage() {
                 <strong className="text-foreground">Manchester United</strong> KOL Indonesia
               </p>
               <div className="flex flex-wrap justify-center gap-3 md:justify-start">
-                <span className="rounded-full bg-red-500/10 px-4 py-1 text-xs font-medium text-red-400">65K+ Followers</span>
+                <span className="rounded-full bg-red-500/10 px-4 py-1 text-xs font-medium text-red-400">25K+ Followers</span>
                 <span className="rounded-full bg-foreground/10 px-4 py-1 text-xs font-medium text-foreground">GEROMBALL Talent</span>
               </div>
             </div>
