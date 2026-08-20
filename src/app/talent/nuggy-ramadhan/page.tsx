@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 const socialLinks = [
   { platform: 'Instagram', url: 'https://instagram.com/nuggyramadhan', handle: '@nuggyramadhan', followers: '5K+' },
+  { platform: 'TikTok', url: 'https://tiktok.com/@nuggynugget_', handle: '@nuggynugget_', followers: '' },
   { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/nuggy-ramadhan-a27586427?utm_source=share_via&utm_content=profile&utm_medium=member_ios', handle: 'Nuggy Ramadhan', followers: '' },
   { platform: 'YouTube', url: 'https://www.youtube.com/@geromball', handle: '@geromball', followers: '235K+' },
 ]

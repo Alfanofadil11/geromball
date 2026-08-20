@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 const socialLinks = [
   { platform: 'Instagram', url: 'https://instagram.com/basyaknowsball', handle: '@basyaknowsball', followers: '2.5K+' },
+  { platform: 'TikTok', url: 'https://tiktok.com/@arsenal.folks', handle: '@arsenal.folks', followers: '' },
   { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/basya-knowsball-0522b6428?utm_source=share_via&utm_content=profile&utm_medium=member_ios', handle: 'Basya', followers: '' },
   { platform: 'YouTube', url: 'https://www.youtube.com/@geromball', handle: '@geromball', followers: '235K+' },
 ]
