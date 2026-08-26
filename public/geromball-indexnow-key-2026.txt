@@ -1,0 +1,5 @@
+# IndexNow Key
+
+This file serves as the IndexNow API key verification.
+
+Key: geromball-indexnow-key-2026
