@@ -1,10 +1,15 @@
 import SocialProof from "@/components/SocialProof";
 import SectionTitle from "@/components/SectionTitle";
 import Button from "@/components/Button";
-import { getYouTubeVideos } from "@/lib/youtube";
+import { getYouTubeVideos, type CategorizedVideos } from "@/lib/youtube";
 
 export default async function Home() {
-  const videos = await getYouTubeVideos()
+  let videos: CategorizedVideos = { pojokDebat: [], menjadiManager: [], liveReaction: [] }
+  try {
+    videos = await getYouTubeVideos()
+  } catch (error) {
+    console.error("Failed to fetch videos:", error)
+  }
 
   // VideoObject schema for AI/Google
   const videoSchema = [

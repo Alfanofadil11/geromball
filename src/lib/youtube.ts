@@ -55,10 +55,20 @@ function isExcludedIP(title: string): boolean {
 async function fetchPlaylist(playlistId: string): Promise<YouTubeVideo[]> {
   try {
     const url = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`
-    const response = await fetch(url, { next: { revalidate: 3600 } })
-    if (!response.ok) return []
+    const response = await fetch(url, {
+      next: { revalidate: 3600 },
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; GEROMBALL/1.0)',
+      },
+    })
+    if (!response.ok) {
+      console.error(`YouTube RSS failed for ${playlistId}: ${response.status}`)
+      return []
+    }
     const text = await response.text()
-    return parseXML(text)
+    const videos = parseXML(text)
+    console.log(`Fetched ${videos.length} videos for playlist ${playlistId}`)
+    return videos
   } catch (error) {
     console.error("Error fetching playlist:", error)
     return []
