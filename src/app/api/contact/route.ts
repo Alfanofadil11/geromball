@@ -10,7 +10,12 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, company, inquiryType, message } = body
+    const { name, email, company, inquiryType, message, referralCode } = body
+
+    // Honeypot field: only bots fill it. Answer as if it worked so they move on.
+    if (referralCode) {
+      return NextResponse.json({ success: true, message: 'Message sent successfully' })
+    }
 
     if (!name || !email || !message) {
       return NextResponse.json(

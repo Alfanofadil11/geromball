@@ -10,6 +10,7 @@ interface FormData {
   company: string
   inquiryType: 'sponsorship' | 'collaboration' | 'content_request' | 'general'
   message: string
+  referralCode: string
 }
 
 const inquiryOptions = [
@@ -65,6 +66,7 @@ export default function ContactPage() {
     company: '',
     inquiryType: 'sponsorship',
     message: '',
+    referralCode: '',
   })
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -95,7 +97,7 @@ export default function ContactPage() {
       if (!response.ok) throw new Error(data.error || 'Failed to send message')
 
       setSuccess(true)
-      setFormData({ name: '', email: '', company: '', inquiryType: 'sponsorship', message: '' })
+      setFormData({ name: '', email: '', company: '', inquiryType: 'sponsorship', message: '', referralCode: '' })
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong')
     } finally {
@@ -141,6 +143,19 @@ export default function ContactPage() {
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot: people never see this field, form-filling bots fill it in. */}
+              <div className="absolute -left-[9999px]" aria-hidden="true">
+                <label htmlFor="referralCode">Referral code</label>
+                <input
+                  id="referralCode"
+                  name="referralCode"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.referralCode}
+                  onChange={handleChange}
+                />
+              </div>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="mb-2 block text-xs font-bold uppercase tracking-wider text-muted">

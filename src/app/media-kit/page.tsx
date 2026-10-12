@@ -10,6 +10,7 @@ interface FormData {
   phone: string
   company: string
   role: string
+  referralCode: string
 }
 
 export default function MediaKitPage() {
@@ -22,6 +23,7 @@ export default function MediaKitPage() {
     phone: '',
     company: '',
     role: '',
+    referralCode: '',
   })
 
   useEffect(() => {
@@ -72,6 +74,19 @@ export default function MediaKitPage() {
 
           <div className="glass-card rounded-2xl p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot: people never see this field, form-filling bots fill it in. */}
+              <div className="absolute -left-[9999px]" aria-hidden="true">
+                <label htmlFor="referralCode">Referral code</label>
+                <input
+                  id="referralCode"
+                  name="referralCode"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.referralCode}
+                  onChange={handleChange}
+                />
+              </div>
               <div>
                 <label htmlFor="name" className="mb-2 block text-xs font-bold uppercase tracking-wider text-muted">
                   Nama <span className="text-foreground">*</span>
