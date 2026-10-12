@@ -6,10 +6,10 @@ import TalentCard from '@/components/TalentCard'
 
 export const metadata: Metadata = {
   title: 'Tentang GEROMBALL - KOL Bola Indonesia & Football KOL',
-  description: 'GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Media football Indonesia — Podcast, Live Reaction, Short-Form (Instagram, TikTok, YouTube Shorts). Total reach 780K+.',
+  description: 'GEROMBALL adalah KOL Bola Indonesia dan Football KOL. Media football Indonesia — Podcast, Live Reaction, Short-Form (Instagram, TikTok, YouTube Shorts). Total reach 780K+.',
   openGraph: {
     title: 'Tentang GEROMBALL - KOL Bola Indonesia & Football KOL',
-    description: 'GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia. Media football Indonesia — Podcast, Live Reaction, Short-Form.',
+    description: 'GEROMBALL adalah KOL Bola Indonesia dan Football KOL. Media football Indonesia — Podcast, Live Reaction, Short-Form.',
     url: 'https://geromball.com/about',
   },
   alternates: {
@@ -61,7 +61,7 @@ export default function AboutPage() {
               <img src="/LogoStrokePutih.png" alt="GEROMBALL Logo" className="h-full w-full object-contain p-4" />
             </div>
             <p className="text-center text-sm text-muted max-w-xs">
-              GEROMBALL adalah <strong className="text-foreground">KOL Bola Indonesia</strong>, <strong className="text-foreground">Football KOL Indonesia</strong>, dan <strong className="text-foreground">Pundit Indonesia</strong> terdepan. Kami lahir dari passion autentik terhadap sepak bola.
+              GEROMBALL adalah <strong className="text-foreground">KOL Bola Indonesia</strong> dan <strong className="text-foreground">Football KOL Indonesia</strong> terdepan. Kami lahir dari passion autentik terhadap sepak bola.
             </p>
           </div>
         </div>

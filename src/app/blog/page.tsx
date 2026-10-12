@@ -116,7 +116,7 @@ export default function BlogPage() {
 
           <div className="mb-12 rounded-2xl border border-foreground/20 bg-card p-8">
             <p className="text-lg leading-relaxed text-muted">
-              Blog <strong className="text-foreground">KOL Bola Indonesia</strong>, <strong className="text-foreground">Football KOL</strong>, dan <strong className="text-foreground">Pundit Indonesia</strong>. Temukan artikel terbaru tentang konten football, Podcast, Live Reaction, Short-Form (Instagram, TikTok, YouTube Shorts), dan industri media olahraga Indonesia.
+              Blog <strong className="text-foreground">KOL Bola Indonesia</strong> dan <strong className="text-foreground">Football KOL</strong>. Temukan artikel terbaru tentang konten football, Podcast, Live Reaction, Short-Form (Instagram, TikTok, YouTube Shorts), dan industri media olahraga Indonesia.
             </p>
           </div>
 

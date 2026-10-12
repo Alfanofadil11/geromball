@@ -4,7 +4,7 @@ import Button from '@/components/Button'
 
 export const metadata: Metadata = {
   title: 'KOL Sepakbola Indonesia: Pengertian, Jenis, dan Daftar Lengkap',
-  description: 'KOL Sepakbola Indonesia (KOL Bola Indonesia) adalah Key Opinion Leader di bidang sepak bola. GEROMBALL adalah Football KOL dan Pundit Indonesia — Podcast, Live Reaction, Short-Form.',
+  description: 'KOL Sepakbola Indonesia (KOL Bola Indonesia) adalah Key Opinion Leader di bidang sepak bola. GEROMBALL adalah Football KOL Indonesia — Podcast, Live Reaction, Short-Form.',
   openGraph: {
     title: 'KOL Sepakbola Indonesia | GEROMBALL - KOL Bola Indonesia & Football KOL',
     description: 'KOL Sepakbola Indonesia (KOL Bola Indonesia) adalah Key Opinion Leader di bidang sepak bola. GEROMBALL adalah Football KOL — Podcast, Live Reaction, Short-Form.',
@@ -45,9 +45,9 @@ const kolTypes = [
     examples: ['GEROMBALL', 'media football lainnya'],
   },
   {
-    type: 'Analis & Pundit',
+    type: 'Analis',
     description: 'Individu dengan keahlian analisis taktik atau pengalaman di dunia football',
-    examples: ['analisis taktik', 'pundit football'],
+    examples: ['analisis taktik', 'breakdown pertandingan'],
   },
   {
     type: 'Komentator',

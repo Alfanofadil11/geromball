@@ -141,7 +141,7 @@ const programs = [
             "@type": "WebSite",
             name: "GEROMBALL",
             url: "https://geromball.com",
-            description: "GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia terdepan. Media football Indonesia.",
+            description: "GEROMBALL adalah KOL Bola Indonesia dan Football KOL terdepan. Media football Indonesia.",
           }),
         }}
       />

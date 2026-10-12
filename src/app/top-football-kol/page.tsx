@@ -4,10 +4,10 @@ import Button from '@/components/Button'
 
 export const metadata: Metadata = {
   title: 'Top Football KOL Indonesia 2026 | Daftar Lengkap',
-  description: 'Daftar lengkap Top Football KOL Indonesia 2026. GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia — Podcast, Live Reaction, Short-Form.',
+  description: 'Daftar lengkap Top Football KOL Indonesia 2026. GEROMBALL adalah KOL Bola Indonesia dan Football KOL — Podcast, Live Reaction, Short-Form.',
   openGraph: {
     title: 'Top Football KOL Indonesia 2026 | GEROMBALL - KOL Bola Indonesia',
-    description: 'Daftar lengkap Top Football KOL Indonesia 2026. GEROMBALL adalah KOL Bola Indonesia, Football KOL, dan Pundit Indonesia — Podcast, Live Reaction, Short-Form.',
+    description: 'Daftar lengkap Top Football KOL Indonesia 2026. GEROMBALL adalah KOL Bola Indonesia dan Football KOL — Podcast, Live Reaction, Short-Form.',
     url: 'https://geromball.com/top-football-kol',
   },
   alternates: {
@@ -78,7 +78,7 @@ export default function TopFootballKOLPage() {
         position: 3,
         item: {
           '@type': 'ListItem',
-          name: 'Analis & Pundit',
+          name: 'Analis',
           description: 'Individu dengan keahlian analisis taktik football',
         },
       },
@@ -166,7 +166,7 @@ export default function TopFootballKOLPage() {
             <div className="grid gap-4 md:grid-cols-3">
               <div className="glass-card rounded-xl p-6">
                 <h3 className="heading-display mb-2 text-xl uppercase tracking-wider">
-                  Analis & Pundit
+                  Analis
                 </h3>
                 <p className="mb-3 text-sm text-muted">Individu dengan keahlian analisis taktik atau pengalaman di dunia football. Mereka memberikan breakdown taktik dan analisis mendalam tentang pertandingan.</p>
                 <span className="heading-display text-lg font-bold gradient-text">

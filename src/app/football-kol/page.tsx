@@ -173,7 +173,7 @@ export default function FootballKOLPage() {
               </div>
               <div className="rounded-xl border border-card-border bg-card p-6">
                 <h3 className="heading-display mb-2 text-lg uppercase tracking-wider">
-                  Analis & Pundit
+                  Analis
                 </h3>
                 <p className="text-sm text-muted">
                   Individu dengan keahlian analisis taktik atau pengalaman di dunia football. Mereka memberikan breakdown taktik dan analisis mendalam tentang pertandingan.

@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import Button from '@/components/Button'
 
 export const metadata: Metadata = {
-  title: 'Ole Alatas - KOL Chelsea Terbesar & Pundit Bola Indonesia | GEROMBALL',
-  description: 'Ole Alatas, KOL Chelsea terbesar di Indonesia dan Pundit Bola. Fan Chelsea sejati yang membawa banter dan fandom football ke level berikutnya.',
+  title: 'Ole Alatas - KOL Chelsea Terbesar di Indonesia | GEROMBALL',
+  description: 'Ole Alatas, KOL Chelsea terbesar di Indonesia. Fan Chelsea sejati yang membawa banter dan fandom football ke level berikutnya.',
   openGraph: {
-    title: 'Ole Alatas - KOL Chelsea Terbesar & Pundit Bola Indonesia | GEROMBALL',
-    description: 'KOL Chelsea terbesar di Indonesia dan Pundit Bola. Fan Chelsea sejati yang membawa banter dan fandom football ke level berikutnya.',
+    title: 'Ole Alatas - KOL Chelsea Terbesar di Indonesia | GEROMBALL',
+    description: 'KOL Chelsea terbesar di Indonesia. Fan Chelsea sejati yang membawa banter dan fandom football ke level berikutnya.',
     url: 'https://geromball.com/talent/ole-alatas',
   },
   alternates: {
@@ -26,15 +26,15 @@ export default function OleAlatasPage() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Ole Alatas',
-    description: 'KOL Chelsea terbesar di Indonesia dan Pundit Bola. Fan Chelsea dan talent GEROMBALL.',
+    description: 'KOL Chelsea terbesar di Indonesia. Fan Chelsea dan talent GEROMBALL.',
     url: 'https://geromball.com/talent/ole-alatas',
     image: 'https://geromball.com/talent/Ole Alatas.JPG',
-    jobTitle: 'KOL Chelsea & Pundit Bola Indonesia',
+    jobTitle: 'KOL Chelsea Indonesia',
     worksFor: {
       '@type': 'Organization',
       name: 'GEROMBALL',
     },
-    knowsAbout: ['Football', 'Chelsea FC', 'Premier League', 'Football Content Creation', 'Pundit Football'],
+    knowsAbout: ['Football', 'Chelsea FC', 'Premier League', 'Football Content Creation'],
     sameAs: [
       'https://instagram.com/olealatas',
       'https://www.linkedin.com/in/ole-alatas-981567428',
@@ -64,7 +64,7 @@ export default function OleAlatasPage() {
                 Ole Alatas
               </h1>
               <p className="mb-4 text-lg text-muted">
-                <strong className="text-foreground">KOL Chelsea Terbesar</strong> & <strong className="text-foreground">Pundit Bola</strong> Indonesia
+                <strong className="text-foreground">KOL Chelsea Terbesar</strong> di Indonesia
               </p>
               <div className="flex flex-wrap justify-center gap-3 md:justify-start">
                 <span className="rounded-full bg-blue-500/10 px-4 py-1 text-xs font-medium text-blue-400">
@@ -89,7 +89,7 @@ export default function OleAlatasPage() {
               Tentang Ole
             </h2>
             <p className="mb-4 text-lg leading-relaxed text-muted">
-              Ole Alatas adalah <strong className="text-foreground">KOL Chelsea terbesar</strong> di Indonesia dan seorang <strong className="text-foreground">Pundit Bola</strong> yang dikenal luas. Sebagai fan Chelsea sejati, Ole membawa banter, analisis, dan fandom football ke level yang berbeda.
+              Ole Alatas adalah <strong className="text-foreground">KOL Chelsea terbesar</strong> di Indonesia yang dikenal luas. Sebagai fan Chelsea sejati, Ole membawa banter, analisis, dan fandom football ke level yang berbeda.
             </p>
             <p className="mb-4 text-lg leading-relaxed text-muted">
               Dikenal dengan takes yang tajam dan tidak takut kontroversi, Ole menjadi suara bagi ribu Chelsea fans Indonesia yang mencari konten football yang autentik dan menghibur.
