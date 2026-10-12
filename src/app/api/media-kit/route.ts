@@ -1,4 +1,8 @@
 ﻿import { NextRequest, NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 export async function POST(request: NextRequest) {
   try {
@@ -20,7 +24,16 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.log('[MEDIA KIT LEAD]', JSON.stringify({ name, email, phone, company, role, createdAt: new Date().toISOString() }))
+    const supabase = createClient(supabaseUrl, supabaseAnonKey)
+    const { error } = await supabase
+      .from('website_leads')
+      .insert({ source: 'media_kit', name, email, phone, company, role })
+
+    // The visitor still gets the media kit; the log line keeps the lead recoverable.
+    if (error) {
+      console.error('Supabase error:', error)
+      console.log('[MEDIA KIT LEAD]', JSON.stringify({ name, email, phone, company, role, createdAt: new Date().toISOString() }))
+    }
 
     return NextResponse.json({ success: true })
   } catch {

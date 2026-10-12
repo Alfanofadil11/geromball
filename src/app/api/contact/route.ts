@@ -1,16 +1,5 @@
-// Run this in Supabase SQL Editor to create the contacts table:
-// CREATE TABLE contacts (
-//   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-//   name TEXT NOT NULL,
-//   email TEXT NOT NULL,
-//   company TEXT,
-//   inquiry_type TEXT NOT NULL DEFAULT 'general',
-//   message TEXT NOT NULL,
-//   created_at TIMESTAMPTZ DEFAULT NOW()
-// );
-//
-// ALTER TABLE contacts ENABLE ROW LEVEL SECURITY;
-// CREATE POLICY "Allow anonymous inserts" ON contacts FOR INSERT WITH CHECK (true);
+// Saves to website_leads in the Brand Radar Supabase project; the schema is
+// in that repo (supabase/migrations/20261012000000_website_leads.sql).
 
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
@@ -40,8 +29,9 @@ export async function POST(request: NextRequest) {
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey)
     const { error } = await supabase
-      .from('contacts')
+      .from('website_leads')
       .insert({
+        source: 'contact',
         name,
         email,
         company: company || null,
