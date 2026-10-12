@@ -34,7 +34,7 @@ export default function OleAlatasPage() {
       '@type': 'Organization',
       name: 'GEROMBALL',
     },
-    knowsAbout: ['Football', 'Chelsea FC', 'Premier League', 'Football Content Creation'],
+    knowsAbout: ['Football', 'Chelsea FC', 'Premier League', 'Football Content Creation', 'Pundit Football'],
     sameAs: [
       'https://instagram.com/olealatas',
       'https://www.linkedin.com/in/ole-alatas-981567428',

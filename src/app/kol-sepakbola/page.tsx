@@ -45,9 +45,9 @@ const kolTypes = [
     examples: ['GEROMBALL', 'media football lainnya'],
   },
   {
-    type: 'Analis',
+    type: 'Analis & Pundit',
     description: 'Individu dengan keahlian analisis taktik atau pengalaman di dunia football',
-    examples: ['analisis taktik', 'breakdown pertandingan'],
+    examples: ['analisis taktik', 'pundit football'],
   },
   {
     type: 'Komentator',

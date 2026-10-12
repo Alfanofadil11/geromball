@@ -78,7 +78,7 @@ export default function TopFootballKOLPage() {
         position: 3,
         item: {
           '@type': 'ListItem',
-          name: 'Analis',
+          name: 'Analis & Pundit',
           description: 'Individu dengan keahlian analisis taktik football',
         },
       },
@@ -166,7 +166,7 @@ export default function TopFootballKOLPage() {
             <div className="grid gap-4 md:grid-cols-3">
               <div className="glass-card rounded-xl p-6">
                 <h3 className="heading-display mb-2 text-xl uppercase tracking-wider">
-                  Analis
+                  Analis & Pundit
                 </h3>
                 <p className="mb-3 text-sm text-muted">Individu dengan keahlian analisis taktik atau pengalaman di dunia football. Mereka memberikan breakdown taktik dan analisis mendalam tentang pertandingan.</p>
                 <span className="heading-display text-lg font-bold gradient-text">

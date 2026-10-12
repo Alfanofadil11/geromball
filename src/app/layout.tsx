@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "KOL Bola Indonesia",
     "Football KOL",
     "Football KOL Indonesia",
+    "Pundit Indonesia",
     "media football Indonesia",
     "KOL sepakbola",
     "football",
@@ -79,7 +80,8 @@ export default function RootLayout({
     keywords: [
       "KOL Bola Indonesia",
       "Football KOL Indonesia",
-        "media football Indonesia",
+      "Pundit Indonesia",
+      "media football Indonesia",
       "KOL sepakbola",
     ],
     sameAs: [
