@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     images: ["/logo.jpg"],
   },
   icons: {
-    icon: "/logo.jpg",
+    icon: "/icon.png",
     apple: "/logo.jpg",
   },
   metadataBase: new URL("https://geromball.com"),
