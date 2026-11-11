@@ -121,7 +121,18 @@ export async function addFormat(form: FormData) {
   await requireSession();
   const name = String(form.get("name") ?? "").trim();
   if (!name) return;
-  const { error } = await db().from("yt_formats").insert({ name });
+  const { error } = await db().from("yt_formats").insert({ name, title_keywords: keywords(form) });
+  if (error) throw error;
+  revalidatePath("/dashboard", "layout");
+}
+
+export async function updateFormat(form: FormData) {
+  await requireSession();
+  const priority = Number(form.get("priority"));
+  const { error } = await db()
+    .from("yt_formats")
+    .update({ title_keywords: keywords(form), ...(Number.isFinite(priority) && form.get("priority") !== "" ? { priority } : {}) })
+    .eq("id", id(form, "id"));
   if (error) throw error;
   revalidatePath("/dashboard", "layout");
 }

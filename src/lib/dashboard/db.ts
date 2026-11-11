@@ -28,6 +28,7 @@ export interface Named {
   id: number;
   name: string;
   title_keywords?: string[];
+  priority?: number;
 }
 
 export interface Video {
@@ -92,7 +93,7 @@ export async function videoTalents(): Promise<Map<string, number[]>> {
 export async function lookups() {
   const [ips, formats, talents] = await Promise.all([
     db().from("yt_ips").select("id,name,playlist_id,title_keywords,active").order("name"),
-    db().from("yt_formats").select("id,name").order("name"),
+    db().from("yt_formats").select("id,name,title_keywords,priority").order("priority").order("name"),
     db().from("yt_talents").select("id,name,title_keywords").order("name"),
   ]);
   for (const r of [ips, formats, talents]) if (r.error) throw r.error;

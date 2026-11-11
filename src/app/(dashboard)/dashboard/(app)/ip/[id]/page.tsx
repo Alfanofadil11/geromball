@@ -36,6 +36,16 @@ export default async function IpPage({
     .map(([t, xs]) => ({ name: talentName.get(t) ?? "?", n: xs.length, med: median(xs) }))
     .sort((a, b) => (b.med ?? 0) - (a.med ?? 0));
 
+  // which segments (formats) carry this IP, e.g. Ranked vs Review inside Pojok Debat
+  const byFormat = new Map<number | null, number[]>();
+  for (const e of eps) {
+    if (!e.mature || e.outlier === null) continue;
+    byFormat.set(e.format_id, [...(byFormat.get(e.format_id) ?? []), e.outlier]);
+  }
+  const formatRows = [...byFormat.entries()]
+    .map(([f, xs]) => ({ name: f === null ? "Tanpa format" : (formatName.get(f) ?? "?"), n: xs.length, med: median(xs) }))
+    .sort((a, b) => (b.med ?? 0) - (a.med ?? 0));
+
   const chart = [...eps].filter((e) => e.outlier !== null).reverse().slice(-40);
 
   return (
@@ -61,22 +71,16 @@ export default async function IpPage({
         </Card>
       )}
 
+      {formatRows.length > 1 && (
+        <Card title="Format / segmen di IP ini">
+          <BreakdownTable label="Format" rows={formatRows} />
+          <p className="mt-2 text-xs text-muted">Format diisi otomatis dari judul (bisa dikoreksi di Tagging). Format dengan sedikit episode: baca sebagai petunjuk.</p>
+        </Card>
+      )}
+
       {talentRows.length > 0 && (
         <Card title="Talent di IP ini">
-          <table className="w-full text-sm">
-            <thead className="text-left text-xs uppercase tracking-wider text-muted">
-              <tr><th className="py-1 font-medium">Talent</th><th className="py-1 text-right font-medium">Episode</th><th className="py-1 text-right font-medium">Outlier median</th></tr>
-            </thead>
-            <tbody>
-              {talentRows.map((r) => (
-                <tr key={r.name} className="border-t border-card-border">
-                  <td className="py-1.5">{r.name}</td>
-                  <td className="py-1.5 text-right tabular-nums">{r.n}</td>
-                  <td className="py-1.5 text-right tabular-nums"><OutlierText value={r.med} /></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <BreakdownTable label="Talent" rows={talentRows} />
           <p className="mt-2 text-xs text-muted">Sampel kecil: baca sebagai petunjuk, bukan kesimpulan.</p>
         </Card>
       )}
@@ -138,5 +142,24 @@ function OutlierChart({ items }: { items: Scored[] }) {
         );
       })}
     </svg>
+  );
+}
+
+function BreakdownTable({ label, rows }: { label: string; rows: { name: string; n: number; med: number | null }[] }) {
+  return (
+    <table className="w-full text-sm">
+      <thead className="text-left text-xs uppercase tracking-wider text-muted">
+        <tr><th className="py-1 font-medium">{label}</th><th className="py-1 text-right font-medium">Episode</th><th className="py-1 text-right font-medium">Outlier median</th></tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr key={r.name} className="border-t border-card-border">
+            <td className="py-1.5">{r.name}</td>
+            <td className="py-1.5 text-right tabular-nums">{r.n}</td>
+            <td className="py-1.5 text-right tabular-nums"><OutlierText value={r.med} /></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
