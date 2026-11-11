@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { requireSession } from "@/lib/dashboard/auth";
 import { lookups } from "@/lib/dashboard/db";
-import { addFormat, addIp, addTalent, updateIp, updateTalent } from "../../actions";
+import { addFormat, addIp, addTalent, updateFormat, updateIp, updateTalent } from "../../actions";
 import SubmitButton from "../SubmitButton";
 import { Card } from "../ui";
 
@@ -66,15 +66,21 @@ export default async function Kelola() {
         </Card>
 
         <Card title="Format">
-          {formats.length === 0 ? (
-            <p className="text-sm text-white/60">Belum ada format. Contoh: Podcast, Live reaction, Challenge, Debat, Kompilasi.</p>
-          ) : (
-            <ul className="flex flex-wrap gap-2">
-              {formats.map((f) => <li key={f.id} className="rounded-full border border-card-border px-3 py-1 text-sm">{f.name}</li>)}
-            </ul>
-          )}
+          <p className="mb-3 text-xs text-muted">Urutan kecil menang kalau judul cocok ke beberapa format (mis. &ldquo;CHALLENGE: Bangun Tim&rdquo; → Challenge).</p>
+          <div className="space-y-2">
+            {formats.map((f) => (
+              <form key={f.id} action={updateFormat} className="flex items-center gap-2">
+                <input type="hidden" name="id" value={f.id} />
+                <span className="w-32 text-sm font-medium">{f.name}</span>
+                <input name="keywords" defaultValue={(f.title_keywords ?? []).join(", ")} placeholder="kata kunci judul" className={`${input} min-w-0 flex-1`} />
+                <input name="priority" type="number" defaultValue={f.priority ?? 100} aria-label="Urutan" className={`${input} w-16`} />
+                <SubmitButton className="rounded-md border border-card-border px-3 py-1.5 text-sm hover:bg-white/5">Simpan</SubmitButton>
+              </form>
+            ))}
+          </div>
           <form action={addFormat} className="mt-4 flex items-center gap-2 border-t border-card-border pt-4">
-            <input name="name" required placeholder="Nama format" className={`${input} min-w-0 flex-1`} />
+            <input name="name" required placeholder="Nama format" className={`${input} w-32`} />
+            <input name="keywords" placeholder="kata kunci judul" className={`${input} min-w-0 flex-1`} />
             <SubmitButton className="rounded-md bg-white px-3 py-1.5 text-sm font-medium text-black">Tambah</SubmitButton>
           </form>
         </Card>

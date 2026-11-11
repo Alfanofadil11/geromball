@@ -6,6 +6,7 @@ import { suggest } from "./tagging";
 // a full sync costs roughly 2 units per 50 videos) and stores today's numbers.
 const CHANNEL_ID = "UCrpz3DaqrtI7rnGyZH-OykQ";
 const API = "https://www.googleapis.com/youtube/v3";
+const SHORT_MAX_S = 190;
 
 function key(): string {
   const k = process.env.YOUTUBE_API_KEY;
@@ -107,7 +108,7 @@ export async function runSync(): Promise<{ videos: number; added: number; tagged
 }
 
 async function sync() {
-  const { ips, talents } = await lookups();
+  const { ips, talents, formats } = await lookups();
 
   const channel = await yt<{ items: { contentDetails: { relatedPlaylists: { uploads: string } } }[] }>("channels", {
     part: "contentDetails",
@@ -135,18 +136,19 @@ async function sync() {
     videos.push(...page.items);
   }
 
-  const existing = new Map<string, { is_short: boolean; tag_status: string }>();
+  const existing = new Map<string, { is_short: boolean; tag_status: string; format_id: number | null }>();
   for (let from = 0; ; from += 1000) {
-    const { data, error } = await db().from("yt_videos").select("id,is_short,tag_status").order("id").range(from, from + 999);
+    const { data, error } = await db().from("yt_videos").select("id,is_short,tag_status,format_id").order("id").range(from, from + 999);
     if (error) throw error;
     for (const r of data ?? []) existing.set(r.id, r);
     if (!data || data.length < 1000) break;
   }
 
   // Shorts can run up to 3 minutes, so length alone cannot tell; ask YouTube once per new video.
+  // The API reports some 3:00 Shorts as 181 s, hence the margin above 180.
   const fresh = videos.filter((v) => !existing.has(v.id));
   const shortFlags = await pool(fresh, 8, (v) =>
-    isoSeconds(v.contentDetails.duration) <= 180 && !v.liveStreamingDetails ? isShort(v.id) : Promise.resolve(false),
+    isoSeconds(v.contentDetails.duration) <= SHORT_MAX_S && !v.liveStreamingDetails ? isShort(v.id) : Promise.resolve(false),
   );
   const shortById = new Map(fresh.map((v, i) => [v.id, shortFlags[i]]));
 
@@ -184,17 +186,24 @@ async function sync() {
     if (e) throw e;
   }
 
-  // First guess for anything nobody has tagged yet; never touches suggested or confirmed rows.
+  // First guess for anything nobody has tagged yet. Suggested rows only get a missing format
+  // filled in; confirmed rows are never touched.
   let tagged = 0;
   const talentLinks: { video_id: string; talent_id: number }[] = [];
-  const groups = new Map<string, { ipId: number | null; source: string | null; ids: string[] }>();
+  const groups = new Map<string, { ipId: number | null; source: string | null; formatId: number | null; ids: string[] }>();
+  const formatOnly = new Map<number, string[]>();
   for (const r of rows) {
-    const status = existing.get(r.id)?.tag_status ?? "untagged";
-    if (status !== "untagged") continue;
-    const s = suggest(r, ips, talents);
-    if (!s.ipId && s.talentIds.length === 0) continue;
-    const k = `${s.ipId}|${s.source}`;
-    const g = groups.get(k) ?? { ipId: s.ipId, source: s.source, ids: [] };
+    const prev = existing.get(r.id);
+    const status = prev?.tag_status ?? "untagged";
+    if (status === "confirmed") continue;
+    const s = suggest(r, ips, talents, formats);
+    if (status === "suggested") {
+      if (!prev?.format_id && s.formatId) formatOnly.set(s.formatId, [...(formatOnly.get(s.formatId) ?? []), r.id]);
+      continue;
+    }
+    if (!s.ipId && !s.formatId && s.talentIds.length === 0) continue;
+    const k = `${s.ipId}|${s.source}|${s.formatId}`;
+    const g = groups.get(k) ?? { ipId: s.ipId, source: s.source, formatId: s.formatId, ids: [] };
     g.ids.push(r.id);
     groups.set(k, g);
     talentLinks.push(...s.talentIds.map((t) => ({ video_id: r.id, talent_id: t })));
@@ -204,9 +213,20 @@ async function sync() {
     for (let i = 0; i < g.ids.length; i += 200) {
       const { error: e } = await db()
         .from("yt_videos")
-        .update({ ip_id: g.ipId, tag_source: g.source, tag_status: "suggested" })
+        .update({ ip_id: g.ipId, tag_source: g.source, format_id: g.formatId, tag_status: "suggested" })
         .in("id", g.ids.slice(i, i + 200))
         .eq("tag_status", "untagged");
+      if (e) throw e;
+    }
+  }
+  for (const [formatId, ids] of formatOnly) {
+    for (let i = 0; i < ids.length; i += 200) {
+      const { error: e } = await db()
+        .from("yt_videos")
+        .update({ format_id: formatId })
+        .in("id", ids.slice(i, i + 200))
+        .eq("tag_status", "suggested")
+        .is("format_id", null);
       if (e) throw e;
     }
   }

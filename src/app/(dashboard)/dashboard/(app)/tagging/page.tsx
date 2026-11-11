@@ -147,6 +147,6 @@ export default async function Tagging({ searchParams }: { searchParams: Promise<
 function StatusPill({ status, source, ipName }: { status: string; source: string | null; ipName?: string }) {
   if (status === "confirmed") return <span className="text-emerald-300">✓ Terkonfirmasi</span>;
   if (status === "suggested")
-    return <span className="text-amber-200">Saran{ipName ? `: ${ipName}` : ""} ({source === "playlist" ? "dari playlist" : source === "keyword" ? "dari judul" : "talent"})</span>;
+    return <span className="text-amber-200">Saran{ipName ? `: ${ipName}` : ""} ({source === "playlist" ? "dari playlist" : "dari judul"})</span>;
   return <span className="text-rose-200">Belum ada tag</span>;
 }
