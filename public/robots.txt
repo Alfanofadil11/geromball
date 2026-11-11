@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
+Disallow: /dashboard
 
 # AI Crawlers - Allow all for GEO optimization
 User-agent: GPTBot
