@@ -5,7 +5,8 @@ import { allVideos, lookups, videoTalents } from "@/lib/dashboard/db";
 import { KIND_LABEL, fmt, kindOf } from "@/lib/dashboard/metrics";
 import { confirmPlaylistSuggestions, saveTag } from "../../actions";
 import SubmitButton from "../SubmitButton";
-import { Card } from "../ui";
+import { IconSearch } from "../icons";
+import { Card, btnPrimary, input } from "../ui";
 
 export const metadata: Metadata = { title: "Tagging" };
 export const dynamic = "force-dynamic";
@@ -44,53 +45,54 @@ export default async function Tagging({ searchParams }: { searchParams: Promise<
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div>
-        <h1 className="text-2xl font-semibold">Tagging</h1>
-        <p className="text-sm text-muted">
+        <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">Tagging</h1>
+        <p className="mt-2 max-w-3xl text-ink-soft">
           Sistem sudah menebak IP dari playlist dan judul. Cek, koreksi kalau perlu, lalu simpan. Video yang sudah disimpan dihitung di scorecard sebagai &ldquo;terkonfirmasi&rdquo;.
           Video dengan saran juga sudah dihitung di scorecard.
         </p>
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <div className="inline-flex rounded-lg border border-card-border p-0.5 text-sm">
+        <div className="inline-flex flex-wrap rounded-full bg-surface p-1 text-sm">
           {(Object.keys(FILTERS) as Filter[]).map((f) => (
-            <Link key={f} href={`/dashboard/tagging?filter=${f}`} className={`rounded-md px-3 py-1 ${f === filter ? "bg-white text-black" : "text-white/70 hover:text-white"}`}>
+            <Link key={f} href={`/dashboard/tagging?filter=${f}`} className={`rounded-full px-4 py-1.5 ${f === filter ? "bg-invert text-on-invert" : "text-ink-soft hover:text-ink"}`}>
               {FILTERS[f]}
             </Link>
           ))}
         </div>
-        <form className="flex gap-2" action="/dashboard/tagging">
+        <form className="relative" action="/dashboard/tagging">
+          <IconSearch className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-faint" />
           <input type="hidden" name="filter" value={filter} />
-          <input name="q" defaultValue={q} placeholder="Cari judul…" className="rounded-md border border-card-border bg-background px-3 py-1.5 text-sm" />
+          <input name="q" defaultValue={q} placeholder="Cari judul" aria-label="Cari judul" className={`${input} w-64 pl-10`} />
         </form>
         {playlistSuggestions > 0 && (
           <form action={confirmPlaylistSuggestions} className="ml-auto">
-            <SubmitButton className="rounded-md border border-emerald-500/40 px-3 py-1.5 text-sm text-emerald-300 hover:bg-emerald-500/10">
+            <SubmitButton className="rounded-full bg-good-soft px-4 py-2 text-sm font-medium text-good hover:opacity-90">
               Konfirmasi {playlistSuggestions} saran dari playlist
             </SubmitButton>
           </form>
         )}
       </div>
 
-      <p className="text-xs text-muted">{list.length} video</p>
+      <p className="text-xs text-faint">{list.length} video</p>
 
       <div className="space-y-3">
         {shown.map((v) => {
           const mine = new Set(vt.get(v.id) ?? []);
           return (
-            <form key={v.id} action={saveTag} className="rounded-xl border border-card-border bg-card p-3">
+            <form key={v.id} action={saveTag} className="rounded-3xl bg-surface p-4">
               <input type="hidden" name="video_id" value={v.id} />
               <div className="flex flex-col gap-3 md:flex-row">
                 {v.thumbnail && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={v.thumbnail} alt="" className="h-20 w-36 flex-none rounded object-cover" />
+                  <img src={v.thumbnail} alt="" className="h-20 w-36 flex-none rounded-xl object-cover" />
                 )}
                 <div className="min-w-0 flex-1 space-y-2">
                   <div>
                     <a href={`https://youtu.be/${v.id}`} target="_blank" rel="noreferrer" className="font-medium hover:underline">{v.title}</a>
-                    <div className="mt-0.5 flex flex-wrap gap-x-2 text-xs text-muted">
+                    <div className="mt-1 flex flex-wrap gap-x-2 text-xs text-faint">
                       <span>{fmt.d(v.published_at)}</span>
                       <span>{KIND_LABEL[kindOf(v)]}</span>
                       <span>{fmt.n(v.views)} views</span>
@@ -98,21 +100,21 @@ export default async function Tagging({ searchParams }: { searchParams: Promise<
                     </div>
                   </div>
                   <div className="flex flex-wrap items-center gap-2 text-sm">
-                    <select name="ip" defaultValue={v.ip_id ?? ""} className="rounded-md border border-card-border bg-background px-2 py-1.5">
+                    <select name="ip" defaultValue={v.ip_id ?? ""} className="rounded-full border border-line bg-surface px-3 py-2">
                       <option value="">— IP —</option>
                       {ips.filter((i) => i.active || i.id === v.ip_id).map((i) => <option key={i.id} value={i.id}>{i.name}</option>)}
                     </select>
-                    <select name="format" defaultValue={v.format_id ?? ""} className="rounded-md border border-card-border bg-background px-2 py-1.5">
+                    <select name="format" defaultValue={v.format_id ?? ""} className="rounded-full border border-line bg-surface px-3 py-2">
                       <option value="">— Format —</option>
                       {formats.map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}
                     </select>
-                    <input name="note" defaultValue={v.note ?? ""} placeholder="Catatan (opsional)" className="min-w-0 flex-1 rounded-md border border-card-border bg-background px-2 py-1.5" />
+                    <input name="note" defaultValue={v.note ?? ""} placeholder="Catatan (opsional)" className={`${input} min-w-0 flex-1`} />
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {talents.map((t) => (
                       <label key={t.id} className="cursor-pointer">
                         <input type="checkbox" name="talent" value={t.id} aria-label={t.name} defaultChecked={mine.has(t.id)} className="peer sr-only" />
-                        <span className="inline-block rounded-full border border-card-border px-2.5 py-0.5 text-xs text-white/60 peer-checked:border-white peer-checked:bg-white peer-checked:text-black peer-focus-visible:ring-2 peer-focus-visible:ring-white/50">
+                        <span className="inline-block rounded-full border border-line px-3 py-1 text-xs text-ink-soft peer-checked:border-invert peer-checked:bg-invert peer-checked:text-on-invert peer-focus-visible:ring-2 peer-focus-visible:ring-ink/40">
                           {t.name}
                         </span>
                       </label>
@@ -120,7 +122,7 @@ export default async function Tagging({ searchParams }: { searchParams: Promise<
                   </div>
                 </div>
                 <div className="flex md:items-start">
-                  <SubmitButton className="rounded-md bg-white px-4 py-1.5 text-sm font-medium text-black">Simpan</SubmitButton>
+                  <SubmitButton className={btnPrimary}>Simpan</SubmitButton>
                 </div>
               </div>
             </form>
@@ -128,16 +130,16 @@ export default async function Tagging({ searchParams }: { searchParams: Promise<
         })}
         {shown.length === 0 && (
           <Card title="Beres">
-            <p className="text-sm text-white/70">Nggak ada video di filter ini.</p>
+            <p className="text-sm text-ink-soft">Nggak ada video di filter ini.</p>
           </Card>
         )}
       </div>
 
       {pages > 1 && (
         <div className="flex items-center justify-center gap-3 text-sm">
-          {page > 1 && <Link href={href({ hal: page - 1 })} className="text-white/70 hover:text-white">← Sebelumnya</Link>}
-          <span className="text-muted">Halaman {page} / {pages}</span>
-          {page < pages && <Link href={href({ hal: page + 1 })} className="text-white/70 hover:text-white">Berikutnya →</Link>}
+          {page > 1 && <Link href={href({ hal: page - 1 })} className="rounded-full bg-surface px-4 py-2 text-ink-soft hover:text-ink">← Sebelumnya</Link>}
+          <span className="text-faint">Halaman {page} / {pages}</span>
+          {page < pages && <Link href={href({ hal: page + 1 })} className="rounded-full bg-surface px-4 py-2 text-ink-soft hover:text-ink">Berikutnya →</Link>}
         </div>
       )}
     </div>
@@ -145,8 +147,8 @@ export default async function Tagging({ searchParams }: { searchParams: Promise<
 }
 
 function StatusPill({ status, source, ipName }: { status: string; source: string | null; ipName?: string }) {
-  if (status === "confirmed") return <span className="text-emerald-300">✓ Terkonfirmasi</span>;
+  if (status === "confirmed") return <span className="font-medium text-good">✓ Terkonfirmasi</span>;
   if (status === "suggested")
-    return <span className="text-amber-200">Saran{ipName ? `: ${ipName}` : ""} ({source === "playlist" ? "dari playlist" : "dari judul"})</span>;
-  return <span className="text-rose-200">Belum ada tag</span>;
+    return <span className="text-warn">Saran{ipName ? `: ${ipName}` : ""} ({source === "playlist" ? "dari playlist" : "dari judul"})</span>;
+  return <span className="text-bad">Belum ada tag</span>;
 }
