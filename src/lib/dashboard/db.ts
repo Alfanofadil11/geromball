@@ -103,3 +103,25 @@ export async function lookups() {
     talents: (talents.data ?? []) as Named[],
   };
 }
+
+/** Views gained per day over the snapshot window (up to 28 days), keyed by video id. */
+export async function velocity(): Promise<{ perDay: Map<string, number>; days: number }> {
+  const perDay = new Map<string, number>();
+  let days = 0;
+  const page = 1000;
+  for (let from = 0; ; from += page) {
+    const { data, error } = await db()
+      .from("yt_video_velocity")
+      .select("video_id,days,views_per_day")
+      .order("video_id")
+      .range(from, from + page - 1);
+    if (error) throw error;
+    for (const r of data ?? []) {
+      if (r.views_per_day === null) continue;
+      perDay.set(r.video_id, Number(r.views_per_day));
+      days = Math.max(days, r.days);
+    }
+    if (!data || data.length < page) break;
+  }
+  return { perDay, days };
+}
