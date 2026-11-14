@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import { requireSession } from "@/lib/dashboard/auth";
 import { allVideos, lookups, velocity, videoTalents } from "@/lib/dashboard/db";
 import { EVERGREEN_AGE_DAYS, EVERGREEN_MIN_PER_DAY, KIND_LABEL, fmt, ipCard, median, score, type Scored } from "@/lib/dashboard/metrics";
-import { Card, KindTabs, OutlierText, Stat, VerdictBadge, parseKind } from "../../ui";
+import { IconChevronLeft } from "../../icons";
+import { Card, KindTabs, OutlierText, Stat, TableFrame, VerdictBadge, parseKind, td, tdR, th, thR, theadRow, tr } from "../../ui";
 
 export const dynamic = "force-dynamic";
 
@@ -52,85 +53,86 @@ export default async function IpPage({
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <Link href={`/dashboard?jenis=${kind}`} className="text-sm text-muted hover:text-white">← Ringkasan</Link>
-          <h1 className="mt-1 flex items-center gap-3 text-2xl font-semibold">{ip.name} <VerdictBadge verdict={card.verdict} /></h1>
+          <Link href={`/dashboard?jenis=${kind}`} className="inline-flex items-center gap-1 text-sm text-ink-soft hover:text-ink"><IconChevronLeft /> Ringkasan</Link>
+          <h1 className="mt-2 flex flex-wrap items-center gap-3 text-3xl font-semibold tracking-tight md:text-4xl">{ip.name} <VerdictBadge verdict={card.verdict} /></h1>
         </div>
         <KindTabs current={kind} base={`/dashboard/ip/${ipId}`} />
       </div>
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
         <Stat label="Episode" value={card.episodes} hint={KIND_LABEL[kind]} />
         <Stat label="Outlier median" value={<OutlierText value={card.medianOutlier} />} hint="1× = performa normal channel" />
         <Stat label="Median views" value={fmt.n(card.medianViews)} />
         <Stat label="Rata² komentar" value={fmt.n(card.avgComments)} hint={`${fmt.dec(card.commentsPer1k)} per 1rb views`} />
         <Stat
           label="Evergreen"
-          value={card.oldEpisodes ? <>{card.evergreenEpisodes}<span className="text-base text-muted"> / {card.oldEpisodes}</span></> : "–"}
+          value={card.oldEpisodes ? <>{card.evergreenEpisodes}<span className="text-base text-faint"> / {card.oldEpisodes}</span></> : "–"}
           hint={card.archivePerDay === null ? `episode ${EVERGREEN_AGE_DAYS}+ hari, menunggu data harian` : `episode ${EVERGREEN_AGE_DAYS}+ hari masih bawa ${fmt.n(card.archivePerDay)} views/hari`}
         />
       </div>
 
       {chart.length > 1 && (
-        <Card title="Outlier per episode (urut waktu)">
+        <Card title="Outlier per episode" subtitle="Urut waktu, 40 episode terakhir. Garis putus-putus = performa normal channel (1×).">
           <OutlierChart items={chart} />
         </Card>
       )}
 
+      <div className="grid gap-6 lg:grid-cols-2 [&>*]:min-w-0">
       {formatRows.length > 1 && (
         <Card title="Format / segmen di IP ini">
           <BreakdownTable label="Format" rows={formatRows} />
-          <p className="mt-2 text-xs text-muted">Format diisi otomatis dari judul (bisa dikoreksi di Tagging). Format dengan sedikit episode: baca sebagai petunjuk.</p>
+          <p className="mt-3 text-xs text-faint">Format diisi otomatis dari judul (bisa dikoreksi di Tagging). Format dengan sedikit episode: baca sebagai petunjuk.</p>
         </Card>
       )}
 
       {talentRows.length > 0 && (
         <Card title="Talent di IP ini">
           <BreakdownTable label="Talent" rows={talentRows} />
-          <p className="mt-2 text-xs text-muted">Sampel kecil: baca sebagai petunjuk, bukan kesimpulan.</p>
+          <p className="mt-3 text-xs text-faint">Sampel kecil: baca sebagai petunjuk, bukan kesimpulan.</p>
         </Card>
       )}
 
+      </div>
+
       <Card title="Semua episode">
-        <div className="-mx-4 overflow-x-auto">
-          <table className="w-full min-w-[720px] text-sm">
-            <thead className="text-left text-xs uppercase tracking-wider text-muted">
-              <tr>
-                <th className="px-4 py-2 font-medium">Video</th>
-                <th className="px-2 py-2 font-medium text-right">Terbit</th>
-                <th className="px-2 py-2 font-medium text-right">Views</th>
-                <th className="px-2 py-2 font-medium text-right">Outlier</th>
-                <th className="px-2 py-2 font-medium text-right" title="Views yang bertambah per hari belakangan ini">Views/hari</th>
-                <th className="px-2 py-2 font-medium text-right">Komentar</th>
-                <th className="px-4 py-2 font-medium">Talent · format</th>
+          <TableFrame minWidth={820}>
+            <thead>
+              <tr className={theadRow}>
+                <th className={th}>Video</th>
+                <th className={thR}>Terbit</th>
+                <th className={thR}>Views</th>
+                <th className={thR}>Outlier</th>
+                <th className={thR} title="Views yang bertambah per hari belakangan ini">Views/hari</th>
+                <th className={thR}>Komentar</th>
+                <th className={th}>Talent · format</th>
               </tr>
             </thead>
             <tbody>
               {eps.map((e) => (
-                <tr key={e.id} className="border-t border-card-border align-top">
-                  <td className="px-4 py-2">
+                <tr key={e.id} className={`${tr} align-top`}>
+                  <td className={td}>
                     <a href={`https://youtu.be/${e.id}`} target="_blank" rel="noreferrer" className="hover:underline">{e.title}</a>
-                    {e.note && <div className="mt-0.5 text-xs text-amber-200/80">📝 {e.note}</div>}
+                    {e.note && <div className="mt-0.5 text-xs text-warn">📝 {e.note}</div>}
                   </td>
-                  <td className="px-2 py-2 text-right whitespace-nowrap text-white/60">{fmt.d(e.published_at)}</td>
-                  <td className="px-2 py-2 text-right tabular-nums">{fmt.n(e.views)}</td>
-                  <td className="px-2 py-2 text-right tabular-nums"><OutlierText value={e.outlier} mature={e.mature} /></td>
-                  <td className="px-2 py-2 text-right tabular-nums whitespace-nowrap">
-                    {e.perDay === null ? <span className="text-muted">–</span> : (
-                      <span className={e.evergreen ? "text-emerald-300" : "text-white/70"} title={e.evergreen ? "Evergreen: video lama yang masih terus ditonton" : undefined}>
+                  <td className={`${tdR} whitespace-nowrap text-ink-soft`}>{fmt.d(e.published_at)}</td>
+                  <td className={tdR}>{fmt.n(e.views)}</td>
+                  <td className={tdR}><OutlierText value={e.outlier} mature={e.mature} /></td>
+                  <td className={`${tdR} whitespace-nowrap`}>
+                    {e.perDay === null ? <span className="text-faint">–</span> : (
+                      <span className={e.evergreen ? "font-medium text-good" : "text-ink-soft"} title={e.evergreen ? "Evergreen: video lama yang masih terus ditonton" : undefined}>
                         {e.evergreen && "🌱 "}+{fmt.n(e.perDay)}
                       </span>
                     )}
                   </td>
-                  <td className="px-2 py-2 text-right tabular-nums">{fmt.n(e.comments)}</td>
-                  <td className="px-4 py-2 text-xs text-white/60">
+                  <td className={tdR}>{fmt.n(e.comments)}</td>
+                  <td className={`${td} text-xs text-ink-soft`}>
                     {[(vt.get(e.id) ?? []).map((t) => talentName.get(t)).join(", "), e.format_id ? formatName.get(e.format_id) : ""].filter(Boolean).join(" · ") || "–"}
                   </td>
                 </tr>
               ))}
             </tbody>
-          </table>
-        </div>
-        <p className="mt-2 text-xs text-muted">* video &lt; 7 hari, angkanya masih bergerak. 🌱 evergreen: umur {EVERGREEN_AGE_DAYS}+ hari dan masih ≥ {EVERGREEN_MIN_PER_DAY} views/hari.</p>
+          </TableFrame>
+        <p className="mt-3 text-xs text-faint">* video &lt; 7 hari, angkanya masih bergerak. 🌱 evergreen: umur {EVERGREEN_AGE_DAYS}+ hari dan masih ≥ {EVERGREEN_MIN_PER_DAY} views/hari.</p>
       </Card>
     </div>
   );
@@ -143,13 +145,13 @@ function OutlierChart({ items }: { items: Scored[] }) {
   const y = (v: number) => h - pad - (v / max) * (h - pad * 1.5);
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className="w-full" role="img" aria-label="Outlier per episode">
-      <line x1={pad} x2={w} y1={y(1)} y2={y(1)} stroke="currentColor" className="text-white/30" strokeDasharray="4 4" />
-      <text x={0} y={y(1) + 4} className="fill-white/50 text-[10px]">1×</text>
+      <line x1={pad} x2={w} y1={y(1)} y2={y(1)} stroke="currentColor" className="text-faint" strokeDasharray="4 4" />
+      <text x={0} y={y(1) + 4} className="fill-current text-[10px] text-faint">1×</text>
       {items.map((e, i) => {
         const v = e.outlier!;
-        const fill = !e.mature ? "#ffffff33" : v >= 1.2 ? "#6ee7b7" : v < 0.8 ? "#fda4af" : "#cbd5e1";
+        const tone = !e.mature ? "text-line" : v >= 1.2 ? "text-ink" : v < 0.8 ? "text-bad" : "text-faint";
         return (
-          <rect key={e.id} x={pad + i * bw + 1} width={Math.max(1, bw - 2)} y={y(v)} height={h - pad - y(v)} fill={fill} rx={1.5}>
+          <rect key={e.id} x={pad + i * bw + 1} width={Math.max(1, bw - 2)} y={y(v)} height={h - pad - y(v)} fill="currentColor" className={tone} rx={3}>
             <title>{`${e.title} · ${v.toFixed(1)}× · ${fmt.d(e.published_at)}`}</title>
           </rect>
         );
@@ -161,15 +163,15 @@ function OutlierChart({ items }: { items: Scored[] }) {
 function BreakdownTable({ label, rows }: { label: string; rows: { name: string; n: number; med: number | null }[] }) {
   return (
     <table className="w-full text-sm">
-      <thead className="text-left text-xs uppercase tracking-wider text-muted">
-        <tr><th className="py-1 font-medium">{label}</th><th className="py-1 text-right font-medium">Episode</th><th className="py-1 text-right font-medium">Outlier median</th></tr>
+      <thead className="text-left text-xs text-faint">
+        <tr><th className="py-2 font-medium">{label}</th><th className="py-2 text-right font-medium">Episode</th><th className="py-2 text-right font-medium">Outlier median</th></tr>
       </thead>
       <tbody>
         {rows.map((r) => (
-          <tr key={r.name} className="border-t border-card-border">
-            <td className="py-1.5">{r.name}</td>
-            <td className="py-1.5 text-right tabular-nums">{r.n}</td>
-            <td className="py-1.5 text-right tabular-nums"><OutlierText value={r.med} /></td>
+          <tr key={r.name} className="border-t border-line">
+            <td className="py-2.5">{r.name}</td>
+            <td className="py-2.5 text-right tabular-nums">{r.n}</td>
+            <td className="py-2.5 text-right tabular-nums"><OutlierText value={r.med} /></td>
           </tr>
         ))}
       </tbody>

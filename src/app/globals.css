@@ -24,6 +24,24 @@
   --color-whatsapp-dark: var(--whatsapp-dark);
   --font-sans: 'DM Sans', Arial, sans-serif;
   --font-display: 'Bebas Neue', Impact, sans-serif;
+
+  /* dashboard tokens, defined under .dash below */
+  --color-canvas: var(--d-canvas);
+  --color-frame: var(--d-frame);
+  --color-surface: var(--d-surface);
+  --color-subtle: var(--d-subtle);
+  --color-line: var(--d-line);
+  --color-ink: var(--d-ink);
+  --color-ink-soft: var(--d-ink-soft);
+  --color-faint: var(--d-faint);
+  --color-invert: var(--d-invert);
+  --color-on-invert: var(--d-on-invert);
+  --color-good: var(--d-good);
+  --color-good-soft: var(--d-good-soft);
+  --color-bad: var(--d-bad);
+  --color-bad-soft: var(--d-bad-soft);
+  --color-warn: var(--d-warn);
+  --color-bar-muted: var(--d-bar-muted);
 }
 
 html {
@@ -396,4 +414,64 @@ body {
 
 .stat-glow:hover .gradient-text {
   animation: countGlow 2s ease-in-out infinite;
+}
+
+/* ---- Internal dashboard (/dashboard): monochrome like the logo, light by default ---- */
+.dash {
+  --d-canvas: #e9e9e7;
+  --d-frame: #f4f4f2;
+  --d-surface: #ffffff;
+  --d-subtle: #f4f4f2;
+  --d-line: #e7e7e4;
+  --d-ink: #141414;
+  --d-ink-soft: #4a4a48;
+  --d-faint: #8a8a86;
+  --d-invert: #141414;
+  --d-on-invert: #ffffff;
+  --d-good: #15803d;
+  --d-good-soft: #dcfce7;
+  --d-bad: #dc2626;
+  --d-bad-soft: #fee2e2;
+  --d-warn: #ca8a04;
+  --d-hatch: #c9c9c5;
+  --d-bar-muted: #b4b4ae;
+  color-scheme: light;
+}
+.dash[data-theme="dark"] {
+  --d-canvas: #050505;
+  --d-frame: #0c0c0c;
+  --d-surface: #151515;
+  --d-subtle: #1c1c1c;
+  --d-line: #262626;
+  --d-ink: #f5f5f4;
+  --d-ink-soft: #c4c4c0;
+  --d-faint: #85857f;
+  --d-invert: #f5f5f4;
+  --d-on-invert: #111111;
+  --d-good: #4ade80;
+  --d-good-soft: rgba(74, 222, 128, 0.14);
+  --d-bad: #f87171;
+  --d-bad-soft: rgba(248, 113, 113, 0.14);
+  --d-warn: #facc15;
+  --d-hatch: #3a3a3a;
+  --d-bar-muted: #5c5c58;
+  color-scheme: dark;
+}
+.dash body {
+  background: var(--d-canvas);
+  color: var(--d-ink);
+}
+.dash ::selection {
+  background: #14141420;
+  color: inherit;
+}
+.dash ::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dash ::-webkit-scrollbar-thumb {
+  background: var(--d-line);
+}
+/* diagonal stripes, the "empty" part of bars and progress */
+.hatch {
+  background-image: repeating-linear-gradient(-45deg, var(--d-hatch) 0 2px, transparent 2px 7px);
 }
