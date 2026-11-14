@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireSession } from "@/lib/dashboard/auth";
-import { allVideos, lookups, videoTalents } from "@/lib/dashboard/db";
-import { KIND_LABEL, fmt, ipCard, median, score, type Scored } from "@/lib/dashboard/metrics";
+import { allVideos, lookups, velocity, videoTalents } from "@/lib/dashboard/db";
+import { EVERGREEN_AGE_DAYS, EVERGREEN_MIN_PER_DAY, KIND_LABEL, fmt, ipCard, median, score, type Scored } from "@/lib/dashboard/metrics";
 import { Card, KindTabs, OutlierText, Stat, VerdictBadge, parseKind } from "../../ui";
 
 export const dynamic = "force-dynamic";
@@ -17,11 +17,11 @@ export default async function IpPage({
   await requireSession();
   const ipId = Number((await params).id);
   const kind = parseKind((await searchParams).jenis);
-  const [videos, { ips, talents, formats }, vt] = await Promise.all([allVideos(), lookups(), videoTalents()]);
+  const [videos, { ips, talents, formats }, vt, vel] = await Promise.all([allVideos(), lookups(), videoTalents(), velocity()]);
   const ip = ips.find((i) => i.id === ipId);
   if (!ip) notFound();
 
-  const eps = score(videos).filter((v) => v.kind === kind && v.ip_id === ipId);
+  const eps = score(videos, vel.perDay).filter((v) => v.kind === kind && v.ip_id === ipId);
   const card = ipCard(ipId, eps);
   const talentName = new Map(talents.map((t) => [t.id, t.name]));
   const formatName = new Map(formats.map((f) => [f.id, f.name]));
@@ -58,11 +58,16 @@ export default async function IpPage({
         <KindTabs current={kind} base={`/dashboard/ip/${ipId}`} />
       </div>
 
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
         <Stat label="Episode" value={card.episodes} hint={KIND_LABEL[kind]} />
         <Stat label="Outlier median" value={<OutlierText value={card.medianOutlier} />} hint="1× = performa normal channel" />
         <Stat label="Median views" value={fmt.n(card.medianViews)} />
         <Stat label="Rata² komentar" value={fmt.n(card.avgComments)} hint={`${fmt.dec(card.commentsPer1k)} per 1rb views`} />
+        <Stat
+          label="Evergreen"
+          value={card.oldEpisodes ? <>{card.evergreenEpisodes}<span className="text-base text-muted"> / {card.oldEpisodes}</span></> : "–"}
+          hint={card.archivePerDay === null ? `episode ${EVERGREEN_AGE_DAYS}+ hari, menunggu data harian` : `episode ${EVERGREEN_AGE_DAYS}+ hari masih bawa ${fmt.n(card.archivePerDay)} views/hari`}
+        />
       </div>
 
       {chart.length > 1 && (
@@ -94,6 +99,7 @@ export default async function IpPage({
                 <th className="px-2 py-2 font-medium text-right">Terbit</th>
                 <th className="px-2 py-2 font-medium text-right">Views</th>
                 <th className="px-2 py-2 font-medium text-right">Outlier</th>
+                <th className="px-2 py-2 font-medium text-right" title="Views yang bertambah per hari belakangan ini">Views/hari</th>
                 <th className="px-2 py-2 font-medium text-right">Komentar</th>
                 <th className="px-4 py-2 font-medium">Talent · format</th>
               </tr>
@@ -108,6 +114,13 @@ export default async function IpPage({
                   <td className="px-2 py-2 text-right whitespace-nowrap text-white/60">{fmt.d(e.published_at)}</td>
                   <td className="px-2 py-2 text-right tabular-nums">{fmt.n(e.views)}</td>
                   <td className="px-2 py-2 text-right tabular-nums"><OutlierText value={e.outlier} mature={e.mature} /></td>
+                  <td className="px-2 py-2 text-right tabular-nums whitespace-nowrap">
+                    {e.perDay === null ? <span className="text-muted">–</span> : (
+                      <span className={e.evergreen ? "text-emerald-300" : "text-white/70"} title={e.evergreen ? "Evergreen: video lama yang masih terus ditonton" : undefined}>
+                        {e.evergreen && "🌱 "}+{fmt.n(e.perDay)}
+                      </span>
+                    )}
+                  </td>
                   <td className="px-2 py-2 text-right tabular-nums">{fmt.n(e.comments)}</td>
                   <td className="px-4 py-2 text-xs text-white/60">
                     {[(vt.get(e.id) ?? []).map((t) => talentName.get(t)).join(", "), e.format_id ? formatName.get(e.format_id) : ""].filter(Boolean).join(" · ") || "–"}
@@ -117,7 +130,7 @@ export default async function IpPage({
             </tbody>
           </table>
         </div>
-        <p className="mt-2 text-xs text-muted">* video &lt; 7 hari, angkanya masih bergerak.</p>
+        <p className="mt-2 text-xs text-muted">* video &lt; 7 hari, angkanya masih bergerak. 🌱 evergreen: umur {EVERGREEN_AGE_DAYS}+ hari dan masih ≥ {EVERGREEN_MIN_PER_DAY} views/hari.</p>
       </Card>
     </div>
   );
