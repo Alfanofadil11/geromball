@@ -5,6 +5,20 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 // This module is server-only: the key must never reach the browser.
 let client: SupabaseClient | null = null;
 
+/**
+ * Supabase sometimes rejects a fresh request with PGRST303 "JWT issued at future" when its
+ * servers' clocks disagree by a second. Waiting briefly and asking again clears it.
+ */
+async function retryClockSkew(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
+  for (let attempt = 0; ; attempt++) {
+    const res = await fetch(input, init);
+    if (res.status !== 401 || attempt >= 3) return res;
+    const body = await res.clone().text();
+    if (!body.includes("PGRST303")) return res;
+    await new Promise((r) => setTimeout(r, 700 * (attempt + 1)));
+  }
+}
+
 export function db(): SupabaseClient {
   if (client) return client;
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -12,7 +26,7 @@ export function db(): SupabaseClient {
   if (!url || !key) {
     throw new Error("Dashboard needs NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY");
   }
-  client = createClient(url, key, { auth: { persistSession: false } });
+  client = createClient(url, key, { auth: { persistSession: false }, global: { fetch: retryClockSkew } });
   return client;
 }
 

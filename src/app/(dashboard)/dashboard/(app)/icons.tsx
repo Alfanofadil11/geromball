@@ -71,3 +71,12 @@ export const IconBolt = ({ className }: P) => (
 export const IconChevronLeft = ({ className = "h-4 w-4" }: P) => (
   <svg {...base(className)}><path d="m15 6-6 6 6 6" /></svg>
 );
+export const IconFlag = ({ className }: P) => (
+  <svg {...base(className)}><path d="M5 21V4M5 4h11l-2 4 2 4H5" /></svg>
+);
+export const IconTrash = ({ className = "h-4 w-4" }: P) => (
+  <svg {...base(className)}><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3" /></svg>
+);
+export const IconCheck = ({ className = "h-3.5 w-3.5" }: P) => (
+  <svg {...base(className)} strokeWidth={2.4}><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
+);
