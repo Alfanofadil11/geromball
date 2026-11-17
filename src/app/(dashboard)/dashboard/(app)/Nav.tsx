@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { IconGrid, IconMoon, IconSliders, IconSun, IconTag } from "./icons";
+import { IconFlag, IconGrid, IconMoon, IconSliders, IconSun, IconTag } from "./icons";
 
 const ITEMS = [
   { href: "/dashboard", label: "Ringkasan", Icon: IconGrid },
+  { href: "/dashboard/kampanye", label: "Kampanye", Icon: IconFlag },
   { href: "/dashboard/tagging", label: "Tagging", Icon: IconTag },
   { href: "/dashboard/kelola", label: "Kelola", Icon: IconSliders },
 ];

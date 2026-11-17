@@ -126,3 +126,20 @@ export const theadRow = "bg-subtle";
 export const input = "rounded-full border border-line bg-surface px-4 py-2 text-sm outline-none placeholder:text-faint focus:border-ink/40";
 export const btnPrimary = "rounded-full bg-invert px-5 py-2 text-sm font-medium text-on-invert transition-opacity hover:opacity-90";
 export const btnGhost = "rounded-full border border-line bg-surface px-4 py-2 text-sm text-ink transition-colors hover:bg-subtle";
+
+/** Progress toward a target; turns green once the target is reached. */
+export function ProgressBar({ value, target, invert = false, className = "h-2.5" }: { value: number; target: number; invert?: boolean; className?: string }) {
+  const pct = target > 0 ? Math.min(1, value / target) : 0;
+  const hit = target > 0 && value >= target;
+  const track = invert ? "bg-on-invert/15" : "bg-subtle";
+  const fill = hit ? "bg-good" : invert ? "bg-on-invert" : "bg-invert";
+  return (
+    <div className={`overflow-hidden rounded-full ${track} ${className}`} role="progressbar" aria-valuenow={Math.round(pct * 100)} aria-valuemin={0} aria-valuemax={100}>
+      <div className={`h-full rounded-full ${fill}`} style={{ width: `${pct * 100}%` }} />
+    </div>
+  );
+}
+
+export function pct(value: number, target: number): string {
+  return target > 0 ? `${Math.round((value / target) * 100)}%` : "–";
+}
