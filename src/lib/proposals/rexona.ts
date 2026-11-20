@@ -139,6 +139,14 @@ export const rexona: Proposal = {
     agency: ["Kalender final, kami susun bersama Rexona setelah deal", "Penyesuaian konten kalau jadwal laga bergeser karena jadwal siaran TV", "Pembagian penyediaan produk sampling, booth dan poster di Geromball Grounds"],
   },
 
+  images: {
+    live: "/proposal/rexona/live.webp",
+    studio: { src: "/proposal/rexona/studio.webp", note: "Contoh integrasi brand di studio Pojok Debat, bersama Djarum Super" },
+    creative: { "1v6": "/proposal/rexona/1v6.webp", "Dream Team": "/proposal/rexona/dream-team.webp" },
+    proof: { src: "/proposal/rexona/djarum.webp", alt: "Thumbnail 9 episode podcast Geromball bersama Djarum Super" },
+    grounds: "/proposal/rexona/grounds.webp",
+  },
+
   acceptEmail: "alfanofadil@geromball.com",
 
   nextSteps: [

@@ -69,6 +69,14 @@ export type Proposal = {
   };
   contacts: Contact[];
   tbc: { client: string[]; agency: string[] };
+  // Photos from the source proposal, served from /public (they are the agency's own content).
+  images?: {
+    live?: string;
+    studio?: { src: string; note: string };
+    creative?: Record<string, string>; // by creative.name
+    proof?: { src: string; alt: string };
+    grounds?: string;
+  };
   acceptEmail: string;
   nextSteps: { who: "client" | "agency"; step: string }[];
 };

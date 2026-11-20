@@ -208,6 +208,10 @@ export default function ProposalView({ p }: { p: Proposal }) {
           <div className="wrap">
             <h2 className="display">Live Reaction</h2>
             <figure className="fig" data-reveal>
+              {p.images?.live && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="photo" src={p.images.live} alt="Siaran Live Reaction Geromball saat PSG vs Arsenal" loading="lazy" />
+              )}
               <div className="stats">
                 {p.live.stats.map((s, i) => (
                   <div key={i} className="stat" style={{ "--t": `${i * 100}ms` } as CSSProperties}>
@@ -243,15 +247,23 @@ export default function ProposalView({ p }: { p: Proposal }) {
             <p className="body">{p.podcast.line}</p>
             <figure className="fig" data-reveal>
               <div className="studio">
-                <div className="studio-frame">
-                  <span className="studio-live">REXONA · POJOK DEBAT</span>
-                  <div className="studio-seats" aria-hidden>
-                    {[0, 1, 2, 3].map((i) => (
-                      <span key={i} />
-                    ))}
+                {p.images?.studio ? (
+                  <div className="studio-photo">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img className="photo" src={p.images.studio.src} alt={p.images.studio.note} loading="lazy" />
+                    <span>{p.images.studio.note}</span>
                   </div>
-                  <span className="studio-squeeze">Squeeze frame Rexona</span>
-                </div>
+                ) : (
+                  <div className="studio-frame">
+                    <span className="studio-live">REXONA · POJOK DEBAT</span>
+                    <div className="studio-seats" aria-hidden>
+                      {[0, 1, 2, 3].map((i) => (
+                        <span key={i} />
+                      ))}
+                    </div>
+                    <span className="studio-squeeze">Squeeze frame Rexona</span>
+                  </div>
+                )}
                 <ul className="tiles">
                   {p.podcast.integration.map((x, i) => (
                     <li key={x.name} style={{ "--t": `${i * 70}ms` } as CSSProperties}>
@@ -274,9 +286,17 @@ export default function ProposalView({ p }: { p: Proposal }) {
               <div className="formats">
                 {p.creative.map((c, i) => (
                   <article key={c.name} className="format" style={{ "--t": `${i * 120}ms` } as CSSProperties}>
-                    <div className="thumb" aria-hidden>
-                      <span className="display">{c.name}</span>
-                    </div>
+                    {p.images?.creative?.[c.name] ? (
+                      <div className="thumb thumb-img">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={p.images.creative[c.name]} alt={`Contoh episode ${c.name} Geromball`} loading="lazy" />
+                        <span className="display">{c.name}</span>
+                      </div>
+                    ) : (
+                      <div className="thumb" aria-hidden>
+                        <span className="display">{c.name}</span>
+                      </div>
+                    )}
                     <p>{c.format}</p>
                     <p className="proof-line">{c.proof}</p>
                   </article>
@@ -358,7 +378,7 @@ export default function ProposalView({ p }: { p: Proposal }) {
             <h2 className="display">Nobar di Geromball Grounds</h2>
             <figure className="fig" data-reveal>
               <div className="venue">
-                <div className="venue-screen">
+                <div className="venue-screen" style={p.images?.grounds ? ({ "--bg": `url(${p.images.grounds})` } as CSSProperties) : undefined}>
                   <span className="display">{p.grounds.screen}</span>
                   <span>{p.grounds.capacity}</span>
                 </div>
@@ -467,6 +487,10 @@ export default function ProposalView({ p }: { p: Proposal }) {
               </div>
             </figure>
             <figure className="fig" data-reveal>
+              {p.proof && p.images?.proof && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="photo photo-proof" src={p.images.proof.src} alt={p.images.proof.alt} loading="lazy" />
+              )}
               <Bars dark rows={p.proof.cases.map((c) => ({ label: c.brand, value: c.views, note: c.format }))} />
               <figcaption className="say">
                 Views TikTok dari shorts Geromball untuk brand lain. {p.proof.highlight.line}.
