@@ -7,9 +7,10 @@ import { num, rp, rpFull, views } from "./format";
 
 // Which sections each reading shows, in order (playbook section 5).
 const ORDER: Record<Reading, string[]> = {
-  short: ["ideas", "matchday", "how", "builder", "proof", "next"],
-  long: ["ideas", "matchday", "live", "pojok", "creative", "shorts", "timeline", "grounds", "builder", "proof", "next"],
-  blog: ["ideas", "matchday", "live", "pojok", "creative", "shorts", "timeline", "grounds", "builder", "proof", "next"],
+  // The price always comes last: the builder is the final section of every reading.
+  short: ["ideas", "matchday", "how", "proof", "next", "builder"],
+  long: ["ideas", "matchday", "live", "pojok", "creative", "shorts", "timeline", "grounds", "proof", "next", "builder"],
+  blog: ["ideas", "matchday", "live", "pojok", "creative", "shorts", "timeline", "grounds", "proof", "next", "builder"],
 };
 const LABEL: Record<Reading, string> = { blog: "Blog", short: "Short", long: "Long" };
 const WPM = 238;
@@ -138,11 +139,23 @@ export default function ProposalView({ p }: { p: Proposal }) {
 
       <div ref={articleRef} className="article" hidden={mode === null} aria-hidden={mode === null}>
         {/* ---------- cover + the 3 ideas ---------- */}
-        <section data-sec="ideas" className="sec sec-dark cover" hidden={mode !== null && !shown("ideas")}>
+        <section
+          data-sec="ideas"
+          className="sec cover"
+          hidden={mode !== null && !shown("ideas")}
+        >
           <div className="wrap">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="hero-banner"
+              src="/proposal/geromball-hero.webp"
+              alt="Talent Geromball. The fastest growing sports media: TikTok 449K, YouTube 244K, Instagram 97K dalam 3 tahun"
+              width={981}
+              height={640}
+            />
             <p className="kick">{p.prepared}</p>
             <h1 className="display cover-title">
-              {p.client} <span className="rx-text-dark">Big Match</span> Series 2027
+              {p.client} <i>Big Match</i> Series 2027
             </h1>
             <p className="lede">{p.lede}</p>
             <p className="byline only-blog">
@@ -158,16 +171,18 @@ export default function ProposalView({ p }: { p: Proposal }) {
                 </li>
               ))}
             </ol>
-            <a className="btn btn-rx" href="#builder">
-              Lihat paket dan harga
+            <a className="btn btn-go" href="#matchday">
+              Lihat programnya
             </a>
           </div>
         </section>
 
         {/* ---------- 01 Rexona Matchday ---------- */}
-        <section data-sec="matchday" className="sec" hidden={!shown("matchday")}>
+        <section data-sec="matchday" id="matchday" className="sec" hidden={!shown("matchday")}>
           <div className="wrap">
-            <h2 className="display">Setiap big match jadi Rexona Matchday</h2>
+            <h2 className="display">
+              Cara Rexona hadir <i>di setiap big match</i>
+            </h2>
             <figure className="fig" data-reveal>
               <ol className="loop">
                 {p.matchday.map((m, i) => (
@@ -186,7 +201,9 @@ export default function ProposalView({ p }: { p: Proposal }) {
         {/* ---------- Short only: the five programmes in one look ---------- */}
         <section data-sec="how" className="sec sec-grey" hidden={!shown("how")}>
           <div className="wrap">
-            <h2 className="display">Isi paketnya</h2>
+            <h2 className="display">
+              Isi <i>paketnya</i>
+            </h2>
             <figure className="fig" data-reveal>
               <ul className="pkg">
                 {p.builder.items.map((it, i) => (
@@ -204,9 +221,11 @@ export default function ProposalView({ p }: { p: Proposal }) {
         </section>
 
         {/* ---------- Live Reaction ---------- */}
-        <section data-sec="live" className="sec sec-dark" hidden={!shown("live")}>
+        <section data-sec="live" className="sec sec-white" hidden={!shown("live")}>
           <div className="wrap">
-            <h2 className="display">Live Reaction</h2>
+            <h2 className="display">
+              <i>Live</i> Reaction
+            </h2>
             <figure className="fig" data-reveal>
               {p.images?.live && (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -243,7 +262,9 @@ export default function ProposalView({ p }: { p: Proposal }) {
         {/* ---------- Pojok Debat ---------- */}
         <section data-sec="pojok" className="sec" hidden={!shown("pojok")}>
           <div className="wrap">
-            <h2 className="display">Pojok Debat</h2>
+            <h2 className="display">
+              Pojok <i>Debat</i>
+            </h2>
             <p className="body">{p.podcast.line}</p>
             <figure className="fig" data-reveal>
               <div className="studio">
@@ -281,7 +302,9 @@ export default function ProposalView({ p }: { p: Proposal }) {
         {/* ---------- Creative Videos ---------- */}
         <section data-sec="creative" className="sec sec-grey" hidden={!shown("creative")}>
           <div className="wrap">
-            <h2 className="display">Creative Video sebelum match</h2>
+            <h2 className="display">
+              <i>Creative</i> Video sebelum match
+            </h2>
             <figure className="fig" data-reveal>
               <div className="formats">
                 {p.creative.map((c, i) => (
@@ -310,7 +333,9 @@ export default function ProposalView({ p }: { p: Proposal }) {
         {/* ---------- Shorts + clippers ---------- */}
         <section data-sec="shorts" className="sec" hidden={!shown("shorts")}>
           <div className="wrap">
-            <h2 className="display">Shorts dan clippers</h2>
+            <h2 className="display">
+              Shorts dan <i>clippers</i>
+            </h2>
             <p className="body">{p.shorts.line}</p>
             <figure className="fig" data-reveal>
               <div className="mirror">
@@ -345,9 +370,11 @@ export default function ProposalView({ p }: { p: Proposal }) {
         </section>
 
         {/* ---------- Timeline ---------- */}
-        <section data-sec="timeline" className="sec sec-dark" hidden={!shown("timeline")}>
+        <section data-sec="timeline" className="sec sec-grey" hidden={!shown("timeline")}>
           <div className="wrap wrap-wide">
-            <h2 className="display">13 big match, Januari sampai Juni 2027</h2>
+            <h2 className="display">
+              13 big match, <i>Januari sampai Juni 2027</i>
+            </h2>
             <figure className="fig" data-reveal>
               <div className="months">
                 {MONTHS.map((m, mi) => (
@@ -357,11 +384,13 @@ export default function ProposalView({ p }: { p: Proposal }) {
                       .filter((x) => x.month === mi + 1)
                       .map((x) => (
                         <div key={x.name} className={`match ${x.nobar ? "is-nobar" : ""} ${x.final ? "is-final" : ""}`}>
-                          <span className="match-type">{x.nobar ? "Nobar offline" : "Live Reaction"}</span>
-                          <b>{x.name}</b>
-                          <span className="match-date">{x.date}</span>
-                          {x.creative && <span className="match-add">Creative Video sebelumnya</span>}
-                          {x.review && <span className="match-add">Pojok Debat Review hari Senin</span>}
+                          <span className="match-stub">{x.date}</span>
+                          <span className="match-body">
+                            <span className="match-type">{x.nobar ? "Nobar offline" : "Live Reaction"}</span>
+                            <b>{x.name}</b>
+                            {x.creative && <span className="match-add">+ Creative Video sebelumnya</span>}
+                            {x.review && <span className="match-add">+ Pojok Debat Review hari Senin</span>}
+                          </span>
                         </div>
                       ))}
                   </div>
@@ -375,7 +404,9 @@ export default function ProposalView({ p }: { p: Proposal }) {
         {/* ---------- Geromball Grounds ---------- */}
         <section data-sec="grounds" className="sec" hidden={!shown("grounds")}>
           <div className="wrap">
-            <h2 className="display">Nobar di Geromball Grounds</h2>
+            <h2 className="display">
+              Nobar di <i>Geromball Grounds</i>
+            </h2>
             <figure className="fig" data-reveal>
               <div className="venue">
                 <div className="venue-screen" style={p.images?.grounds ? ({ "--bg": `url(${p.images.grounds})` } as CSSProperties) : undefined}>
@@ -403,10 +434,104 @@ export default function ProposalView({ p }: { p: Proposal }) {
           </div>
         </section>
 
-        {/* ---------- Builder ---------- */}
+        {/* ---------- Proof ---------- */}
+        <section data-sec="proof" className="sec sec-white" hidden={!shown("proof")}>
+          <div className="wrap">
+            <h2 className="display">
+              Hasil Geromball <i>bersama brand lain</i>
+            </h2>
+            <figure className="fig" data-reveal>
+              <div className="stats stats-3">
+                {p.proof.numbers.map((s, i) => (
+                  <div key={i} className="stat" style={{ "--t": `${i * 100}ms` } as CSSProperties}>
+                    <b className="display">{s.value}</b>
+                    <span>{s.label}</span>
+                  </div>
+                ))}
+              </div>
+            </figure>
+            <figure className="fig" data-reveal>
+              {p.proof && p.images?.proof && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="photo photo-proof" src={p.images.proof.src} alt={p.images.proof.alt} loading="lazy" />
+              )}
+              <Bars dark rows={p.proof.cases.map((c) => ({ label: c.brand, value: c.views, note: c.format }))} />
+              <figcaption className="say">
+                Views TikTok dari shorts Geromball untuk brand lain. {p.proof.highlight.line}.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        {/* ---------- Next step + accept ---------- */}
+        <section data-sec="next" className="sec" hidden={!shown("next")}>
+          <div className="wrap">
+            <h2 className="display">
+              Langkah <i>berikutnya</i>
+            </h2>
+            <figure className="fig" data-reveal>
+              <ol className="steps">
+                {p.nextSteps.map((s, i) => (
+                  <li key={i} className={s.who === "client" ? "is-client" : ""}>
+                    <span className="steps-who">{s.who === "client" ? p.client : p.agency}</span>
+                    {s.step}
+                  </li>
+                ))}
+              </ol>
+            </figure>
+            <div className="tbc">
+              <h3>Masih perlu dikonfirmasi</h3>
+              <div className="tbc-cols">
+                <div>
+                  <span className="tbc-who rx-text">Menunggu tim {p.client}</span>
+                  <ul>
+                    {p.tbc.client.map((x) => (
+                      <li key={x}>{x}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <span className="tbc-who">Menunggu {p.agency}</span>
+                  <ul>
+                    {p.tbc.agency.map((x) => (
+                      <li key={x}>{x}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <ul className="contacts">
+              {p.contacts.map((c) => (
+                <li key={c.name}>
+                  <span className="avatar" aria-hidden>
+                    {c.name
+                      .split(" ")
+                      .map((w) => w[0])
+                      .slice(0, 2)
+                      .join("")}
+                  </span>
+                  <div>
+                    <b>{c.name}</b>
+                    {c.role && <span>{c.role}</span>}
+                    {c.whatsapp && (
+                      <a href={`https://wa.me/${c.whatsapp}`} target="_blank" rel="noreferrer">
+                        WhatsApp +{c.whatsapp.replace(/^(\d{2})(\d{3})(\d{4})(\d+)$/, "$1 $2-$3-$4")}
+                      </a>
+                    )}
+                    {c.email && <a href={`mailto:${c.email}`}>{c.email}</a>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* ---------- Builder: always the last section, so the price comes last ---------- */}
         <section data-sec="builder" id="builder" className="sec sec-grey" hidden={!shown("builder")}>
           <div className="wrap wrap-wide">
-            <h2 className="display">Susun paket Rexona</h2>
+            <h2 className="display">
+              Susun paket <i>{p.client}</i>
+            </h2>
             <p className="body">Kalau Rexona mau mengubah jumlah konten, atur di sini. Harga satuan adalah harga normal dari proposal.</p>
             <div className="builder" data-mv="builder">
               <ul className="b-items">
@@ -434,7 +559,9 @@ export default function ProposalView({ p }: { p: Proposal }) {
                 <span className="b-sum-k">{d.full ? "Harga spesial paket lengkap" : "Harga normal pilihan ini"}</span>
                 <b className="display b-price">{rp(d.price)}</b>
                 {d.full ? (
-                  <span className="b-was">Harga normal {rp(d.fullNormal)}</span>
+                  <span className="b-was">
+                    Harga normal <s>{rp(d.fullNormal)}</s>
+                  </span>
                 ) : (
                   <span className="b-was">Harga spesial Rp 1,2 M berlaku untuk paket lengkap. Untuk paket custom, kami kirim harga spesialnya setelah Rexona mengirim pilihan ini.</span>
                 )}
@@ -472,117 +599,8 @@ export default function ProposalView({ p }: { p: Proposal }) {
           </div>
         </section>
 
-        {/* ---------- Proof ---------- */}
-        <section data-sec="proof" className="sec sec-dark" hidden={!shown("proof")}>
-          <div className="wrap">
-            <h2 className="display">Hasil Geromball bersama brand lain</h2>
-            <figure className="fig" data-reveal>
-              <div className="stats stats-3">
-                {p.proof.numbers.map((s, i) => (
-                  <div key={i} className="stat" style={{ "--t": `${i * 100}ms` } as CSSProperties}>
-                    <b className="display">{s.value}</b>
-                    <span>{s.label}</span>
-                  </div>
-                ))}
-              </div>
-            </figure>
-            <figure className="fig" data-reveal>
-              {p.proof && p.images?.proof && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img className="photo photo-proof" src={p.images.proof.src} alt={p.images.proof.alt} loading="lazy" />
-              )}
-              <Bars dark rows={p.proof.cases.map((c) => ({ label: c.brand, value: c.views, note: c.format }))} />
-              <figcaption className="say">
-                Views TikTok dari shorts Geromball untuk brand lain. {p.proof.highlight.line}.
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        {/* ---------- Next step + accept ---------- */}
-        <section data-sec="next" className="sec" hidden={!shown("next")}>
-          <div className="wrap">
-            <h2 className="display">Langkah berikutnya</h2>
-            <figure className="fig" data-reveal>
-              <ol className="steps">
-                {p.nextSteps.map((s, i) => (
-                  <li key={i} className={s.who === "client" ? "is-client" : ""}>
-                    <span className="steps-who">{s.who === "client" ? p.client : p.agency}</span>
-                    {s.step}
-                  </li>
-                ))}
-              </ol>
-            </figure>
-            <div className="tbc">
-              <h3>Masih perlu dikonfirmasi</h3>
-              <div className="tbc-cols">
-                <div>
-                  <span className="tbc-who rx-text">Menunggu tim {p.client}</span>
-                  <ul>
-                    {p.tbc.client.map((x) => (
-                      <li key={x}>{x}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <span className="tbc-who">Menunggu {p.agency}</span>
-                  <ul>
-                    {p.tbc.agency.map((x) => (
-                      <li key={x}>{x}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="close-card">
-              <div>
-                <span className="b-sum-k">{d.full ? "Paket lengkap" : "Paket pilihan Rexona"}</span>
-                <b className="display b-price">{rp(d.price)}</b>
-              </div>
-              <button className="btn btn-rx" disabled={d.empty} onClick={() => acceptRef.current?.showModal()}>
-                Terima paket ini
-              </button>
-            </div>
-            <ul className="contacts">
-              {p.contacts.map((c) => (
-                <li key={c.name}>
-                  <span className="avatar" aria-hidden>
-                    {c.name
-                      .split(" ")
-                      .map((w) => w[0])
-                      .slice(0, 2)
-                      .join("")}
-                  </span>
-                  <div>
-                    <b>{c.name}</b>
-                    {c.role && <span>{c.role}</span>}
-                    {c.whatsapp && (
-                      <a href={`https://wa.me/${c.whatsapp}`} target="_blank" rel="noreferrer">
-                        WhatsApp +{c.whatsapp.replace(/^(\d{2})(\d{3})(\d{4})(\d+)$/, "$1 $2-$3-$4")}
-                      </a>
-                    )}
-                    {c.email && <a href={`mailto:${c.email}`}>{c.email}</a>}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
         <footer className="foot">Disiapkan oleh {p.agency} · geromball.com</footer>
       </div>
-
-      {mode !== null && !d.empty && (
-        <div className="mbar">
-          <span>
-            <small>{d.full ? "Paket lengkap" : "Pilihan Rexona"}</small>
-            <b>{rp(d.price)}</b>
-          </span>
-          <button className="btn btn-rx" onClick={() => acceptRef.current?.showModal()}>
-            Terima
-          </button>
-        </div>
-      )}
 
       <AcceptSheet ref={acceptRef} p={p} d={d} />
     </div>
@@ -604,7 +622,7 @@ function Chooser({ p, minutes, onPick }: { p: Proposal; minutes: Record<Reading,
         </button>
         <button className="choose" onClick={() => onPick("short")}>
           <b className="display">Short</b>
-          <span>Langsung ke paket dan harganya.</span>
+          <span>Ringkasan isi paket, dengan harga di bagian akhir.</span>
           {minutes && <small>Sekitar {minutes.short} menit</small>}
         </button>
       </div>

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   icons: { icon: "/icon.png" },
 };
 
-export const viewport: Viewport = { themeColor: "#080808" };
+export const viewport: Viewport = { themeColor: "#18181b" };
 
 export default function ProposalRootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -16,7 +16,7 @@ export default function ProposalRootLayout({ children }: Readonly<{ children: Re
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@1,8..60,400;1,8..60,500&display=swap" rel="stylesheet" />
       </head>
       <body className="pp">{children}</body>
     </html>
