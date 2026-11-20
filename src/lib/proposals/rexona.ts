@@ -18,7 +18,7 @@ export const rexona: Proposal = {
   ideas: [
     { big: "13", unit: "big match", line: "Setiap laga punya Live Reaction atau nobar bersama Rexona, dan laga pilihan juga punya video sebelum match dan review hari Senin." },
     { big: "1,65 jt", unit: "views", line: "Total guarantee views dari 27 video YouTube panjang. 41 shorts diperkirakan menambah 4,1 jt views di luar guarantee." },
-    { big: "Rp 1,2 M", unit: "paket lengkap", line: "Harga spesial dari harga normal Rp 1,695 M, dengan eksklusivitas kategori deodoran." },
+    { big: "3", unit: "nobar offline", line: "Tiga laga terbesar musim ini ditonton bareng komunitas Geromball di Geromball Grounds, Tebet." },
   ],
 
   matchday: [
@@ -114,7 +114,8 @@ export const rexona: Proposal = {
 
   proof: {
     numbers: [
-      { value: "789 rb+", label: "followers dan subscribers (TikTok 453 rb, YouTube 240 rb, Instagram 96 rb)" },
+      // Follower counts match the hero banner Fadil supplied (Nov 2026); 449 + 244 + 97 = 790 rb.
+      { value: "790 rb", label: "followers dan subscribers (TikTok 449 rb, YouTube 244 rb, Instagram 97 rb)" },
       { value: "83–90%", label: "audiens berusia 18–34 tahun" },
       { value: "45+", label: "brand sudah bekerja sama dengan Geromball" },
     ],
