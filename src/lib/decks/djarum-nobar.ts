@@ -18,27 +18,21 @@ export const djarumNobar: Deck = {
   rundown: rundown("Djarum Super", match),
   brand: {
     title: "Djarum Super di venue dan di layar",
-    lead: "Djarum Super hadir di tiga segmen acara yang membawa CTA Djarum Super, dan seluruh acara ditayangkan live di YouTube Geromball.",
+    lead: "Djarum Super hadir di tiga segmen acara yang membawa CTA Djarum Super, dan nobar juga tayang sebagai Live Reaction di YouTube Geromball.",
     points: [
       { name: "Gamifikasi", detail: "Games dan kuis membawa CTA Djarum Super." },
       { name: "Live Pojok Debat", detail: "Talent menyampaikan CTA Djarum Super sebelum kick off." },
       { name: "Half time", detail: "Live komentator menyampaikan CTA Djarum Super." },
-      { name: "Live Reaction YouTube", detail: "Nobar dimirror sebagai Live Reaction di channel YouTube Geromball." },
+      { name: "Live Reaction YouTube", detail: "Confirmed bisa berjalan bersamaan dengan nobar." },
     ],
     photo: { label: "Talent Geromball memandu games di depan penonton", src: "/deck/grounds/gamifikasi-host.webp" },
   },
   live: {
-    title: "Nobar yang juga tayang live di YouTube",
-    lead: "Acara di Geromball Grounds disiarkan sebagai Live Reaction di YouTube Geromball, jadi penonton di rumah ikut menonton bareng penonton di venue. Angka di bawah dari sesi Live Reaction Geromball terakhir.",
-    stats: [
-      { value: "167 rb", label: "views" },
-      { value: "7.537", label: "penonton bersamaan tertinggi" },
-      { value: "3.552", label: "rata-rata penonton bersamaan" },
-      { value: "20,2 rb", label: "jam tonton" },
-    ],
-    photo: { label: "Setup kamera dan streaming di Geromball Grounds" },
+    title: "Nobar dan Live Reaction YouTube",
+    badge: "Confirmed",
+    lead: "Nobar di Geromball Grounds bisa berjalan bersamaan dengan Live Reaction di YouTube Geromball.",
   },
-  tbc: ["Materi brand Djarum Super untuk venue dan siaran live", "Judul dan jadwal tayang Live Reaction di YouTube"],
+  tbc: ["Materi brand Djarum Super untuk venue dan siaran live"],
   contacts,
 };
 

@@ -32,6 +32,7 @@ export const rexonaNobar: Deck = {
     price: "Rp 25 rb",
     gets: ["1 kopi", "1 Rexona Men"],
     note: "Di soft opening, reservasi hanya mendapat kopi. Untuk nobar Rexona, tiket Rp 25 rb mendapat kopi dan 1 Rexona Men.",
+    status: "To be confirmed, harga dan isi tiket bisa didiskusikan bersama tim Rexona",
   },
   tbc: ["Jumlah produk Rexona Men untuk penonton", "Materi poster dan booth dari tim Rexona"],
   contacts,
