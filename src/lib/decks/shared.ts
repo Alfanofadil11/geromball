@@ -4,7 +4,7 @@ import type { Deck } from "./types";
 // Sources: Fadil (soft opening Chelsea vs Man United, Nov 2026; rundown) and the Rexona proposal (venue).
 export const venue: Deck["venue"] = {
   place: "Selawaktu Cafe, Tebet, Jakarta Selatan",
-  screen: "Layar 120 inci",
+  screen: "Layar utama di depan, ditambah 4 TV di area belakang dan indoor",
   capacity: "105 kursi reserved, ditambah area berdiri di belakang",
   photos: [
     { label: "Papan nama dan layar Geromball Grounds", src: "/deck/grounds/papan-nama.webp" },
@@ -33,7 +33,7 @@ export const rundown = (brand: string, m: Deck["match"]): Deck["rundown"] => [
   { step: "Opening gate", time: m.gateOpen, detail: "Penonton masuk ke venue." },
   { step: "Gamifikasi bersama audiens", time: m.eventStart, detail: `Games bersama penonton, berisi CTA ${brand}.`, cta: true },
   { step: "Live Pojok Debat", detail: `Pojok Debat live di depan penonton, berisi CTA ${brand}.`, cta: true },
-  { step: "Kick off nobar", time: m.kickoff, detail: "Babak pertama ditonton bareng di layar 120 inci." },
+  { step: "Kick off nobar", time: m.kickoff, detail: "Babak pertama ditonton bareng di layar utama dan 4 TV." },
   { step: "Half time", detail: `Live komentator membahas babak pertama, berisi CTA ${brand}.`, cta: true },
   { step: "Second half", detail: "Babak kedua sampai peluit akhir." },
   { step: "Closing event", detail: "Penutupan acara." },

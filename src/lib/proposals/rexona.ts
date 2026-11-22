@@ -92,8 +92,8 @@ export const rexona: Proposal = {
 
   grounds: {
     place: "Selawaktu Cafe, Tebet, Jakarta Selatan",
-    screen: "Layar 120 inci",
-    capacity: "100–150 pengunjung per sesi",
+    screen: "Layar utama dan 4 TV",
+    capacity: "Layar utama di depan, 4 TV di area belakang dan indoor · 100–150 pengunjung per sesi",
     sessions: ["Semifinal Liga Champions Leg 2", "El Clasico", "Final Liga Champions"],
     rundown: ["Nobar big match", "Pojok Debat live di depan penonton", "Kuis dan Q&A bersama talent", "Roasting talent saat half time", "Poster, booth dan sampling produk Rexona di venue"],
   },
@@ -132,7 +132,6 @@ export const rexona: Proposal = {
 
   contacts: [
     { name: "Alfano Fadil", role: "Senior Business Development", whatsapp: "6287700023151", email: "alfanofadil@geromball.com" },
-    { name: "Abdullah", role: "Direktur Geromball" },
   ],
 
   tbc: {
