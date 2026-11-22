@@ -26,7 +26,7 @@ function same(a: string, b: string): boolean {
 }
 
 /** Codes are typed loosely (spaces, lower case); compare the normalised form's digest. */
-export function codeMatches(p: Proposal, input: string): boolean {
+export function codeMatches(p: { codeSha256: string }, input: string): boolean {
   const norm = input.toUpperCase().replace(/[^A-Z0-9]/g, "");
   const want = p.codeSha256;
   // the stored hash is of the dashed form XXXX-XXXX-XXXX
