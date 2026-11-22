@@ -1,10 +1,12 @@
 "use client";
 
 import { useActionState } from "react";
-import { unlock } from "./actions";
 
-export default function Gate({ slug, client, agency }: { slug: string; client: string; agency: string }) {
-  const [error, action, pending] = useActionState(unlock.bind(null, slug), null);
+type Unlock = (prev: string | null, form: FormData) => Promise<string | null>;
+
+// Shared by proposals (/proposal/[slug]) and decks (/deck/[slug]); the page passes its bound unlock action.
+export default function Gate({ client, agency, title, button = "Buka proposal", unlock }: { client: string; agency: string; title?: string; button?: string; unlock: Unlock }) {
+  const [error, action, pending] = useActionState(unlock, null);
   return (
     <main className="gate">
       <div className="gate-card">
@@ -13,12 +15,12 @@ export default function Gate({ slug, client, agency }: { slug: string; client: s
         <p className="gate-co">
           {agency} <span>×</span> <b className="rx-text-dark">{client}</b>
         </p>
-        <h1 className="display">Proposal untuk {client}</h1>
+        <h1 className="display">{title ?? `Proposal untuk ${client}`}</h1>
         <form action={action} className="gate-form">
           <label htmlFor="code">Kode akses</label>
           <input id="code" name="code" autoComplete="off" autoCapitalize="characters" spellCheck={false} placeholder="XXXX-XXXX-XXXX" required autoFocus />
           {error && <p className="gate-err" role="alert">{error}</p>}
-          <button className="btn btn-light" disabled={pending}>{pending ? "Memeriksa…" : "Buka proposal"}</button>
+          <button className="btn btn-light" disabled={pending}>{pending ? "Memeriksa…" : button}</button>
         </form>
         <p className="gate-hint">Kode akses 12 karakter dikirim terpisah dari link ini.</p>
       </div>

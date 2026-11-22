@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { accessCookie, getProposal, hasAccess } from "@/lib/proposals/access";
 import Gate from "./Gate";
+import { unlock } from "./actions";
 import ProposalView from "./ProposalView";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -22,5 +23,5 @@ export default async function ProposalPage({ params }: Props) {
   if (!p) notFound();
   const open = hasAccess(slug, (await cookies()).get(accessCookie(slug))?.value);
   // The proposal data only reaches the browser after the code is accepted.
-  return open ? <ProposalView p={p} /> : <Gate slug={slug} client={p.client} agency={p.agency} />;
+  return open ? <ProposalView p={p} /> : <Gate client={p.client} agency={p.agency} unlock={unlock.bind(null, slug)} />;
 }
