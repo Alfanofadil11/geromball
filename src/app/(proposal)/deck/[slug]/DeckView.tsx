@@ -8,7 +8,17 @@ function Shot({ p, tall }: { p: Photo; tall?: boolean }) {
   if (p.video) {
     return (
       <figure className="dk-fig">
-        <video className={`dk-shot ${tall ? "is-tall" : ""}`} src={p.video} poster={p.src} autoPlay muted loop playsInline preload="metadata" aria-label={p.label} />
+        <video
+          className={`dk-shot ${tall ? "is-tall" : ""}`}
+          src={p.video}
+          poster={p.src}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label={p.label}
+        />
         <figcaption>{p.label}</figcaption>
       </figure>
     );
@@ -17,15 +27,32 @@ function Shot({ p, tall }: { p: Photo; tall?: boolean }) {
     return (
       <figure className="dk-fig">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className={`dk-shot ${tall ? "is-tall" : ""}`} src={p.src} alt={p.label} loading="lazy" />
+        <img
+          className={`dk-shot ${tall ? "is-tall" : ""}`}
+          src={p.src}
+          alt={p.label}
+          loading="lazy"
+        />
         <figcaption>{p.label}</figcaption>
       </figure>
     );
   }
   // A labelled slot until the real photo arrives.
   return (
-    <div className={`dk-shot dk-slot ${tall ? "is-tall" : ""}`} role="img" aria-label={`Foto menyusul: ${p.label}`}>
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+    <div
+      className={`dk-shot dk-slot ${tall ? "is-tall" : ""}`}
+      role="img"
+      aria-label={`Foto menyusul: ${p.label}`}
+    >
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        aria-hidden
+      >
         <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
         <circle cx="12" cy="13" r="3.5" />
       </svg>
@@ -36,7 +63,10 @@ function Shot({ p, tall }: { p: Photo; tall?: boolean }) {
 
 export default function DeckView({ d }: { d: Deck }) {
   const root = useRef<HTMLDivElement>(null);
-  const vars = { "--rx": d.clientColor.fill, "--rx-dark": d.clientColor.onDark } as CSSProperties;
+  const vars = {
+    "--rx": d.clientColor.fill,
+    "--rx-dark": d.clientColor.onDark,
+  } as CSSProperties;
 
   // Arrow keys, Page Up/Down and space move one slide.
   useEffect(() => {
@@ -44,10 +74,15 @@ export default function DeckView({ d }: { d: Deck }) {
       const next = ["ArrowDown", "ArrowRight", "PageDown", " "].includes(e.key);
       const prev = ["ArrowUp", "ArrowLeft", "PageUp"].includes(e.key);
       if (!next && !prev) return;
-      const slides = Array.from(root.current?.querySelectorAll<HTMLElement>(".dk-slide") ?? []);
+      const slides = Array.from(
+        root.current?.querySelectorAll<HTMLElement>(".dk-slide") ?? [],
+      );
       const y = window.scrollY + 8;
-      const i = slides.findIndex((s, n) => (slides[n + 1]?.offsetTop ?? Infinity) > y);
-      const target = slides[Math.min(slides.length - 1, Math.max(0, i + (next ? 1 : -1)))];
+      const i = slides.findIndex(
+        (s, n) => (slides[n + 1]?.offsetTop ?? Infinity) > y,
+      );
+      const target =
+        slides[Math.min(slides.length - 1, Math.max(0, i + (next ? 1 : -1)))];
       if (!target) return;
       e.preventDefault();
       target.scrollIntoView({ behavior: "smooth" });
@@ -63,7 +98,11 @@ export default function DeckView({ d }: { d: Deck }) {
       {/* 1. Cover */}
       <section className="dk-slide dk-cover">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="dk-banner" src={d.cover.banner} alt="Geromball, the fastest growing sports media" />
+        <img
+          className="dk-banner"
+          src={d.cover.banner}
+          alt="Geromball, the fastest growing sports media"
+        />
         <div className="dk-cover-txt">
           <span className="dk-chip">
             {d.agency} × <b>{d.client}</b>
@@ -184,6 +223,9 @@ export default function DeckView({ d }: { d: Deck }) {
             </h2>
             <div className="dk-ticket">
               <div className="dk-ticket-stub">
+                {d.ticket.status && (
+                  <span className="dk-badge dk-badge-tbc">To be confirmed</span>
+                )}
                 <small>Tiket nobar</small>
                 <b>{d.ticket.price}</b>
                 <span>
@@ -197,6 +239,7 @@ export default function DeckView({ d }: { d: Deck }) {
               </ul>
             </div>
             <p className="dk-lead">{d.ticket.note}</p>
+            {d.ticket.status && <p className="dk-status">{d.ticket.status}.</p>}
           </div>
         </section>
       )}
@@ -205,16 +248,19 @@ export default function DeckView({ d }: { d: Deck }) {
       {d.live && (
         <section className="dk-slide">
           <div className="dk-wrap">
+            {d.live.badge && <span className="dk-badge">{d.live.badge}</span>}
             <h2 className="dk-h">{d.live.title}</h2>
             <p className="dk-lead">{d.live.lead}</p>
-            <div className="dk-stats">
-              {d.live.stats.map((s) => (
-                <div key={s.label}>
-                  <b>{s.value}</b>
-                  <span>{s.label}</span>
-                </div>
-              ))}
-            </div>
+            {d.live.stats && (
+              <div className="dk-stats">
+                {d.live.stats.map((s) => (
+                  <div key={s.label}>
+                    <b>{s.value}</b>
+                    <span>{s.label}</span>
+                  </div>
+                ))}
+              </div>
+            )}
             {d.live.photo && (
               <div className="dk-shots dk-shots-1">
                 <Shot p={d.live.photo} />
@@ -266,7 +312,15 @@ export default function DeckView({ d }: { d: Deck }) {
                 <li key={c.name}>
                   <b>{c.name}</b>
                   {c.role && <span>{c.role}</span>}
-                  {c.whatsapp && <a href={`https://wa.me/${c.whatsapp}`}>WhatsApp +{c.whatsapp.replace(/^(\d{2})(\d{3})(\d{4})(\d+)$/, "$1 $2-$3-$4")}</a>}
+                  {c.whatsapp && (
+                    <a href={`https://wa.me/${c.whatsapp}`}>
+                      WhatsApp +
+                      {c.whatsapp.replace(
+                        /^(\d{2})(\d{3})(\d{4})(\d+)$/,
+                        "$1 $2-$3-$4",
+                      )}
+                    </a>
+                  )}
                   {c.email && <a href={`mailto:${c.email}`}>{c.email}</a>}
                 </li>
               ))}

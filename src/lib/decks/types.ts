@@ -17,8 +17,8 @@ export type Deck = {
   caseStudy: { match: string; seats: number; lines: string[]; photos: Photo[] };
   rundown: { step: string; detail: string; time?: string; cta?: boolean }[];
   brand: { title: string; lead: string; points: { name: string; detail: string }[]; photo?: Photo };
-  live?: { title: string; lead: string; stats: { value: string; label: string }[]; photo?: Photo };
-  ticket?: { price: string; gets: string[]; note: string };
+  live?: { title: string; lead: string; badge?: string; stats?: { value: string; label: string }[]; photo?: Photo };
+  ticket?: { price: string; gets: string[]; note: string; status?: string };
   tbc: string[];
   contacts: { name: string; role?: string; whatsapp?: string; email?: string }[];
 };

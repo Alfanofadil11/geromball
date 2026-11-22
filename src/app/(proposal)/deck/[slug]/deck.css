@@ -452,6 +452,34 @@ html:has(.dk) {
   }
 }
 
+/* status badges */
+.dk-badge {
+  display: inline-block;
+  justify-self: start;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--green);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-bottom: 16px;
+}
+.dk-badge-tbc {
+  background: #fff;
+  color: var(--rx);
+  margin-bottom: 6px;
+}
+.dk-status {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 15px;
+  border: 1px dashed var(--line-2);
+  border-radius: 14px;
+  padding: 10px 14px;
+  margin: 0;
+}
+
 /* live stats */
 .dk-stats {
   display: grid;
