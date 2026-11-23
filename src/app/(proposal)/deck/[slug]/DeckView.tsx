@@ -151,6 +151,71 @@ export default function DeckView({ d }: { d: Deck }) {
         </div>
       </section>
 
+      {/* 2b. Floor plan: zones, screens, stage, gate */}
+      <section className="dk-slide">
+        <div className="dk-wrap">
+          <h2 className="dk-h">
+            Denah <i>Geromball Grounds</i>
+          </h2>
+          <div className="dk-split">
+            <div className="dk-map" role="img" aria-label="Denah Geromball Grounds: Zona A, B, C di dalam, stage dan Zona D di luar, entrance gate di depan">
+              <div className="dk-map-cell is-muted">Toilet</div>
+              <div className="dk-map-cell is-muted dk-span2">Bar</div>
+              {d.venue.zones
+                .filter((z) => z.id === "A" || z.id === "B")
+                .map((z) => (
+                  <div key={z.id} className={`dk-map-cell is-zone ${z.id === "B" ? "dk-span2" : ""}`}>
+                    <b>Zona {z.id}</b>
+                    <span>{z.screen}</span>
+                  </div>
+                ))}
+              <div className="dk-map-cell is-muted">Barbershop</div>
+              {d.venue.zones
+                .filter((z) => z.id === "C")
+                .map((z) => (
+                  <div key={z.id} className="dk-map-cell is-zone dk-span2">
+                    <b>Zona {z.id}</b>
+                    <span>{z.screen}</span>
+                  </div>
+                ))}
+              <div className="dk-map-cell is-stage dk-span3">Stage area · layar proyektor 120 cm</div>
+              {d.venue.zones
+                .filter((z) => z.id === "D")
+                .map((z) => (
+                  <div key={z.id} className="dk-map-cell is-zone is-big dk-span3">
+                    <b>Zona {z.id}</b>
+                    <span>Outdoor</span>
+                  </div>
+                ))}
+              <div className="dk-map-gate dk-span3">↑ Entrance gate ↑</div>
+            </div>
+            <div>
+              <ul className="dk-zones">
+                {d.venue.zones.map((z) => (
+                  <li key={z.id}>
+                    <b>Zona {z.id}</b>
+                    <span>
+                      {z.kind} · {z.smoking ? "smoking" : "non-smoking"}
+                    </span>
+                    {z.screen && <em>{z.screen}</em>}
+                  </li>
+                ))}
+              </ul>
+              <ul className="dk-facts dk-facts-sm">
+                <li>
+                  <small>Kapasitas</small>
+                  <b>{d.venue.capacity}</b>
+                </li>
+                <li>
+                  <small>Fasilitas</small>
+                  <b>{d.venue.facilities}</b>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 3. Case study */}
       <section className="dk-slide">
         <div className="dk-wrap">
@@ -182,7 +247,7 @@ export default function DeckView({ d }: { d: Deck }) {
           <h2 className="dk-h">
             Rundown <i>acara</i>
           </h2>
-          <ol className="dk-run">
+          <ol className="dk-run" style={{ "--cols": d.rundown.length > 7 ? Math.ceil(d.rundown.length / 2) : d.rundown.length } as CSSProperties}>
             {d.rundown.map((r) => (
               <li key={r.step} className={r.cta ? "is-cta" : ""}>
                 {r.time && <time>{r.time}</time>}
@@ -200,17 +265,19 @@ export default function DeckView({ d }: { d: Deck }) {
         <div className="dk-wrap">
           <h2 className="dk-h">{d.brand.title}</h2>
           <p className="dk-lead">{d.brand.lead}</p>
-          <div className="dk-split">
-            <ul className="dk-points">
-              {d.brand.points.map((pt) => (
-                <li key={pt.name}>
-                  <b>{pt.name}</b>
-                  <span>{pt.detail}</span>
-                </li>
-              ))}
-            </ul>
-            {d.brand.photo && <Shot p={d.brand.photo} tall />}
-          </div>
+          <ul className="dk-points dk-points-grid">
+            {d.brand.points.map((pt) => (
+              <li key={pt.name}>
+                <b>{pt.name}</b>
+                <span>{pt.detail}</span>
+              </li>
+            ))}
+          </ul>
+          {d.brand.photo && (
+            <div className="dk-shots dk-shots-1 dk-natural">
+              <Shot p={d.brand.photo} />
+            </div>
+          )}
         </div>
       </section>
 
