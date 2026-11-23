@@ -13,7 +13,14 @@ export type Deck = {
   // kickoff in WIB; the event starts 1 hour before, the gate opens 4 hours before.
   match: { home: string; away: string; day: string; date: string; kickoff: string; eventStart: string; gateOpen: string };
   cover: { line: string; banner: string };
-  venue: { place: string; screen: string; capacity: string; photos: Photo[] };
+  venue: {
+    place: string;
+    screen: string;
+    capacity: string;
+    facilities: string;
+    zones: { id: string; kind: string; screen?: string; smoking: boolean }[];
+    photos: Photo[];
+  };
   caseStudy: { match: string; seats: number; lines: string[]; photos: Photo[] };
   rundown: { step: string; detail: string; time?: string; cta?: boolean }[];
   brand: { title: string; lead: string; points: { name: string; detail: string }[]; photo?: Photo };

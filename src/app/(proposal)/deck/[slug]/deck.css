@@ -273,7 +273,7 @@ html:has(.dk) {
 /* rundown */
 .dk-run {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(var(--cols, 7), 1fr);
   gap: 10px;
   counter-reset: run;
 }
@@ -376,6 +376,96 @@ html:has(.dk) {
   }
 }
 
+/* floor plan */
+.dk-map {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: var(--card);
+  border-radius: 24px;
+  padding: 14px;
+}
+.dk-span2 {
+  grid-column: span 2;
+}
+.dk-span3 {
+  grid-column: span 3;
+}
+.dk-map-cell {
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: grid;
+  gap: 2px;
+  align-content: center;
+  min-height: 62px;
+  font-size: 13px;
+}
+.dk-map-cell.is-muted {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--mute);
+  font-weight: 600;
+}
+.dk-map-cell.is-zone {
+  background: linear-gradient(150deg, #2f7d44, #18492a);
+}
+.dk-map-cell.is-zone b {
+  font-size: 16px;
+}
+.dk-map-cell.is-zone span {
+  color: rgba(255, 255, 255, 0.82);
+}
+.dk-map-cell.is-big {
+  min-height: 120px;
+}
+.dk-map-cell.is-stage {
+  background: linear-gradient(150deg, var(--rx), #0b0b0d);
+  font-weight: 700;
+  text-align: center;
+}
+.dk-map-gate {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--soft);
+  padding: 6px 0 0;
+}
+.dk-zones {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.dk-zones li {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: grid;
+  gap: 2px;
+}
+.dk-zones b {
+  font-size: 16px;
+}
+.dk-zones span {
+  font-size: 14px;
+  color: var(--soft);
+}
+.dk-zones em {
+  justify-self: start;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--green-bright);
+}
+.dk-facts-sm b {
+  font-size: 16px;
+}
+.dk-facts-sm li {
+  padding: 14px 18px;
+}
+
 /* brand points */
 .dk-points {
   display: grid;
@@ -394,6 +484,24 @@ html:has(.dk) {
 .dk-points span {
   font-size: 15px;
   color: var(--soft);
+}
+
+.dk-points-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 860px) {
+  .dk-points-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* wide photos keep their own shape */
+.dk-natural .dk-shot {
+  aspect-ratio: auto;
+  width: 100%;
+  height: auto;
+  max-height: 40svh;
+  object-fit: contain;
+  background: #fff;
 }
 
 /* ticket */

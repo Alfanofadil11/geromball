@@ -92,8 +92,8 @@ export const rexona: Proposal = {
 
   grounds: {
     place: "Selawaktu Cafe, Tebet, Jakarta Selatan",
-    screen: "Layar utama dan 4 TV",
-    capacity: "Layar utama di depan, 4 TV di area belakang dan indoor · 100–150 pengunjung per sesi",
+    screen: "Layar proyektor dan 4 TV",
+    capacity: "Proyektor 120 cm di Zona D, 4 TV di Zona A, B, dan C · 105 kursi, ditambah area berdiri",
     sessions: ["Semifinal Liga Champions Leg 2", "El Clasico", "Final Liga Champions"],
     rundown: ["Nobar big match", "Pojok Debat live di depan penonton", "Kuis dan Q&A bersama talent", "Roasting talent saat half time", "Poster, booth dan sampling produk Rexona di venue"],
   },

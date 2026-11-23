@@ -1,4 +1,4 @@
-import { caseStudy, contacts, rundown, venue } from "./shared";
+import { brandingPhoto, brandingSpots, caseStudy, contacts, rundown, venue } from "./shared";
 import type { Deck } from "./types";
 
 // Kick off 00.30 WIB on Sunday 13 Dec, so the gate opens and the event starts on Saturday night.
@@ -21,12 +21,12 @@ export const rexonaNobar: Deck = {
     lead: "Rexona hadir di venue dan di tiga segmen acara yang membawa CTA Rexona.",
     points: [
       { name: "Tiket masuk", detail: "Setiap penonton masuk dengan paket kopi dan 1 Rexona Men." },
-      { name: "Poster dan booth", detail: "Materi Rexona dipasang di area venue." },
-      { name: "Gamifikasi", detail: "Games dan kuis membawa CTA Rexona." },
+      brandingSpots("Rexona"),
+      { name: "Gamifikasi", detail: "Kahoot dan football.games Hexagon bersama penonton membawa CTA Rexona." },
       { name: "Live Pojok Debat", detail: "Talent menyampaikan CTA Rexona sebelum kick off." },
       { name: "Half time", detail: "Live komentator menyampaikan CTA Rexona." },
     ],
-    photo: { label: "Gamifikasi saat soft opening, segmen yang akan membawa CTA Rexona", src: "/deck/grounds/gamifikasi-audiens.webp" },
+    photo: brandingPhoto,
   },
   ticket: {
     price: "Rp 25 rb",
@@ -34,7 +34,7 @@ export const rexonaNobar: Deck = {
     note: "Di soft opening, reservasi hanya mendapat kopi. Untuk nobar Rexona, tiket Rp 25 rb mendapat kopi dan 1 Rexona Men.",
     status: "To be confirmed, harga dan isi tiket bisa didiskusikan bersama tim Rexona",
   },
-  tbc: ["Jumlah produk Rexona Men untuk penonton", "Materi poster dan booth dari tim Rexona"],
+  tbc: ["Jumlah produk Rexona Men untuk penonton", "Penempatan branding dan produk Rexona"],
   contacts,
 };
 
